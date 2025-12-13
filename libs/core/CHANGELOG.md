@@ -11,6 +11,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.3.0] - 2025-12-14
+
+### Added
+- **Entities**
+  - `Merchant` entity with status management and settings
+  - `ApiKey` entity with permissions, hashing, and validation
+  - `OtpRequest` entity with verification and expiration logic
+- **Value Objects**
+  - `ProviderCredentials` for encrypted provider config (AES-256-GCM)
+- **Ports**
+  - `MerchantRepositoryPort` for merchant persistence
+  - `ApiKeyRepositoryPort` for API key persistence
+  - `OtpRepositoryPort` for OTP request persistence
+- **Use Cases**
+  - `SendOtpUseCase` with multi-channel delivery and rate limiting
+  - `VerifyOtpUseCase` with attempt tracking
+  - `ValidateApiKeyUseCase` for API authentication
+  - `CreateApiKeyUseCase` for key generation
+
+---
+
 ## [0.2.0] - 2025-12-14
 
 ### Added

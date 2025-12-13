@@ -1,6 +1,6 @@
 {
     "name": "@opennotify/core",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "description": "OpenNotify Core - Domain logic and provider adapters",
     "author": "Fozilbek Samiyev <fozilbek.samiyev@gmail.com>",
     "private": true,
@@ -22,6 +22,7 @@
         "test:coverage": "vitest run --coverage"
     },
     "devDependencies": {
+        "@types/node": "^25.0.1",
         "vitest": "^2.1.8"
     }
 }

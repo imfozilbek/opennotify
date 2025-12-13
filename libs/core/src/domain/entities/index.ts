@@ -1,2 +1,5 @@
 export * from "./Notification"
 export * from "./Recipient"
+export * from "./Merchant"
+export * from "./ApiKey"
+export * from "./OtpRequest"

@@ -1,3 +1,6 @@
 export * from "./NotificationProviderPort"
 export * from "./NotificationRepositoryPort"
 export * from "./RecipientRepositoryPort"
+export * from "./MerchantRepositoryPort"
+export * from "./ApiKeyRepositoryPort"
+export * from "./OtpRepositoryPort"

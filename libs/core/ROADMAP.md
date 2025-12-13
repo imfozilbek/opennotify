@@ -41,14 +41,14 @@ Core library containing domain logic, provider adapters, and use cases for the O
 
 | Task | Status |
 |------|--------|
-| Merchant entity | ⏳ |
-| ApiKey entity | ⏳ |
-| ProviderCredentials value object (encrypted) | ⏳ |
-| OtpRequest entity | ⏳ |
-| SendOtpUseCase | ⏳ |
-| VerifyOtpUseCase | ⏳ |
-| ValidateApiKeyUseCase | ⏳ |
-| CreateApiKeyUseCase | ⏳ |
+| Merchant entity | ✅ |
+| ApiKey entity | ✅ |
+| ProviderCredentials value object (encrypted) | ✅ |
+| OtpRequest entity | ✅ |
+| SendOtpUseCase | ✅ |
+| VerifyOtpUseCase | ✅ |
+| ValidateApiKeyUseCase | ✅ |
+| CreateApiKeyUseCase | ✅ |
 
 ---
 
