@@ -10,9 +10,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Initial project setup
-- Domain model design
-- Provider interface definition
+- **Value Objects**
+  - `Channel` enum (SMS, TELEGRAM, EMAIL, PUSH, WHATSAPP)
+  - `Provider` enum (ESKIZ, PLAYMOBILE, GETSMS, TELEGRAM_BOT, etc.)
+  - `NotificationStatus` enum with status transitions (PENDING, SENT, DELIVERED, FAILED)
+- **Entities**
+  - `Notification` entity with full lifecycle management
+- **Ports**
+  - `NotificationProviderPort` interface for provider adapters
+  - `NotificationRepositoryPort` interface for persistence
+- **Adapters**
+  - `EskizAdapter` implementation for Eskiz SMS provider
+- **Use Cases**
+  - `SendNotificationUseCase` for sending notifications
+  - `GetNotificationStatusUseCase` for checking delivery status
 
 ---
 

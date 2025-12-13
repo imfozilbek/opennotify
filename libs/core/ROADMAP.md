@@ -11,14 +11,14 @@ Core library containing domain logic, provider adapters, and use cases for the O
 
 | Task | Status |
 |------|--------|
-| Channel enum (SMS, Telegram, Email, Push, WhatsApp) | ⏳ |
-| Provider enum (Eskiz, PlayMobile, GetSMS, Telegram, SendGrid, etc.) | ⏳ |
-| NotificationStatus value object | ⏳ |
-| Notification entity | ⏳ |
-| NotificationProviderPort interface | ⏳ |
-| EskizAdapter implementation | ⏳ |
-| SendNotificationUseCase | ⏳ |
-| GetNotificationStatusUseCase | ⏳ |
+| Channel enum (SMS, Telegram, Email, Push, WhatsApp) | ✅ |
+| Provider enum (Eskiz, PlayMobile, GetSMS, Telegram, SendGrid, etc.) | ✅ |
+| NotificationStatus value object | ✅ |
+| Notification entity | ✅ |
+| NotificationProviderPort interface | ✅ |
+| EskizAdapter implementation | ✅ |
+| SendNotificationUseCase | ✅ |
+| GetNotificationStatusUseCase | ✅ |
 
 ---
 

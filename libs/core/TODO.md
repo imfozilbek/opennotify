@@ -6,16 +6,18 @@ Technical debt and pending improvements.
 
 ## High Priority
 
-- [ ] Define core domain entities
-- [ ] Implement NotificationProviderPort interface
-- [ ] Create EskizAdapter
+- [ ] Add unit tests for value objects
+- [ ] Add unit tests for Notification entity
+- [ ] Add integration tests for EskizAdapter (mock HTTP)
+- [ ] Add unit tests for use cases
 
 ---
 
 ## Medium Priority
 
-- [ ] Add comprehensive error types
+- [ ] Add comprehensive error types (NotificationError, ProviderError, etc.)
 - [ ] Implement retry logic with exponential backoff
+- [ ] Add request/response logging for debugging
 
 ---
 
