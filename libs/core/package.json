@@ -1,6 +1,6 @@
 {
     "name": "@opennotify/core",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "OpenNotify Core - Domain logic and provider adapters",
     "author": "Fozilbek Samiyev <fozilbek.samiyev@gmail.com>",
     "private": true,
