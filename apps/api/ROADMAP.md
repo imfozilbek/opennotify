@@ -11,12 +11,13 @@ NestJS-based Platform API for OpenNotify.
 
 | Task | Status |
 |------|--------|
-| NestJS project setup | ⏳ |
-| POST /send endpoint | ⏳ |
-| GET /notifications/:id endpoint | ⏳ |
-| GET /notifications/:id/status endpoint | ⏳ |
-| Webhook receiver for provider callbacks | ⏳ |
-| Basic error handling | ⏳ |
+| NestJS project setup | ✅ |
+| POST /send endpoint | ✅ |
+| GET /notifications/:id endpoint | ✅ |
+| GET /notifications/:id/status endpoint | ✅ |
+| POST /otp/send endpoint | ✅ |
+| POST /otp/verify endpoint | ✅ |
+| Basic error handling | ✅ |
 
 ---
 
