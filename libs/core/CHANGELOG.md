@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- **Adapters**
+  - `TelegramAdapter` implementation for Telegram Bot API
+- **Entities**
+  - `Recipient` entity for managing notification recipients across channels
+- **Ports**
+  - `RecipientRepositoryPort` interface for recipient persistence
+- **Use Cases**
+  - `CreateRecipientUseCase` for creating recipients with duplicate checking
+  - `UpdateRecipientUseCase` for updating contacts, preferences, and Telegram linking
+
 ---
 
 ## [0.1.0] - 2025-12-14

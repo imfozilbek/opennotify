@@ -27,12 +27,12 @@ Core library containing domain logic, provider adapters, and use cases for the O
 
 | Task | Status |
 |------|--------|
-| TelegramAdapter implementation | ⏳ |
-| Recipient entity (phone, telegram_chat_id, preferences) | ⏳ |
-| RecipientRepositoryPort | ⏳ |
-| Phone-to-ChatId linking logic | ⏳ |
-| CreateRecipientUseCase | ⏳ |
-| UpdateRecipientUseCase | ⏳ |
+| TelegramAdapter implementation | ✅ |
+| Recipient entity (phone, telegram_chat_id, preferences) | ✅ |
+| RecipientRepositoryPort | ✅ |
+| Phone-to-ChatId linking logic | ✅ |
+| CreateRecipientUseCase | ✅ |
+| UpdateRecipientUseCase | ✅ |
 
 ---
 
