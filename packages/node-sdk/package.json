@@ -1,0 +1,39 @@
+{
+    "name": "@opennotify/node-sdk",
+    "version": "0.0.1",
+    "description": "OpenNotify Node.js SDK",
+    "author": "Fozilbek Samiyev <fozilbek.samiyev@gmail.com>",
+    "license": "MIT",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        }
+    },
+    "scripts": {
+        "build": "tsc",
+        "clean": "rm -rf dist",
+        "test": "vitest",
+        "test:run": "vitest run",
+        "prepublishOnly": "pnpm build"
+    },
+    "devDependencies": {
+        "vitest": "^2.1.8"
+    },
+    "keywords": [
+        "opennotify",
+        "notifications",
+        "sms",
+        "telegram",
+        "email",
+        "push",
+        "uzbekistan"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/opennotify/opennotify.git",
+        "directory": "packages/node-sdk"
+    }
+}

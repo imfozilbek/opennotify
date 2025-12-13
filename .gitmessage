@@ -1,0 +1,56 @@
+# <type>(<scope>): <subject>
+#
+# <body>
+#
+# <footer>
+
+# Format:
+# - Package changes: <type>(<scope>): <subject>
+#   Examples: feat(api): add eskiz adapter
+#             fix(sdk): resolve timeout issue
+# - Root changes:    <type>: <subject>
+#   Examples: chore: update eslint config
+#             docs: update root README
+
+# Type should be one of the following:
+# * feat: A new feature
+# * fix: A bug fix
+# * docs: Documentation only changes
+# * style: Changes that do not affect the meaning of the code (formatting, etc)
+# * refactor: A code change that neither fixes a bug nor adds a feature
+# * perf: A code change that improves performance
+# * test: Adding missing tests or correcting existing tests
+# * build: Changes that affect the build system or dependencies
+# * ci: Changes to CI configuration files and scripts
+# * chore: Other changes that don't modify src or test files
+# * revert: Reverts a previous commit
+
+# Package scopes:
+# * core      - @opennotify/core (libs/core)
+# * node-sdk  - @opennotify/node-sdk (packages/node-sdk)
+# * python    - opennotify Python SDK (packages/python-sdk)
+# * php       - opennotify-php SDK (packages/php-sdk)
+# * go        - opennotify Go SDK (packages/go-sdk)
+# * java      - opennotify-java SDK (packages/java-sdk)
+# * dotnet    - OpenNotify.NET SDK (packages/dotnet-sdk)
+# * ruby      - opennotify Ruby SDK (packages/ruby-sdk)
+# * rust      - opennotify-rs SDK (packages/rust-sdk)
+# * api       - @opennotify/api (apps/api)
+# * dashboard - @opennotify/dashboard (apps/dashboard)
+# * landing   - @opennotify/landing (apps/landing)
+# * (none)    - root-level changes
+#
+# Subject line rules:
+# - Use imperative mood ("add feature" not "added feature")
+# - Don't capitalize first letter
+# - No period at the end
+# - Limit to 50 characters
+#
+# Body (optional):
+# - Explain what and why (not how)
+# - Wrap at 72 characters
+# - Separate from subject with blank line
+#
+# Footer (optional):
+# - Reference issues: "Fixes #123" or "Closes #123"
+# - Breaking changes: "BREAKING CHANGE: description"

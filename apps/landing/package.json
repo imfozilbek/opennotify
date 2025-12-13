@@ -1,0 +1,25 @@
+{
+    "name": "@opennotify/landing",
+    "version": "0.0.1",
+    "description": "OpenNotify Marketing Website",
+    "author": "Fozilbek Samiyev <fozilbek.samiyev@gmail.com>",
+    "private": true,
+    "license": "MIT",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "clean": "rm -rf dist",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1"
+    },
+    "devDependencies": {
+        "@types/react": "^18.3.18",
+        "@types/react-dom": "^18.3.5",
+        "@vitejs/plugin-react": "^4.3.4",
+        "vite": "^6.0.6"
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "name": "opennotify-monorepo",
+    "version": "0.1.0",
+    "description": "OpenNotify - Unified Notification API for Central Asia",
+    "author": "Fozilbek Samiyev <fozilbek.samiyev@gmail.com>",
+    "private": true,
+    "license": "MIT",
+    "packageManager": "pnpm@9.15.0",
+    "engines": {
+        "node": ">=22.0.0",
+        "pnpm": ">=9.0.0"
+    },
+    "scripts": {
+        "preinstall": "node -e \"if(+process.versions.node.split('.')[0]<22){console.error('\\x1b[31mError: Node.js 22+ required. Run: nvm use\\x1b[0m');process.exit(1)}\"",
+        "build": "pnpm -r build",
+        "clean": "pnpm -r clean",
+        "format": "prettier --write \"{packages,libs,apps}/**/*.ts\"",
+        "format:check": "prettier --check \"{packages,libs,apps}/**/*.ts\"",
+        "lint": "eslint \"{packages,libs,apps}/**/*.ts\" --fix",
+        "lint:check": "eslint \"{packages,libs,apps}/**/*.ts\"",
+        "test": "pnpm -r test:run",
+        "test:watch": "pnpm -r test:watch",
+        "test:coverage": "pnpm -r test:coverage"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.18.0",
+        "eslint": "^9.18.0",
+        "eslint-config-prettier": "^10.0.1",
+        "eslint-plugin-prettier": "^5.2.2",
+        "globals": "^16.0.0",
+        "prettier": "^3.4.2",
+        "typescript": "^5.7.3",
+        "typescript-eslint": "^8.20.0"
+    }
+}

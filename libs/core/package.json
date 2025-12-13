@@ -1,0 +1,27 @@
+{
+    "name": "@opennotify/core",
+    "version": "0.0.1",
+    "description": "OpenNotify Core - Domain logic and provider adapters",
+    "author": "Fozilbek Samiyev <fozilbek.samiyev@gmail.com>",
+    "private": true,
+    "license": "MIT",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        }
+    },
+    "scripts": {
+        "build": "tsc",
+        "clean": "rm -rf dist",
+        "test": "vitest",
+        "test:run": "vitest run",
+        "test:watch": "vitest watch",
+        "test:coverage": "vitest run --coverage"
+    },
+    "devDependencies": {
+        "vitest": "^2.1.8"
+    }
+}
