@@ -71,17 +71,19 @@ Core library containing domain logic, provider adapters, and use cases for the O
 
 ---
 
-## v0.5.0 — Templates & More SMS Providers
+## v0.5.0 — Templates & More SMS Providers ✅
 > **Goal:** Template system and provider diversity
 
 | Task | Status |
 |------|--------|
-| Template entity | ⏳ |
-| TemplateVariable value object | ⏳ |
-| CreateTemplateUseCase | ⏳ |
-| RenderTemplateUseCase | ⏳ |
-| PlayMobileAdapter implementation | ⏳ |
-| GetSmsAdapter implementation | ⏳ |
+| Template entity | ✅ |
+| TemplateStatus value object | ✅ |
+| TemplateVariable value object | ✅ |
+| TemplateRepositoryPort | ✅ |
+| CreateTemplateUseCase | ✅ |
+| RenderTemplateUseCase | ✅ |
+| PlayMobileAdapter implementation | ✅ |
+| GetSmsAdapter implementation | ✅ |
 | Provider failover logic | ⏳ |
 
 ---
@@ -154,7 +156,9 @@ Core library containing domain logic, provider adapters, and use cases for the O
 │  ├── Provider (Eskiz, PlayMobile, Telegram, SendGrid...)    │
 │  ├── NotificationStatus (Pending, Sent, Delivered, Failed)  │
 │  ├── ProviderCredentials (encrypted config per provider)    │
-│  └── RoutingRule (conditions, priority, fallback)           │
+│  ├── RoutingRule (conditions, priority, fallback)           │
+│  ├── TemplateStatus (Draft, Active, Archived)               │
+│  └── TemplateVariable (name, required, defaultValue)        │
 │                                                              │
 │  Events:                                                     │
 │  ├── NotificationSent                                        │

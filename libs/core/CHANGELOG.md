@@ -11,6 +11,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.5.0] - 2025-12-14
+
+### Added
+- **Value Objects**
+  - `TemplateStatus` enum (DRAFT, ACTIVE, ARCHIVED) with status transitions
+  - `TemplateVariable` for template placeholder definitions with validation
+- **Entities**
+  - `Template` entity for reusable message templates
+    - Variable placeholders: `{{variable_name}}`
+    - Render with substitution and defaults
+    - Status lifecycle: DRAFT → ACTIVE → ARCHIVED
+    - Validation for body/subject variables consistency
+- **Ports**
+  - `TemplateRepositoryPort` for template persistence
+- **Use Cases**
+  - `CreateTemplateUseCase` for creating templates with validation
+  - `RenderTemplateUseCase` for rendering templates with variables
+- **Adapters**
+  - `PlayMobileAdapter` for PlayMobile SMS provider (Uzbekistan)
+  - `GetSmsAdapter` for GetSMS provider (Uzbekistan)
+
+---
+
 ## [0.4.0] - 2025-12-14
 
 ### Added
