@@ -6,6 +6,11 @@ All notable changes to this package will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+- **Notifications Module**
+  - `GET /notifications` - List notifications with pagination (page, limit query params)
+  - Response includes recipient and payload fields
+
 ---
 
 ## [0.2.0] - 2025-12-14

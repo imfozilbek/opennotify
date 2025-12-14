@@ -4,6 +4,6 @@
         "baseUrl": ".",
         "outDir": "./dist"
     },
-    "include": ["packages/**/*", "libs/**/*", "apps/**/*"],
-    "exclude": ["node_modules", "dist", "coverage"]
+    "include": ["packages/**/*", "libs/**/*", "apps/api/**/*"],
+    "exclude": ["node_modules", "dist", "coverage", "apps/dashboard", "apps/landing"]
 }

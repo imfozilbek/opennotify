@@ -182,7 +182,7 @@ OpenNotify (70% Telegram, 30% SMS fallback):
 | libs/core | v0.3.0 | ✅ Done | Multi-tenant, OTP service |
 | apps/api | v0.1.0 | ✅ Done | Basic API, webhooks |
 | apps/api | v0.2.0 | ✅ Done | Merchant onboarding |
-| apps/dashboard | v0.1.0 | ⏳ Planned | Provider setup, logs |
+| apps/dashboard | v0.1.0 | ✅ Done | Provider setup, logs |
 
 ### Phase 2: Smart Routing (v0.4.0 - v0.5.0)
 > Goal: Intelligent channel orchestration

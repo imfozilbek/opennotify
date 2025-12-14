@@ -6,15 +6,15 @@ React-based Merchant Dashboard for OpenNotify.
 
 ---
 
-## v0.1.0 — Foundation
+## v0.1.0 — Foundation ✅
 > **Goal:** Basic dashboard structure
 
 | Task | Status |
 |------|--------|
-| Vite + React setup | ⏳ |
-| Authentication pages (login, register) | ⏳ |
-| Provider connection UI | ⏳ |
-| Basic notification logs | ⏳ |
+| Vite + React setup | ✅ |
+| Authentication pages (login, register) | ✅ |
+| Provider connection UI | ✅ |
+| Basic notification logs | ✅ |
 
 ---
 

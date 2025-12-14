@@ -24,8 +24,14 @@ const mockNotificationRepository = {
     async findByExternalId(_externalId: string): Promise<Notification | null> {
         return null
     },
-    async findByMerchantId(_merchantId: string): Promise<Notification[]> {
-        return []
+    async findByMerchantId(merchantId: string): Promise<Notification[]> {
+        const notifications: Notification[] = []
+        for (const notification of notificationStore.values()) {
+            if (notification.merchantId === merchantId) {
+                notifications.push(notification)
+            }
+        }
+        return notifications.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
     },
 }
 
@@ -99,6 +105,19 @@ export class NotificationsService {
 
     async getById(id: string): Promise<Notification | null> {
         return mockNotificationRepository.findById(id)
+    }
+
+    async list(
+        merchantId: string,
+        page: number,
+        limit: number,
+    ): Promise<{ notifications: Notification[]; total: number }> {
+        const all = await mockNotificationRepository.findByMerchantId(merchantId)
+        const total = all.length
+        const start = (page - 1) * limit
+        const notifications = all.slice(start, start + limit)
+
+        return { notifications, total }
     }
 
     private generateId(): string {
