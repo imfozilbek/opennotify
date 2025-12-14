@@ -12,3 +12,9 @@ export * from "./RetryPolicy"
 export * from "./ProviderError"
 export * from "./ProviderHealth"
 export * from "./SendAttempt"
+
+// Analytics
+export * from "./AnalyticsPeriod"
+export * from "./DateRange"
+export * from "./NotificationStats"
+export * from "./ChannelStats"

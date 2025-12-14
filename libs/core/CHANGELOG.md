@@ -11,6 +11,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.6.1] - 2025-12-14
+
+### Added
+- **Value Objects**
+  - `AnalyticsPeriod` enum for time period presets (today, this_week, this_month, last_7_days, last_30_days)
+  - `DateRange` for date range queries with factory methods (today, thisWeek, thisMonth, last)
+  - `NotificationStats` for aggregated statistics with computed metrics (deliveryRate, failureRate, successRate)
+  - `ChannelStats` for per-channel statistics breakdown
+- **Ports**
+  - Extended `NotificationRepositoryPort` with analytics methods:
+    - `getStats()` - aggregated stats by status and channel
+    - `getStatsByChannel()` - detailed stats per channel
+    - `findWithFilters()` - filtered notification queries
+    - `countWithFilters()` - count for pagination
+  - `NotificationFilters` interface for query filtering
+  - `AggregatedStats` interface for stats response
+- **Use Cases**
+  - `GetAnalyticsSummaryUseCase` - get overall notification statistics
+  - `GetAnalyticsByChannelUseCase` - get statistics breakdown by channel
+  - `GetNotificationLogsUseCase` - get paginated notification logs with filters
+
+---
+
 ## [0.6.0] - 2025-12-14
 
 ### Added

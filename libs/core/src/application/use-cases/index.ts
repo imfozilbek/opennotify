@@ -9,3 +9,8 @@ export * from "./CreateApiKeyUseCase"
 export * from "./SmartSendUseCase"
 export * from "./CreateTemplateUseCase"
 export * from "./RenderTemplateUseCase"
+
+// Analytics
+export * from "./GetAnalyticsSummaryUseCase"
+export * from "./GetAnalyticsByChannelUseCase"
+export * from "./GetNotificationLogsUseCase"
