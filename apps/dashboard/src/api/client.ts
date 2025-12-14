@@ -70,6 +70,13 @@ export async function apiPost<T>(endpoint: string, body?: unknown): Promise<ApiR
     })
 }
 
+export async function apiPut<T>(endpoint: string, body?: unknown): Promise<ApiResponse<T>> {
+    return apiClient<T>(endpoint, {
+        method: "PUT",
+        body: body ? JSON.stringify(body) : undefined,
+    })
+}
+
 export async function apiDelete<T>(endpoint: string): Promise<ApiResponse<T>> {
     return apiClient<T>(endpoint, { method: "DELETE" })
 }

@@ -47,8 +47,8 @@ export interface ConnectProviderData {
 
 export interface Notification {
     id: string
-    status: string
-    channel: string
+    status: NotificationStatus
+    channel: ChannelType
     provider: string
     recipient: string
     payload: {
@@ -58,6 +58,185 @@ export interface Notification {
     createdAt: string
     sentAt?: string
     deliveredAt?: string
+    failedAt?: string
+    errorMessage?: string
+}
+
+// Channel Types
+export type ChannelType = "SMS" | "TELEGRAM" | "EMAIL" | "PUSH" | "WHATSAPP"
+
+export const CHANNEL_LABELS: Record<ChannelType, string> = {
+    SMS: "SMS",
+    TELEGRAM: "Telegram",
+    EMAIL: "Email",
+    PUSH: "Push",
+    WHATSAPP: "WhatsApp",
+}
+
+export const CHANNEL_COLORS: Record<ChannelType, string> = {
+    SMS: "blue",
+    TELEGRAM: "cyan",
+    EMAIL: "purple",
+    PUSH: "orange",
+    WHATSAPP: "green",
+}
+
+// Notification Status
+export type NotificationStatus = "PENDING" | "SENT" | "DELIVERED" | "FAILED"
+
+export const STATUS_COLORS: Record<NotificationStatus, string> = {
+    PENDING: "yellow",
+    SENT: "blue",
+    DELIVERED: "green",
+    FAILED: "red",
+}
+
+// Template Types
+export type TemplateStatus = "DRAFT" | "ACTIVE" | "ARCHIVED"
+
+export const TEMPLATE_STATUS_COLORS: Record<TemplateStatus, string> = {
+    DRAFT: "gray",
+    ACTIVE: "green",
+    ARCHIVED: "yellow",
+}
+
+export interface TemplateVariable {
+    name: string
+    required: boolean
+    defaultValue?: string
+    description?: string
+}
+
+export interface Template {
+    id: string
+    merchantId: string
+    name: string
+    channel: ChannelType
+    body: string
+    subject?: string
+    variables: TemplateVariable[]
+    description?: string
+    status: TemplateStatus
+    createdAt: string
+    updatedAt: string
+}
+
+export interface CreateTemplateRequest {
+    name: string
+    channel: ChannelType
+    body: string
+    subject?: string
+    variables?: TemplateVariable[]
+    description?: string
+}
+
+export interface UpdateTemplateRequest {
+    name?: string
+    body?: string
+    subject?: string
+    variables?: TemplateVariable[]
+    description?: string
+}
+
+export interface RenderTemplateRequest {
+    templateId: string
+    variables: Record<string, string>
+}
+
+export interface TemplateListData {
+    templates: Template[]
+    total: number
+    page: number
+    limit: number
+}
+
+export interface RenderTemplateData {
+    body: string
+    subject?: string
+}
+
+// Recipient Types
+export interface QuietHours {
+    start: string
+    end: string
+    timezone: string
+}
+
+export interface RecipientPreferences {
+    preferredChannel?: ChannelType
+    optedOutChannels?: ChannelType[]
+    quietHours?: QuietHours
+    language?: string
+}
+
+export interface RecipientContacts {
+    phone?: string
+    email?: string
+    telegramChatId?: string
+    deviceTokens?: string[]
+}
+
+export interface Recipient {
+    id: string
+    merchantId: string
+    externalId?: string
+    contacts: RecipientContacts
+    preferences: RecipientPreferences
+    metadata: Record<string, unknown>
+    createdAt: string
+    updatedAt: string
+}
+
+export interface CreateRecipientRequest {
+    externalId?: string
+    phone?: string
+    email?: string
+    telegramChatId?: string
+    deviceTokens?: string[]
+    preferences?: RecipientPreferences
+    metadata?: Record<string, unknown>
+}
+
+export interface UpdateRecipientRequest {
+    externalId?: string
+    phone?: string
+    email?: string
+    telegramChatId?: string
+    deviceTokens?: string[]
+    preferences?: RecipientPreferences
+    metadata?: Record<string, unknown>
+}
+
+export interface LinkTelegramRequest {
+    telegramChatId: string
+}
+
+export interface RecipientListData {
+    recipients: Recipient[]
+    total: number
+    page: number
+    limit: number
+}
+
+// Send Notification Types
+export interface SendNotificationRequest {
+    provider: ProviderType
+    recipient: {
+        phone?: string
+        email?: string
+        telegramChatId?: string
+        deviceToken?: string
+    }
+    payload: {
+        text: string
+        subject?: string
+        templateId?: string
+        variables?: Record<string, string>
+    }
+}
+
+export interface SendNotificationData {
+    notificationId: string
 }
 
 export interface NotificationListData {

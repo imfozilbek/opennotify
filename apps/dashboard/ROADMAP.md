@@ -18,15 +18,15 @@ React-based Merchant Dashboard for OpenNotify.
 
 ---
 
-## v0.2.0 — Core Features
+## v0.2.0 — Core Features ✅
 > **Goal:** Full notification management
 
 | Task | Status |
 |------|--------|
-| Templates management UI | ⏳ |
-| Recipients management UI | ⏳ |
-| Send notification form | ⏳ |
-| Delivery status tracking | ⏳ |
+| Templates management UI | ✅ |
+| Recipients management UI | ✅ |
+| Send notification form | ✅ |
+| Delivery status tracking | ✅ |
 
 ---
 

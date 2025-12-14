@@ -1,5 +1,11 @@
-import { apiGet } from "./client"
-import type { ApiResponse, Notification, NotificationListData } from "@/types/api"
+import { apiGet, apiPost } from "./client"
+import type {
+    ApiResponse,
+    Notification,
+    NotificationListData,
+    SendNotificationData,
+    SendNotificationRequest,
+} from "@/types/api"
 
 export async function listNotifications(
     page = 1,
@@ -16,4 +22,10 @@ export async function getNotification(id: string): Promise<ApiResponse<Notificat
 
 export async function getNotificationStatus(id: string): Promise<ApiResponse<{ status: string }>> {
     return apiGet<{ status: string }>(`/api/v1/notifications/${id}/status`)
+}
+
+export async function sendNotification(
+    data: SendNotificationRequest,
+): Promise<ApiResponse<SendNotificationData>> {
+    return apiPost<SendNotificationData>("/api/v1/notifications/send", data)
 }

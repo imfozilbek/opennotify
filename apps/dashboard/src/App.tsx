@@ -6,6 +6,8 @@ import { LoginPage } from "@/pages/LoginPage"
 import { RegisterPage } from "@/pages/RegisterPage"
 import { DashboardPage } from "@/pages/DashboardPage"
 import { ProvidersPage } from "@/pages/ProvidersPage"
+import { TemplatesPage } from "@/pages/TemplatesPage"
+import { RecipientsPage } from "@/pages/RecipientsPage"
 import { NotificationsPage } from "@/pages/NotificationsPage"
 
 export default function App(): JSX.Element {
@@ -25,6 +27,8 @@ export default function App(): JSX.Element {
                 <Route element={<Layout />}>
                     <Route path="/" element={<DashboardPage />} />
                     <Route path="/providers" element={<ProvidersPage />} />
+                    <Route path="/templates" element={<TemplatesPage />} />
+                    <Route path="/recipients" element={<RecipientsPage />} />
                     <Route path="/notifications" element={<NotificationsPage />} />
                 </Route>
             </Route>
