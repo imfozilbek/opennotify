@@ -11,6 +11,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.4.0] - 2025-12-14
+
+### Added
+- **Value Objects**
+  - `MessageType` enum (OTP, TRANSACTIONAL, MARKETING, ALERT) with routing defaults
+  - `RoutingRule` for defining routing conditions and strategies
+  - `RoutingContext` for routing decision context
+  - `RoutingResult` for routing engine output with fallback chains
+- **Services**
+  - `RoutingEngine` for intelligent channel/provider selection
+    - Cost-optimized routing (cheapest first)
+    - Reliability-first routing (SMS first)
+    - Recipient preference routing
+    - Channel preference routing
+    - Quiet hours support
+    - Fallback chain logic
+- **Ports**
+  - `MerchantProviderPort` for dynamic provider adapter access
+- **Use Cases**
+  - `SmartSendUseCase` with automatic routing and fallback
+    - No provider specification required
+    - Automatic channel selection based on message type
+    - Fallback on delivery failure
+    - Respects recipient opt-outs and preferences
+
+### Default Routing Rules
+- OTP: Telegram first, SMS fallback (reliability)
+- Alert: Push → Telegram → SMS (speed)
+- Marketing: Email → Push → Telegram, no SMS (cost)
+- Transactional: Recipient preference, then cost optimized
+- Default: Cost optimized with 2 fallback attempts
+
+---
+
 ## [0.3.0] - 2025-12-14
 
 ### Added

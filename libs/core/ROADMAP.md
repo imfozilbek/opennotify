@@ -52,17 +52,22 @@ Core library containing domain logic, provider adapters, and use cases for the O
 
 ---
 
-## v0.4.0 — Smart Routing
+## v0.4.0 — Smart Routing ✅
 > **Goal:** Intelligent channel selection
 
 | Task | Status |
 |------|--------|
-| RoutingRule value object | ⏳ |
-| RoutingEngine service | ⏳ |
-| Priority-based routing | ⏳ |
-| Cost-based routing | ⏳ |
-| Fallback chain logic | ⏳ |
-| Time-based rules | ⏳ |
+| MessageType value object | ✅ |
+| RoutingRule value object | ✅ |
+| RoutingContext value object | ✅ |
+| RoutingResult value object | ✅ |
+| RoutingEngine service | ✅ |
+| Priority-based routing | ✅ |
+| Cost-based routing | ✅ |
+| Fallback chain logic | ✅ |
+| Time-based rules (quiet hours) | ✅ |
+| MerchantProviderPort | ✅ |
+| SmartSendUseCase | ✅ |
 
 ---
 

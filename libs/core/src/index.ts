@@ -13,5 +13,8 @@ export * from "./application/use-cases"
 // Application - Ports
 export * from "./application/ports"
 
+// Application - Services
+export * from "./application/services"
+
 // Infrastructure - Adapters
 export * from "./infrastructure/adapters"
