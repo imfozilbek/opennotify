@@ -6,18 +6,19 @@ Node.js/TypeScript SDK for OpenNotify Platform API.
 
 ---
 
-## v0.1.0 — Foundation
+## v0.1.0 — Foundation ✅
 > **Goal:** Basic notification sending
 
 | Task | Status |
 |------|--------|
-| OpenNotify client class | ⏳ |
-| send(options) method | ⏳ |
-| getNotification(id) method | ⏳ |
-| getStatus(id) method | ⏳ |
-| TypeScript types | ⏳ |
-| OpenNotifyError class | ⏳ |
-| npm package setup | ⏳ |
+| OpenNotify client class | ✅ |
+| send(options) method | ✅ |
+| getNotification(id) method | ✅ |
+| getStatus(id) method | ✅ |
+| listNotifications(options) method | ✅ |
+| TypeScript types | ✅ |
+| OpenNotifyError class | ✅ |
+| npm package setup | ✅ |
 
 ---
 

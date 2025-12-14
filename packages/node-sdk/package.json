@@ -1,17 +1,22 @@
 {
     "name": "@opennotify/node-sdk",
-    "version": "0.0.1",
-    "description": "OpenNotify Node.js SDK",
+    "version": "0.1.0",
+    "description": "OpenNotify Node.js SDK - Unified notification API for SMS, Telegram, Email, Push",
     "author": "Fozilbek Samiyev <fozilbek.samiyev@gmail.com>",
     "license": "MIT",
+    "type": "module",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "exports": {
         ".": {
             "types": "./dist/index.d.ts",
-            "default": "./dist/index.js"
+            "import": "./dist/index.js"
         }
     },
+    "files": [
+        "dist",
+        "README.md"
+    ],
     "scripts": {
         "build": "tsc",
         "clean": "rm -rf dist",
@@ -19,7 +24,11 @@
         "test:run": "vitest run",
         "prepublishOnly": "pnpm build"
     },
+    "engines": {
+        "node": ">=18.0.0"
+    },
     "devDependencies": {
+        "typescript": "^5.7.2",
         "vitest": "^2.1.8"
     },
     "keywords": [
@@ -29,11 +38,10 @@
         "telegram",
         "email",
         "push",
-        "uzbekistan"
+        "whatsapp",
+        "eskiz",
+        "uzbekistan",
+        "otp"
     ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/opennotify/opennotify.git",
-        "directory": "packages/node-sdk"
-    }
+    "homepage": "https://opennotify.dev"
 }
