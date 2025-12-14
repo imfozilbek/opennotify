@@ -6,7 +6,23 @@ All notable changes to this package will be documented in this file.
 
 ## [Unreleased]
 
+---
+
+## [0.3.0] - 2025-12-14
+
 ### Added
+- **Templates Module**
+  - `POST /templates` - Create new template (DRAFT status)
+  - `GET /templates` - List templates with pagination and filters
+  - `GET /templates/:id` - Get template by ID
+  - `PUT /templates/:id` - Update template
+  - `DELETE /templates/:id` - Delete template
+  - `POST /templates/:id/publish` - Publish template (DRAFT → ACTIVE)
+  - `POST /templates/:id/unpublish` - Unpublish template (ACTIVE → DRAFT)
+  - `POST /templates/:id/archive` - Archive template
+  - `POST /templates/render` - Render template with variables
+- **Infrastructure**
+  - `InMemoryTemplateRepository` implementation
 - **Notifications Module**
   - `GET /notifications` - List notifications with pagination (page, limit query params)
   - Response includes recipient and payload fields

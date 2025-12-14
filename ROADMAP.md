@@ -191,7 +191,7 @@ OpenNotify (70% Telegram, 30% SMS fallback):
 |-----------|---------|--------|--------------|
 | libs/core | v0.4.0 | ✅ Done | Priority routing, cost routing, fallback chains |
 | libs/core | v0.5.0 | ✅ Done | Templates, PlayMobile, GetSMS adapters |
-| apps/api | v0.3.0 | ⏳ | Template API, recipient API |
+| apps/api | v0.3.0 | ✅ Done | Template API (CRUD, publish, render) |
 | apps/dashboard | v0.2.0 | ⏳ | Routing rules UI, template editor |
 
 ### Phase 3: Email & Push (v0.6.0 - v0.7.0)

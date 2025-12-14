@@ -34,16 +34,20 @@ NestJS-based Platform API for OpenNotify.
 
 ---
 
-## v0.3.0 — Templates
+## v0.3.0 — Templates ✅
 > **Goal:** Template management
 
 | Task | Status |
 |------|--------|
-| POST /templates | ⏳ |
-| GET /templates | ⏳ |
-| GET /templates/:id | ⏳ |
-| PUT /templates/:id | ⏳ |
-| DELETE /templates/:id | ⏳ |
+| POST /templates | ✅ |
+| GET /templates | ✅ |
+| GET /templates/:id | ✅ |
+| PUT /templates/:id | ✅ |
+| DELETE /templates/:id | ✅ |
+| POST /templates/:id/publish | ✅ |
+| POST /templates/:id/unpublish | ✅ |
+| POST /templates/:id/archive | ✅ |
+| POST /templates/render | ✅ |
 
 ---
 
