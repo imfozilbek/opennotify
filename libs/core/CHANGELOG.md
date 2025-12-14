@@ -11,6 +11,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.6.0] - 2025-12-14
+
+### Added
+- **Adapters**
+  - `SmtpAdapter` for generic SMTP email sending
+    - Uses nodemailer as optional peer dependency
+    - Supports TLS/SSL connections (ports 465, 587)
+    - Auto-detection of HTML content
+    - Plain text fallback generation
+    - Configurable from address and name
+  - `SendGridAdapter` for SendGrid email API v3
+    - Bearer token authentication
+    - HTML and plain text content support
+    - Webhook event processing for delivery status
+    - Status mapping: processed, delivered, bounce, dropped, etc.
+  - `MailgunAdapter` for Mailgun email API
+    - Basic auth (api:key) authentication
+    - EU region support
+    - HMAC-SHA256 webhook signature verification
+    - Status mapping: accepted, delivered, failed, etc.
+
+### Dependencies
+- Added `nodemailer` as optional peer dependency (^6.9.0) for SmtpAdapter
+
+---
+
 ## [0.5.0] - 2025-12-14
 
 ### Added

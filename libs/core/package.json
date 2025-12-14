@@ -1,6 +1,6 @@
 {
     "name": "@opennotify/core",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "description": "OpenNotify Core - Domain logic and provider adapters",
     "author": "Fozilbek Samiyev <fozilbek.samiyev@gmail.com>",
     "private": true,
@@ -21,8 +21,17 @@
         "test:watch": "vitest watch",
         "test:coverage": "vitest run --coverage"
     },
+    "peerDependencies": {
+        "nodemailer": "^6.9.0"
+    },
+    "peerDependenciesMeta": {
+        "nodemailer": {
+            "optional": true
+        }
+    },
     "devDependencies": {
         "@types/node": "^25.0.1",
+        "@types/nodemailer": "^6.4.17",
         "vitest": "^2.1.8"
     }
 }

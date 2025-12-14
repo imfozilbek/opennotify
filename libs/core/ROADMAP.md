@@ -93,16 +93,16 @@ Core library containing domain logic, provider adapters, and use cases for the O
 
 ---
 
-## v0.6.0 — Email Channel
+## v0.6.0 — Email Channel ✅
 > **Goal:** Full email support
 
 | Task | Status |
 |------|--------|
-| SmtpAdapter implementation | ⏳ |
-| SendGridAdapter implementation | ⏳ |
-| MailgunAdapter implementation | ⏳ |
-| HTML template rendering | ⏳ |
-| Email-specific delivery status | ⏳ |
+| SmtpAdapter implementation | ✅ |
+| SendGridAdapter implementation | ✅ |
+| MailgunAdapter implementation | ✅ |
+| HTML template rendering | ✅ |
+| Email-specific delivery status | ✅ |
 
 ---
 
