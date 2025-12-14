@@ -1,5 +1,6 @@
 import { Channel } from "./Channel"
 import { MessageType } from "./MessageType"
+import { RetryPolicy, RetryPolicyProps } from "./RetryPolicy"
 import { RoutingContext } from "./RoutingContext"
 
 /**
@@ -72,6 +73,9 @@ export interface RoutingRuleProps {
 
     /** Whether the rule is enabled */
     enabled: boolean
+
+    /** Retry policy for this rule (optional, uses default if not specified) */
+    retryPolicy?: RetryPolicyProps
 }
 
 /**
@@ -156,6 +160,12 @@ export class RoutingRule {
 
     get enabled(): boolean {
         return this._props.enabled
+    }
+
+    get retryPolicy(): RetryPolicy {
+        return this._props.retryPolicy
+            ? RetryPolicy.create(this._props.retryPolicy)
+            : RetryPolicy.default()
     }
 
     /**

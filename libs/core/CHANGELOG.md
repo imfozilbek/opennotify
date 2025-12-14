@@ -17,6 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Value Objects**
   - `TemplateStatus` enum (DRAFT, ACTIVE, ARCHIVED) with status transitions
   - `TemplateVariable` for template placeholder definitions with validation
+  - `RetryPolicy` for configurable retry behavior with exponential backoff
+  - `ProviderError` for error classification (retryable vs permanent)
+  - `ProviderHealth` for tracking provider health status
+  - `SendAttempt` for detailed attempt tracking and debugging
 - **Entities**
   - `Template` entity for reusable message templates
     - Variable placeholders: `{{variable_name}}`
@@ -25,12 +29,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Validation for body/subject variables consistency
 - **Ports**
   - `TemplateRepositoryPort` for template persistence
+- **Services**
+  - `ProviderHealthTracker` for circuit breaker and health monitoring
+    - Sliding window failure tracking
+    - Automatic circuit breaker (opens after 5 failures)
+    - Auto-recovery after 30 second cooldown
+    - Health status: healthy, degraded, unhealthy
 - **Use Cases**
   - `CreateTemplateUseCase` for creating templates with validation
   - `RenderTemplateUseCase` for rendering templates with variables
 - **Adapters**
   - `PlayMobileAdapter` for PlayMobile SMS provider (Uzbekistan)
   - `GetSmsAdapter` for GetSMS provider (Uzbekistan)
+
+### Enhanced
+- **SmartSendUseCase** - Provider failover logic
+  - Retry with exponential backoff for transient errors
+  - Circuit breaker integration (skip unhealthy providers)
+  - Error classification (retryable: timeout, rate limit, server error)
+  - Detailed attempt tracking in output
+  - Health tracking integration
+- **RoutingRule** - Added `retryPolicy` configuration
+- **RoutingResult** - Added `retryPolicy` from matched rule
 
 ---
 

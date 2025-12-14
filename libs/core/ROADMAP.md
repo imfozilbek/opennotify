@@ -84,7 +84,12 @@ Core library containing domain logic, provider adapters, and use cases for the O
 | RenderTemplateUseCase | ✅ |
 | PlayMobileAdapter implementation | ✅ |
 | GetSmsAdapter implementation | ✅ |
-| Provider failover logic | ⏳ |
+| Provider failover logic | ✅ |
+| RetryPolicy value object | ✅ |
+| ProviderError value object | ✅ |
+| ProviderHealth value object | ✅ |
+| SendAttempt value object | ✅ |
+| ProviderHealthTracker service | ✅ |
 
 ---
 

@@ -148,6 +148,7 @@ export class RoutingEngine {
             maxAttempts: matchedRule.maxAttempts,
             quietHoursApplied: inQuietHours,
             filteredChannels,
+            retryPolicy: matchedRule.toPersistence().retryPolicy,
         })
     }
 

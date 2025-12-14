@@ -1,5 +1,6 @@
 import { Channel } from "./Channel"
 import { Provider } from "./Provider"
+import { RetryPolicyProps } from "./RetryPolicy"
 
 /**
  * A single route in the fallback chain.
@@ -69,6 +70,9 @@ export interface RoutingResult {
 
     /** Channels that were filtered out due to opt-out */
     filteredChannels: Channel[]
+
+    /** Retry policy from the matched rule */
+    retryPolicy?: RetryPolicyProps
 }
 
 /**
@@ -94,6 +98,7 @@ export function createRoutingResult(params: {
     maxAttempts?: number
     quietHoursApplied?: boolean
     filteredChannels?: Channel[]
+    retryPolicy?: RetryPolicyProps
 }): RoutingResult {
     const maxAttempts = params.maxAttempts ?? params.routes.length
 
@@ -104,6 +109,7 @@ export function createRoutingResult(params: {
         maxAttempts: Math.min(maxAttempts, params.routes.length),
         quietHoursApplied: params.quietHoursApplied ?? false,
         filteredChannels: params.filteredChannels ?? [],
+        retryPolicy: params.retryPolicy,
     }
 }
 

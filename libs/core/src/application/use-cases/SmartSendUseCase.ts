@@ -3,12 +3,20 @@ import { Recipient } from "../../domain/entities/Recipient"
 import { Channel } from "../../domain/value-objects/Channel"
 import { MessageType } from "../../domain/value-objects/MessageType"
 import { getChannelForProvider, Provider } from "../../domain/value-objects/Provider"
+import { ProviderError } from "../../domain/value-objects/ProviderError"
+import { RetryPolicy } from "../../domain/value-objects/RetryPolicy"
 import { RoutingContext } from "../../domain/value-objects/RoutingContext"
 import { hasRoutes, ProviderRoute, RoutingResult } from "../../domain/value-objects/RoutingResult"
+import { SendAttempt } from "../../domain/value-objects/SendAttempt"
 import { RoutingEngine } from "../services/RoutingEngine"
+import { ProviderHealthTracker } from "../services/ProviderHealthTracker"
 import { MerchantProviderPort } from "../ports/MerchantProviderPort"
 import { NotificationRepositoryPort } from "../ports/NotificationRepositoryPort"
 import { RecipientRepositoryPort } from "../ports/RecipientRepositoryPort"
+import {
+    NotificationProviderPort,
+    SendNotificationRequest,
+} from "../ports/NotificationProviderPort"
 
 /**
  * Input for smart notification sending.
@@ -102,6 +110,12 @@ export interface SmartSendOutput {
 
     /** Error message if all attempts failed */
     errorMessage?: string
+
+    /** Detailed attempt history for debugging/logging */
+    attempts: SendAttempt[]
+
+    /** Total duration of all attempts in milliseconds */
+    totalDurationMs: number
 }
 
 /**
@@ -141,6 +155,7 @@ export class SmartSendUseCase {
         private readonly merchantProviderPort: MerchantProviderPort,
         private readonly recipientRepository: RecipientRepositoryPort,
         private readonly notificationRepository: NotificationRepositoryPort,
+        private readonly healthTracker?: ProviderHealthTracker,
     ) {}
 
     async execute(input: SmartSendInput): Promise<SmartSendOutput> {
@@ -175,8 +190,13 @@ export class SmartSendUseCase {
         // Determine max attempts
         const maxAttempts = input.routing?.skipFallback ? 1 : routingResult.maxAttempts
 
+        // Get retry policy from routing result or use default
+        const retryPolicy = routingResult.retryPolicy
+            ? RetryPolicy.create(routingResult.retryPolicy)
+            : RetryPolicy.default()
+
         // Try routes in order
-        return this.executeWithFallback(input, routingResult, maxAttempts)
+        return this.executeWithFallback(input, routingResult, maxAttempts, retryPolicy)
     }
 
     /**
@@ -245,6 +265,7 @@ export class SmartSendUseCase {
         input: SmartSendInput,
         provider: Provider,
     ): Promise<SmartSendOutput> {
+        const startTime = Date.now()
         const adapter = await this.merchantProviderPort.getProviderAdapter(
             input.merchantId,
             provider,
@@ -271,10 +292,19 @@ export class SmartSendUseCase {
                     filteredChannels: [],
                 },
                 errorMessage: `Provider ${provider} not connected`,
+                attempts: [
+                    SendAttempt.skippedNotAvailable({
+                        provider,
+                        channel,
+                        attemptNumber: 0,
+                    }),
+                ],
+                totalDurationMs: Date.now() - startTime,
             }
         }
 
         const notification = this.createNotification(input, adapter.channel, provider)
+        const attemptStartTime = Date.now()
 
         const result = await adapter.send({
             phone: input.recipient.phone,
@@ -285,10 +315,34 @@ export class SmartSendUseCase {
             subject: input.payload.subject,
         })
 
+        const durationMs = Date.now() - attemptStartTime
+        const attempts: SendAttempt[] = []
+
         if (result.success && result.externalId) {
             notification.markAsSent(result.externalId)
+            attempts.push(
+                SendAttempt.success({
+                    provider,
+                    channel: adapter.channel,
+                    durationMs,
+                    externalId: result.externalId,
+                    attemptNumber: 0,
+                }),
+            )
+            this.healthTracker?.recordSuccess(provider)
         } else {
             notification.markAsFailed(result.errorMessage ?? "Unknown error")
+            const providerError = ProviderError.fromMessage(result.errorMessage ?? "Unknown error")
+            attempts.push(
+                SendAttempt.failed({
+                    provider,
+                    channel: adapter.channel,
+                    durationMs,
+                    error: providerError,
+                    attemptNumber: 0,
+                }),
+            )
+            this.healthTracker?.recordFailure(provider, providerError)
         }
 
         await this.notificationRepository.save(notification)
@@ -307,27 +361,43 @@ export class SmartSendUseCase {
                 filteredChannels: [],
             },
             errorMessage: result.errorMessage,
+            attempts,
+            totalDurationMs: Date.now() - startTime,
         }
     }
 
     /**
-     * Execute with fallback chain.
+     * Execute with fallback chain and retry logic.
      */
     private async executeWithFallback(
         input: SmartSendInput,
         routingResult: RoutingResult,
         maxAttempts: number,
+        retryPolicy: RetryPolicy,
     ): Promise<SmartSendOutput> {
         const routes = routingResult.routes.slice(0, maxAttempts)
+        const attempts: SendAttempt[] = []
         let attemptsMade = 0
         let lastError: string | undefined
         let lastChannel: Channel = routes[0].channel
         let lastProvider: Provider = routes[0].provider
+        const startTime = Date.now()
 
         for (const route of routes) {
-            attemptsMade++
             lastChannel = route.channel
             lastProvider = route.provider
+
+            // Check if provider is available (circuit breaker)
+            if (this.healthTracker && !this.healthTracker.isAvailable(route.provider)) {
+                attempts.push(
+                    SendAttempt.skippedCircuitOpen({
+                        provider: route.provider,
+                        channel: route.channel,
+                        attemptNumber: attemptsMade,
+                    }),
+                )
+                continue
+            }
 
             const adapter = await this.merchantProviderPort.getProviderAdapter(
                 input.merchantId,
@@ -335,18 +405,35 @@ export class SmartSendUseCase {
             )
 
             if (!adapter) {
+                attempts.push(
+                    SendAttempt.skippedNotAvailable({
+                        provider: route.provider,
+                        channel: route.channel,
+                        attemptNumber: attemptsMade,
+                    }),
+                )
                 lastError = `Provider ${route.provider} not available`
                 continue
             }
 
-            const result = await adapter.send({
-                phone: input.recipient.phone,
-                email: input.recipient.email,
-                telegramChatId: input.recipient.telegramChatId,
-                deviceToken: input.recipient.deviceToken,
-                text: input.payload.text,
-                subject: input.payload.subject,
-            })
+            // Try with retries
+            const result = await this.executeWithRetry(
+                adapter,
+                {
+                    phone: input.recipient.phone,
+                    email: input.recipient.email,
+                    telegramChatId: input.recipient.telegramChatId,
+                    deviceToken: input.recipient.deviceToken,
+                    text: input.payload.text,
+                    subject: input.payload.subject,
+                },
+                retryPolicy,
+                route,
+                attemptsMade,
+                attempts,
+            )
+
+            attemptsMade = attempts.filter((a) => !a.isSkipped()).length
 
             if (result.success && result.externalId) {
                 // Success - create notification and return
@@ -362,10 +449,12 @@ export class SmartSendUseCase {
                     routingPath: routes,
                     attemptsMade,
                     routingResult,
+                    attempts,
+                    totalDurationMs: Date.now() - startTime,
                 }
             }
 
-            // Failed - record error and try next
+            // Failed - record error and try next route
             lastError = result.errorMessage ?? "Unknown error"
         }
 
@@ -383,7 +472,141 @@ export class SmartSendUseCase {
             attemptsMade,
             routingResult,
             errorMessage: lastError,
+            attempts,
+            totalDurationMs: Date.now() - startTime,
         }
+    }
+
+    /**
+     * Execute a single provider with retry logic.
+     */
+    private async executeWithRetry(
+        adapter: NotificationProviderPort,
+        request: SendNotificationRequest,
+        retryPolicy: RetryPolicy,
+        route: ProviderRoute,
+        baseAttemptNumber: number,
+        attempts: SendAttempt[],
+    ): Promise<{ success: boolean; externalId?: string; errorMessage?: string }> {
+        let currentAttempt = 0
+        const maxRetries = retryPolicy.maxRetries
+
+        while (currentAttempt <= maxRetries) {
+            const attemptStartTime = Date.now()
+            const isRetry = currentAttempt > 0
+
+            try {
+                const result = await adapter.send(request)
+                const durationMs = Date.now() - attemptStartTime
+
+                if (result.success && result.externalId) {
+                    // Record success
+                    attempts.push(
+                        SendAttempt.success({
+                            provider: route.provider,
+                            channel: route.channel,
+                            durationMs,
+                            externalId: result.externalId,
+                            attemptNumber: baseAttemptNumber + currentAttempt,
+                            isRetry,
+                        }),
+                    )
+
+                    // Record to health tracker
+                    this.healthTracker?.recordSuccess(route.provider)
+
+                    return {
+                        success: true,
+                        externalId: result.externalId,
+                    }
+                }
+
+                // Failed - classify error
+                const providerError = ProviderError.fromMessage(
+                    result.errorMessage ?? "Unknown error",
+                )
+
+                // Record failure attempt
+                attempts.push(
+                    SendAttempt.failed({
+                        provider: route.provider,
+                        channel: route.channel,
+                        durationMs,
+                        error: providerError,
+                        attemptNumber: baseAttemptNumber + currentAttempt,
+                        isRetry,
+                    }),
+                )
+
+                // Record to health tracker
+                this.healthTracker?.recordFailure(route.provider, providerError)
+
+                // Check if we should retry
+                const retryableType = providerError.getRetryableErrorType()
+                if (retryableType && retryPolicy.shouldRetry(retryableType, currentAttempt)) {
+                    // Wait before retry
+                    const delay = retryPolicy.getDelayForAttempt(currentAttempt)
+                    await this.sleep(delay)
+                    currentAttempt++
+                    continue
+                }
+
+                // Not retryable or max retries reached
+                return {
+                    success: false,
+                    errorMessage: result.errorMessage,
+                }
+            } catch (error) {
+                const durationMs = Date.now() - attemptStartTime
+                const providerError =
+                    error instanceof Error
+                        ? ProviderError.fromError(error)
+                        : ProviderError.fromMessage(String(error))
+
+                // Record failure attempt
+                attempts.push(
+                    SendAttempt.failed({
+                        provider: route.provider,
+                        channel: route.channel,
+                        durationMs,
+                        error: providerError,
+                        attemptNumber: baseAttemptNumber + currentAttempt,
+                        isRetry,
+                    }),
+                )
+
+                // Record to health tracker
+                this.healthTracker?.recordFailure(route.provider, providerError)
+
+                // Check if we should retry
+                const retryableType = providerError.getRetryableErrorType()
+                if (retryableType && retryPolicy.shouldRetry(retryableType, currentAttempt)) {
+                    // Wait before retry
+                    const delay = retryPolicy.getDelayForAttempt(currentAttempt)
+                    await this.sleep(delay)
+                    currentAttempt++
+                    continue
+                }
+
+                // Not retryable or max retries reached
+                return {
+                    success: false,
+                    errorMessage: providerError.message,
+                }
+            }
+        }
+
+        return {
+            success: false,
+            errorMessage: "Max retries exceeded",
+        }
+    }
+
+    /**
+     * Sleep for a specified duration.
+     */
+    private async sleep(ms: number): Promise<void> {
+        return new Promise((resolve) => setTimeout(resolve, ms))
     }
 
     /**
@@ -408,6 +631,8 @@ export class SmartSendUseCase {
             attemptsMade: 0,
             routingResult,
             errorMessage,
+            attempts: [],
+            totalDurationMs: 0,
         }
     }
 
