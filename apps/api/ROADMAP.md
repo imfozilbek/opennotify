@@ -26,23 +26,22 @@ NestJS-based Platform API for OpenNotify.
 
 | Task | Status |
 |------|--------|
-| POST /auth/register | ⏳ |
-| POST /auth/login | ⏳ |
-| API Key authentication middleware | ⏳ |
-| POST /providers — connect provider | ⏳ |
-| GET /providers — list connected providers | ⏳ |
+| POST /auth/register | ✅ |
+| API Key authentication middleware | ✅ |
+| POST /providers — connect provider | ✅ |
+| GET /providers — list connected providers | ✅ |
+| DELETE /providers/:id — disconnect provider | ✅ |
 
 ---
 
-## v0.3.0 — OTP & Templates
-> **Goal:** OTP service and templates
+## v0.3.0 — Templates
+> **Goal:** Template management
 
 | Task | Status |
 |------|--------|
-| POST /otp/send | ⏳ |
-| POST /otp/verify | ⏳ |
 | POST /templates | ⏳ |
 | GET /templates | ⏳ |
+| GET /templates/:id | ⏳ |
 | PUT /templates/:id | ⏳ |
 | DELETE /templates/:id | ⏳ |
 

@@ -1,4 +1,16 @@
-import { Body, Controller, Get, HttpException, HttpStatus, Param, Post } from "@nestjs/common"
+import {
+    Body,
+    Controller,
+    Get,
+    HttpException,
+    HttpStatus,
+    Param,
+    Post,
+    UseGuards,
+} from "@nestjs/common"
+import { ApiKeyPermission, Merchant } from "@opennotify/core"
+import { CurrentMerchant, RequirePermissions } from "../common/decorators"
+import { ApiKeyGuard } from "../common/guards"
 import { NotificationsService } from "./notifications.service"
 import { SendNotificationDto } from "./dto/send-notification.dto"
 
@@ -23,15 +35,17 @@ interface NotificationResponse {
 }
 
 @Controller("notifications")
+@UseGuards(ApiKeyGuard)
 export class NotificationsController {
     constructor(private readonly notificationsService: NotificationsService) {}
 
     @Post("send")
-    async send(@Body() dto: SendNotificationDto): Promise<SendResponse> {
-        // TODO: Get merchantId from API key auth
-        const merchantId = "demo_merchant"
-
-        const result = await this.notificationsService.send(dto, merchantId)
+    @RequirePermissions(ApiKeyPermission.SEND)
+    async send(
+        @CurrentMerchant() merchant: Merchant,
+        @Body() dto: SendNotificationDto,
+    ): Promise<SendResponse> {
+        const result = await this.notificationsService.send(dto, merchant.id)
 
         if (!result.success) {
             return {
@@ -51,6 +65,7 @@ export class NotificationsController {
     }
 
     @Get(":id")
+    @RequirePermissions(ApiKeyPermission.READ)
     async getById(@Param("id") id: string): Promise<NotificationResponse> {
         const notification = await this.notificationsService.getById(id)
 
@@ -70,6 +85,7 @@ export class NotificationsController {
     }
 
     @Get(":id/status")
+    @RequirePermissions(ApiKeyPermission.READ)
     async getStatus(@Param("id") id: string): Promise<{ status: string }> {
         const notification = await this.notificationsService.getById(id)
 

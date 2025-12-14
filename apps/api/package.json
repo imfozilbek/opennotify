@@ -1,6 +1,6 @@
 {
     "name": "@opennotify/api",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "OpenNotify Platform API",
     "author": "Fozilbek Samiyev <fozilbek.samiyev@gmail.com>",
     "private": true,
@@ -30,6 +30,7 @@
     "devDependencies": {
         "@nestjs/cli": "^10.4.9",
         "@nestjs/testing": "^10.4.15",
+        "@types/express": "^5.0.6",
         "@types/node": "^25.0.1",
         "vitest": "^2.1.8"
     }

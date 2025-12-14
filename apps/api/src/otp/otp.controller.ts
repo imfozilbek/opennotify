@@ -1,4 +1,7 @@
-import { Body, Controller, Post } from "@nestjs/common"
+import { Body, Controller, Post, UseGuards } from "@nestjs/common"
+import { ApiKeyPermission, Merchant } from "@opennotify/core"
+import { CurrentMerchant, RequirePermissions } from "../common/decorators"
+import { ApiKeyGuard } from "../common/guards"
 import { OtpService } from "./otp.service"
 import { SendOtpDto, VerifyOtpDto } from "./dto/otp.dto"
 
@@ -25,15 +28,17 @@ interface VerifyOtpResponse {
 }
 
 @Controller("otp")
+@UseGuards(ApiKeyGuard)
 export class OtpController {
     constructor(private readonly otpService: OtpService) {}
 
     @Post("send")
-    async send(@Body() dto: SendOtpDto): Promise<SendOtpResponse> {
-        // TODO: Get merchantId from API key auth
-        const merchantId = "demo_merchant"
-
-        const result = await this.otpService.sendOtp(dto, merchantId)
+    @RequirePermissions(ApiKeyPermission.SEND)
+    async send(
+        @CurrentMerchant() merchant: Merchant,
+        @Body() dto: SendOtpDto,
+    ): Promise<SendOtpResponse> {
+        const result = await this.otpService.sendOtp(dto, merchant.id)
 
         if (!result.success) {
             return {
@@ -54,11 +59,12 @@ export class OtpController {
     }
 
     @Post("verify")
-    async verify(@Body() dto: VerifyOtpDto): Promise<VerifyOtpResponse> {
-        // TODO: Get merchantId from API key auth
-        const merchantId = "demo_merchant"
-
-        const result = await this.otpService.verifyOtp(dto, merchantId)
+    @RequirePermissions(ApiKeyPermission.SEND)
+    async verify(
+        @CurrentMerchant() merchant: Merchant,
+        @Body() dto: VerifyOtpDto,
+    ): Promise<VerifyOtpResponse> {
+        const result = await this.otpService.verifyOtp(dto, merchant.id)
 
         if (!result.success) {
             return {
