@@ -4,6 +4,7 @@ import { HealthModule } from "./health/health.module"
 import { NotificationsModule } from "./notifications/notifications.module"
 import { OtpModule } from "./otp/otp.module"
 import { ProvidersModule } from "./providers/providers.module"
+import { RecipientsModule } from "./recipients/recipients.module"
 import { TemplatesModule } from "./templates/templates.module"
 
 @Module({
@@ -13,6 +14,7 @@ import { TemplatesModule } from "./templates/templates.module"
         NotificationsModule,
         OtpModule,
         ProvidersModule,
+        RecipientsModule,
         TemplatesModule,
     ],
 })

@@ -8,6 +8,27 @@ All notable changes to this package will be documented in this file.
 
 ---
 
+## [0.4.0] - 2025-12-14
+
+### Added
+- **Recipients Module**
+  - `POST /recipients` - Create recipient with contacts and preferences
+  - `GET /recipients` - List recipients with pagination
+  - `GET /recipients/:id` - Get recipient by ID
+  - `PUT /recipients/:id` - Update recipient
+  - `DELETE /recipients/:id` - Delete recipient
+  - `POST /recipients/:id/link-telegram` - Link Telegram chat ID
+- **Infrastructure**
+  - `InMemoryRecipientRepository` implementation
+- **DTOs**
+  - `CreateRecipientDto` with contacts, preferences, metadata
+  - `UpdateRecipientDto` for partial updates
+  - `RecipientPreferencesDto` with preferred channel, opted-out channels, quiet hours
+  - `LinkTelegramDto` for Telegram linking
+  - `ListRecipientsQueryDto` for pagination
+
+---
+
 ## [0.3.0] - 2025-12-14
 
 ### Added

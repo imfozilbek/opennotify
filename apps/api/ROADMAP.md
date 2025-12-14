@@ -51,16 +51,17 @@ NestJS-based Platform API for OpenNotify.
 
 ---
 
-## v0.4.0 — Recipients & Routing
+## v0.4.0 — Recipients ✅
 > **Goal:** Contact management
 
 | Task | Status |
 |------|--------|
-| POST /recipients | ⏳ |
-| GET /recipients | ⏳ |
-| PUT /recipients/:id | ⏳ |
-| POST /routing-rules | ⏳ |
-| GET /routing-rules | ⏳ |
+| POST /recipients | ✅ |
+| GET /recipients | ✅ |
+| GET /recipients/:id | ✅ |
+| PUT /recipients/:id | ✅ |
+| DELETE /recipients/:id | ✅ |
+| POST /recipients/:id/link-telegram | ✅ |
 
 ---
 
