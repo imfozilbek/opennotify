@@ -65,15 +65,25 @@ NestJS-based Platform API for OpenNotify.
 
 ---
 
-## v0.5.0 — Analytics & Logs
+## v0.5.0 — Analytics & Logs ✅
 > **Goal:** Visibility and insights
 
 | Task | Status |
 |------|--------|
-| GET /analytics/summary | ⏳ |
-| GET /analytics/by-channel | ⏳ |
-| GET /logs/notifications | ⏳ |
+| GET /analytics/summary | ✅ |
+| GET /analytics/channels | ✅ |
+| GET /analytics/logs | ✅ |
+
+---
+
+## v0.6.0 — Webhooks & Logs
+> **Goal:** Webhook management
+
+| Task | Status |
+|------|--------|
 | GET /logs/webhooks | ⏳ |
+| POST /webhooks/:provider | ⏳ |
+| Webhook signature verification | ⏳ |
 
 ---
 

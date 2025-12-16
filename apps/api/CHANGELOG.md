@@ -8,6 +8,40 @@ All notable changes to this package will be documented in this file.
 
 ---
 
+## [0.5.0] - 2025-12-14
+
+### Added
+- **Analytics Module**
+  - `GET /analytics/summary` - Get aggregated notification statistics
+    - Supports period presets: today, this_week, this_month, last_7_days, last_30_days
+    - Supports custom date range (startDate, endDate)
+    - Returns: total, pending, sent, delivered, failed counts
+    - Computed metrics: deliveryRate, failureRate, successRate
+  - `GET /analytics/channels` - Get statistics breakdown by channel
+    - Same period/date filtering as summary
+    - Returns per-channel stats sorted by total (most used first)
+    - Includes: SMS, Telegram, Email, Push, WhatsApp
+  - `GET /analytics/logs` - Get notification logs with filtering
+    - Filter by status (PENDING, SENT, DELIVERED, FAILED)
+    - Filter by channel (SMS, TELEGRAM, EMAIL, PUSH, WHATSAPP)
+    - Filter by provider (ESKIZ, PLAYMOBILE, etc.)
+    - Filter by date range
+    - Pagination (page, limit)
+    - Masked recipient info for privacy (+998***4567, u***@example.com)
+- **Infrastructure**
+  - `InMemoryNotificationRepository` with full analytics support
+  - Shared notification repository for cross-module data access
+- **DTOs**
+  - `GetAnalyticsSummaryQueryDto` for summary endpoint
+  - `GetAnalyticsByChannelQueryDto` for channels endpoint
+  - `GetNotificationLogsQueryDto` with array transforms for filters
+
+### Changed
+- `NotificationsService` now uses shared `InMemoryNotificationRepository`
+- Analytics data is shared with notifications for accurate stats
+
+---
+
 ## [0.4.0] - 2025-12-14
 
 ### Added

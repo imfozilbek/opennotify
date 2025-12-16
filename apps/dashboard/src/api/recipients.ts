@@ -34,8 +34,8 @@ export async function updateRecipient(
     return apiPut<{ recipient: Recipient }>(`/api/v1/recipients/${id}`, data)
 }
 
-export async function deleteRecipient(id: string): Promise<ApiResponse<void>> {
-    return apiDelete<void>(`/api/v1/recipients/${id}`)
+export async function deleteRecipient(id: string): Promise<ApiResponse<undefined>> {
+    return apiDelete<undefined>(`/api/v1/recipients/${id}`)
 }
 
 export async function linkTelegram(

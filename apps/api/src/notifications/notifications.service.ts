@@ -3,47 +3,26 @@ import {
     EskizAdapter,
     Notification,
     NotificationProviderPort,
+    NotificationRepositoryPort,
     Provider,
     SendNotificationInput,
     SendNotificationUseCase,
     TelegramAdapter,
 } from "@opennotify/core"
+import { sharedNotificationRepository } from "../infrastructure/repositories"
 import { SendNotificationDto } from "./dto/send-notification.dto"
-
-// In-memory notification store (replace with database in production)
-const notificationStore = new Map<string, Notification>()
-
-// Mock repository for demo
-const mockNotificationRepository = {
-    async save(notification: Notification): Promise<void> {
-        notificationStore.set(notification.id, notification)
-    },
-    async findById(id: string): Promise<Notification | null> {
-        return notificationStore.get(id) ?? null
-    },
-    async findByExternalId(_externalId: string): Promise<Notification | null> {
-        return null
-    },
-    async findByMerchantId(merchantId: string): Promise<Notification[]> {
-        const notifications: Notification[] = []
-        for (const notification of notificationStore.values()) {
-            if (notification.merchantId === merchantId) {
-                notifications.push(notification)
-            }
-        }
-        return notifications.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
-    },
-}
 
 @Injectable()
 export class NotificationsService {
     private readonly providers: Map<Provider, NotificationProviderPort>
+    private readonly repository: NotificationRepositoryPort
     private readonly sendUseCase: SendNotificationUseCase
 
     constructor() {
         this.providers = new Map()
+        this.repository = sharedNotificationRepository
         this.initializeProviders()
-        this.sendUseCase = new SendNotificationUseCase(this.providers, mockNotificationRepository)
+        this.sendUseCase = new SendNotificationUseCase(this.providers, this.repository)
     }
 
     private initializeProviders(): void {
@@ -104,7 +83,7 @@ export class NotificationsService {
     }
 
     async getById(id: string): Promise<Notification | null> {
-        return mockNotificationRepository.findById(id)
+        return this.repository.findById(id)
     }
 
     async list(
@@ -112,7 +91,7 @@ export class NotificationsService {
         page: number,
         limit: number,
     ): Promise<{ notifications: Notification[]; total: number }> {
-        const all = await mockNotificationRepository.findByMerchantId(merchantId)
+        const all = await this.repository.findByMerchantId(merchantId)
         const total = all.length
         const start = (page - 1) * limit
         const notifications = all.slice(start, start + limit)

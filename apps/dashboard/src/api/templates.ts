@@ -1,6 +1,7 @@
 import { apiDelete, apiGet, apiPost, apiPut } from "./client"
 import type {
     ApiResponse,
+    ChannelType,
     CreateTemplateRequest,
     RenderTemplateData,
     RenderTemplateRequest,
@@ -8,7 +9,6 @@ import type {
     TemplateListData,
     TemplateStatus,
     UpdateTemplateRequest,
-    ChannelType,
 } from "@/types/api"
 
 export async function listTemplates(
@@ -44,8 +44,8 @@ export async function updateTemplate(
     return apiPut<{ template: Template }>(`/api/v1/templates/${id}`, data)
 }
 
-export async function deleteTemplate(id: string): Promise<ApiResponse<void>> {
-    return apiDelete<void>(`/api/v1/templates/${id}`)
+export async function deleteTemplate(id: string): Promise<ApiResponse<undefined>> {
+    return apiDelete<undefined>(`/api/v1/templates/${id}`)
 }
 
 export async function publishTemplate(id: string): Promise<ApiResponse<{ template: Template }>> {
