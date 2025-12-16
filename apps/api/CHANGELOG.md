@@ -8,6 +8,34 @@ All notable changes to this package will be documented in this file.
 
 ---
 
+## [0.6.0] - 2025-12-17
+
+### Added
+- **Webhooks Module**
+  - `POST /webhooks/:provider` - Receive webhooks from notification providers
+    - Supports: eskiz, playmobile, getsms, telegram, sendgrid, mailgun, fcm, apns, whatsapp
+    - No authentication required (providers cannot authenticate)
+    - Automatic signature verification where supported (Mailgun HMAC-SHA256)
+    - Updates notification status based on webhook data (DELIVERED, FAILED)
+    - Logs all incoming webhooks for auditing
+- **Logs Module**
+  - `GET /logs/webhooks` - View webhook logs with filtering
+    - Filter by provider (ESKIZ, PLAYMOBILE, etc.)
+    - Filter by status (SUCCESS, INVALID_SIGNATURE, INVALID_PAYLOAD, etc.)
+    - Filter by date range (startDate, endDate)
+    - Pagination support (page, limit)
+    - Requires API key with READ permission
+- **Core Domain**
+  - `WebhookStatus` value object with statuses: SUCCESS, INVALID_SIGNATURE, INVALID_PAYLOAD, NOTIFICATION_NOT_FOUND, PROCESSING_ERROR
+  - `WebhookLog` entity for tracking webhook events
+  - `WebhookLogRepositoryPort` interface for webhook log persistence
+  - `ProcessWebhookUseCase` for handling incoming webhooks
+  - `GetWebhookLogsUseCase` for querying webhook logs
+- **Infrastructure**
+  - `InMemoryWebhookLogRepository` implementation
+
+---
+
 ## [0.5.0] - 2025-12-14
 
 ### Added

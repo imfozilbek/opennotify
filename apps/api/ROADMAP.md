@@ -76,14 +76,14 @@ NestJS-based Platform API for OpenNotify.
 
 ---
 
-## v0.6.0 — Webhooks & Logs
+## v0.6.0 — Webhooks & Logs ✅
 > **Goal:** Webhook management
 
 | Task | Status |
 |------|--------|
-| GET /logs/webhooks | ⏳ |
-| POST /webhooks/:provider | ⏳ |
-| Webhook signature verification | ⏳ |
+| GET /logs/webhooks | ✅ |
+| POST /webhooks/:provider | ✅ |
+| Webhook signature verification | ✅ |
 
 ---
 

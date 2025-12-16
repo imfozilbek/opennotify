@@ -6,3 +6,7 @@ export {
     InMemoryNotificationRepository,
     sharedNotificationRepository,
 } from "./InMemoryNotificationRepository"
+export {
+    InMemoryWebhookLogRepository,
+    sharedWebhookLogRepository,
+} from "./InMemoryWebhookLogRepository"

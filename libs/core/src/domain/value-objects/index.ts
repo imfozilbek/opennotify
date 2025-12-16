@@ -18,3 +18,6 @@ export * from "./AnalyticsPeriod"
 export * from "./DateRange"
 export * from "./NotificationStats"
 export * from "./ChannelStats"
+
+// Webhooks
+export * from "./WebhookStatus"
