@@ -1,6 +1,6 @@
 {
     "name": "@opennotify/api",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "description": "OpenNotify Platform API",
     "author": "Fozilbek Samiyev <fozilbek.samiyev@gmail.com>",
     "private": true,
