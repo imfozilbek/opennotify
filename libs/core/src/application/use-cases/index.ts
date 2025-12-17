@@ -18,3 +18,9 @@ export * from "./GetNotificationLogsUseCase"
 // Webhooks
 export * from "./ProcessWebhookUseCase"
 export * from "./GetWebhookLogsUseCase"
+
+// Teams
+export * from "./CreateTeamUseCase"
+export * from "./AddTeamMemberUseCase"
+export * from "./RemoveTeamMemberUseCase"
+export * from "./GetAuditLogsUseCase"

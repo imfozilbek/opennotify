@@ -10,3 +10,5 @@ export {
     InMemoryWebhookLogRepository,
     sharedWebhookLogRepository,
 } from "./InMemoryWebhookLogRepository"
+export { InMemoryTeamRepository, sharedTeamRepository } from "./InMemoryTeamRepository"
+export { InMemoryAuditLogRepository, sharedAuditLogRepository } from "./InMemoryAuditLogRepository"

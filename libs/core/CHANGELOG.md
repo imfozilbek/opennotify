@@ -11,6 +11,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.9.0] - 2025-12-18
+
+### Added
+- **Entities**
+  - `Team` entity for managing team members and roles
+    - Owner, Admin, Member, Viewer roles
+    - Add/remove members with permission checks
+    - Role-based permission system
+    - Ownership transfer support
+  - `AuditLog` entity for tracking important actions
+    - Immutable audit trail
+    - Action types: team, member, provider, API key, settings
+    - Actor and target tracking
+    - IP address and user agent logging
+- **Value Objects**
+  - `TeamRole` enum with OWNER, ADMIN, MEMBER, VIEWER
+  - `TeamAction` enum for permission checking
+  - Role permission matrix with `roleHasPermission()` helper
+- **Ports**
+  - `TeamRepositoryPort` for team persistence
+  - `AuditLogRepositoryPort` for audit log persistence
+- **Use Cases**
+  - `CreateTeamUseCase` for creating teams with audit logging
+  - `AddTeamMemberUseCase` for inviting members with permission checks
+  - `RemoveTeamMemberUseCase` for removing members with audit logging
+  - `GetAuditLogsUseCase` for querying audit logs with filters
+
+---
+
 ## [0.8.0] - 2025-12-18
 
 ### Added

@@ -109,18 +109,19 @@ NestJS-based Platform API for OpenNotify.
 
 ---
 
-## v0.9.0 — Team Management
+## v0.9.0 — Team Management ✅
 > **Goal:** Enterprise team features
 
 | Task | Status |
 |------|--------|
-| Team entity and repository | ⏳ |
-| POST /teams — create team | ⏳ |
-| GET /teams — list teams | ⏳ |
-| POST /teams/:id/members — add member | ⏳ |
-| DELETE /teams/:id/members/:userId — remove member | ⏳ |
-| Role-based access control (RBAC) | ⏳ |
-| Audit logs for team actions | ⏳ |
+| Team entity and repository | ✅ |
+| GET /teams — get team | ✅ |
+| POST /teams — create team | ✅ |
+| POST /teams/members — add member | ✅ |
+| PUT /teams/members/:userId/role — update role | ✅ |
+| DELETE /teams/members/:userId — remove member | ✅ |
+| Role-based access control (RBAC) | ✅ |
+| Audit logs for team actions | ✅ |
 
 ---
 

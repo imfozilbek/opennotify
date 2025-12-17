@@ -21,3 +21,6 @@ export * from "./ChannelStats"
 
 // Webhooks
 export * from "./WebhookStatus"
+
+// Teams
+export * from "./TeamRole"

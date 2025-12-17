@@ -8,6 +8,26 @@ All notable changes to this package will be documented in this file.
 
 ---
 
+## [0.9.0] - 2025-12-18
+
+### Added
+- **Teams Module**
+  - `GET /teams` - Get team for current merchant
+  - `POST /teams` - Create team (ADMIN permission required)
+  - `POST /teams/members` - Add member to team
+  - `PUT /teams/members/:userId/role` - Update member role
+  - `DELETE /teams/members/:userId` - Remove member from team
+  - `GET /teams/audit-logs` - Get audit logs with filtering
+- **Audit Logging**
+  - All team actions are logged with actor, target, and details
+  - Filterable by action, actor, target, and date range
+  - Pagination support
+- **Infrastructure**
+  - `InMemoryTeamRepository` implementation
+  - `InMemoryAuditLogRepository` implementation
+
+---
+
 ## [0.8.0] - 2025-12-18
 
 ### Added
