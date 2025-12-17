@@ -1,6 +1,8 @@
 import { Injectable } from "@nestjs/common"
 import {
+    ApnsAdapter,
     EskizAdapter,
+    FcmAdapter,
     MerchantProviderPort,
     NotificationProviderPort,
     Provider,
@@ -166,14 +168,38 @@ export class MerchantProviderAdapter implements MerchantProviderPort {
                 })
             }
 
+            case Provider.FCM: {
+                const fcmCreds = credentials.asFcm()
+                if (!fcmCreds) {
+                    return null
+                }
+                return new FcmAdapter({
+                    projectId: fcmCreds.projectId,
+                    clientEmail: fcmCreds.clientEmail,
+                    privateKey: fcmCreds.privateKey,
+                })
+            }
+
+            case Provider.APNS: {
+                const apnsCreds = credentials.asApns()
+                if (!apnsCreds) {
+                    return null
+                }
+                return new ApnsAdapter({
+                    keyId: apnsCreds.keyId,
+                    teamId: apnsCreds.teamId,
+                    privateKey: apnsCreds.privateKey,
+                    bundleId: apnsCreds.bundleId,
+                    production: apnsCreds.production,
+                })
+            }
+
             // TODO: Implement other providers as they are added
             case Provider.PLAYMOBILE:
             case Provider.GETSMS:
             case Provider.SMTP:
             case Provider.SENDGRID:
             case Provider.MAILGUN:
-            case Provider.FCM:
-            case Provider.APNS:
             case Provider.WHATSAPP_BUSINESS:
                 // Not implemented yet
                 return null

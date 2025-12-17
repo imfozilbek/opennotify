@@ -8,6 +8,19 @@ All notable changes to this package will be documented in this file.
 
 ---
 
+## [0.7.0] - 2025-12-17
+
+### Added
+- **Push Notification Support**
+  - FCM (Firebase Cloud Messaging) provider integration
+  - APNs (Apple Push Notification Service) provider integration
+  - MerchantProviderAdapter now creates FCM and APNs adapters from credentials
+
+### Dependencies
+- Added `apns2` package for APNs HTTP/2 communication
+
+---
+
 ## [0.6.0] - 2025-12-17
 
 ### Added

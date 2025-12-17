@@ -87,4 +87,15 @@ NestJS-based Platform API for OpenNotify.
 
 ---
 
+## v0.7.0 — Push Notifications ✅
+> **Goal:** Push notification support
+
+| Task | Status |
+|------|--------|
+| FCM provider integration | ✅ |
+| APNs provider integration | ✅ |
+| MerchantProviderAdapter updates | ✅ |
+
+---
+
 *Last updated: December 2025*
