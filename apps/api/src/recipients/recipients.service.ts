@@ -12,8 +12,8 @@ import {
 import { InMemoryRecipientRepository } from "../infrastructure/repositories"
 import {
     CreateRecipientDto,
-    UpdateRecipientDto,
     RecipientPreferencesDto,
+    UpdateRecipientDto,
 } from "./dto/recipient.dto"
 import { ChannelDto } from "../templates/dto/template.dto"
 

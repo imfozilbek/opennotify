@@ -2,11 +2,7 @@ import { Controller, Get, Query, UseGuards } from "@nestjs/common"
 import { ApiKeyPermission, Merchant } from "@opennotify/core"
 import { CurrentMerchant, RequirePermissions } from "../common/decorators"
 import { ApiKeyGuard } from "../common/guards"
-import {
-    WebhookLogsService,
-    PaginationResponse,
-    WebhookLogResponse,
-} from "./webhook-logs.service"
+import { PaginationResponse, WebhookLogResponse, WebhookLogsService } from "./webhook-logs.service"
 import { GetWebhookLogsQueryDto } from "./dto/get-webhook-logs.dto"
 
 /**
