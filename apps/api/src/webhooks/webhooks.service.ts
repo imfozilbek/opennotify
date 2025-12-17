@@ -13,6 +13,7 @@ import {
     TelegramAdapter,
     WebhookPayload,
     WebhookStatus,
+    WhatsAppAdapter,
 } from "@opennotify/core"
 import {
     sharedNotificationRepository,
@@ -154,6 +155,16 @@ export class WebhooksService {
                 host: "localhost",
                 port: 587,
                 from: "webhook@opennotify.uz",
+            }),
+        )
+
+        // WhatsApp
+        providers.set(
+            Provider.WHATSAPP_BUSINESS,
+            new WhatsAppAdapter({
+                phoneNumberId: "webhook",
+                accessToken: "webhook",
+                businessAccountId: "webhook",
             }),
         )
 

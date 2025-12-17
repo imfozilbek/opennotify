@@ -8,6 +8,7 @@ import {
     Provider,
     ProviderCredentials,
     TelegramAdapter,
+    WhatsAppAdapter,
 } from "@opennotify/core"
 import { ProvidersService } from "./providers.service"
 
@@ -194,13 +195,24 @@ export class MerchantProviderAdapter implements MerchantProviderPort {
                 })
             }
 
+            case Provider.WHATSAPP_BUSINESS: {
+                const whatsappCreds = credentials.asWhatsApp()
+                if (!whatsappCreds) {
+                    return null
+                }
+                return new WhatsAppAdapter({
+                    phoneNumberId: whatsappCreds.phoneNumberId,
+                    accessToken: whatsappCreds.accessToken,
+                    businessAccountId: whatsappCreds.businessAccountId,
+                })
+            }
+
             // TODO: Implement other providers as they are added
             case Provider.PLAYMOBILE:
             case Provider.GETSMS:
             case Provider.SMTP:
             case Provider.SENDGRID:
             case Provider.MAILGUN:
-            case Provider.WHATSAPP_BUSINESS:
                 // Not implemented yet
                 return null
 

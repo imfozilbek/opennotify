@@ -8,6 +8,16 @@ All notable changes to this package will be documented in this file.
 
 ---
 
+## [0.8.0] - 2025-12-18
+
+### Added
+- **WhatsApp Business Support**
+  - WhatsApp Business Cloud API provider integration
+  - MerchantProviderAdapter now creates WhatsApp adapters from credentials
+  - Webhook handler for WhatsApp status updates (sent, delivered, read, failed)
+
+---
+
 ## [0.7.0] - 2025-12-17
 
 ### Added
