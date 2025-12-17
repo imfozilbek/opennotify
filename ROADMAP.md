@@ -207,12 +207,12 @@ OpenNotify (70% Telegram, 30% SMS fallback):
 ### Phase 4: Enterprise Features (v0.8.0 - v0.9.0)
 > Goal: Enterprise-ready platform
 
-| Component | Version | Key Features |
-|-----------|---------|--------------|
-| libs/core | v0.8.0 | WhatsApp adapter |
-| apps/api | v0.5.0 | Team management, audit logs |
-| apps/dashboard | v0.4.0 | Team UI, advanced security |
-| SDKs | v0.1.0 | Node.js, Python, PHP, Go SDKs |
+| Component | Version | Status | Key Features |
+|-----------|---------|--------|--------------|
+| libs/core | v0.8.0 | ✅ Done | WhatsApp adapter |
+| apps/api | v0.5.0 | ⏳ | Team management, audit logs |
+| apps/dashboard | v0.4.0 | ⏳ | Team UI, advanced security |
+| SDKs | v0.1.0 | ⏳ | Node.js, Python, PHP, Go SDKs |
 
 ### Phase 5: Ecosystem (v1.0.0+)
 > Goal: Platform ecosystem

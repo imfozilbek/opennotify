@@ -14,3 +14,6 @@ export * from "./MailgunAdapter"
 // Push
 export * from "./FcmAdapter"
 export * from "./ApnsAdapter"
+
+// WhatsApp
+export * from "./WhatsAppAdapter"

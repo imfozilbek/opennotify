@@ -117,14 +117,14 @@ Core library containing domain logic, provider adapters, and use cases for the O
 
 ---
 
-## v0.8.0 — WhatsApp
+## v0.8.0 — WhatsApp ✅
 > **Goal:** WhatsApp Business API integration
 
 | Task | Status |
 |------|--------|
-| WhatsAppAdapter implementation | ⏳ |
-| WhatsApp template format support | ⏳ |
-| WhatsApp-specific status handling | ⏳ |
+| WhatsAppAdapter implementation | ✅ |
+| WhatsApp template format support | ✅ |
+| WhatsApp-specific status handling | ✅ |
 
 ---
 

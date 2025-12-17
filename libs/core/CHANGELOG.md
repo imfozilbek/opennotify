@@ -11,6 +11,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.8.0] - 2025-12-18
+
+### Added
+- **Adapters**
+  - `WhatsAppAdapter` for WhatsApp Business Cloud API
+    - Bearer token authentication via Meta Graph API
+    - Text message support for user-initiated conversations
+    - Template message support for business-initiated conversations
+      - Header, body, and button variable substitution
+      - Language selection for templates
+    - HMAC-SHA256 webhook signature verification
+    - Status mapping: sent, delivered, read, failed
+    - Phone number normalization (E.164 format)
+
+---
+
 ## [0.7.0] - 2025-12-17
 
 ### Added
