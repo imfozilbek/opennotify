@@ -98,4 +98,30 @@ NestJS-based Platform API for OpenNotify.
 
 ---
 
+## v0.8.0 — WhatsApp Business ✅
+> **Goal:** WhatsApp channel support
+
+| Task | Status |
+|------|--------|
+| WhatsApp Business adapter integration | ✅ |
+| WhatsApp webhook handler | ✅ |
+| MerchantProviderAdapter updates | ✅ |
+
+---
+
+## v0.9.0 — Team Management
+> **Goal:** Enterprise team features
+
+| Task | Status |
+|------|--------|
+| Team entity and repository | ⏳ |
+| POST /teams — create team | ⏳ |
+| GET /teams — list teams | ⏳ |
+| POST /teams/:id/members — add member | ⏳ |
+| DELETE /teams/:id/members/:userId — remove member | ⏳ |
+| Role-based access control (RBAC) | ⏳ |
+| Audit logs for team actions | ⏳ |
+
+---
+
 *Last updated: December 2025*
