@@ -1,20 +1,20 @@
-import { useState, useEffect, useCallback } from "react"
+import { useCallback, useEffect, useState } from "react"
 import {
-    listTemplates,
+    archiveTemplate,
     createTemplate,
-    updateTemplate,
     deleteTemplate,
+    listTemplates,
     publishTemplate,
     unpublishTemplate,
-    archiveTemplate,
+    updateTemplate,
 } from "@/api/templates"
 import { TemplateCard } from "@/components/TemplateCard"
 import { TemplateForm } from "@/components/TemplateForm"
 import type {
-    Template,
-    TemplateStatus,
     ChannelType,
     CreateTemplateRequest,
+    Template,
+    TemplateStatus,
     UpdateTemplateRequest,
 } from "@/types/api"
 import { CHANNEL_LABELS } from "@/types/api"
@@ -117,9 +117,7 @@ export function TemplatesPage(): JSX.Element {
         const response = await publishTemplate(id)
 
         if (response.success && response.data) {
-            setTemplates((prev) =>
-                prev.map((t) => (t.id === id ? response.data!.template : t)),
-            )
+            setTemplates((prev) => prev.map((t) => (t.id === id ? response.data!.template : t)))
         } else {
             setError(response.error?.message ?? "Failed to publish template")
         }
@@ -129,9 +127,7 @@ export function TemplatesPage(): JSX.Element {
         const response = await unpublishTemplate(id)
 
         if (response.success && response.data) {
-            setTemplates((prev) =>
-                prev.map((t) => (t.id === id ? response.data!.template : t)),
-            )
+            setTemplates((prev) => prev.map((t) => (t.id === id ? response.data!.template : t)))
         } else {
             setError(response.error?.message ?? "Failed to unpublish template")
         }
@@ -141,9 +137,7 @@ export function TemplatesPage(): JSX.Element {
         const response = await archiveTemplate(id)
 
         if (response.success && response.data) {
-            setTemplates((prev) =>
-                prev.map((t) => (t.id === id ? response.data!.template : t)),
-            )
+            setTemplates((prev) => prev.map((t) => (t.id === id ? response.data!.template : t)))
         } else {
             setError(response.error?.message ?? "Failed to archive template")
         }
@@ -170,7 +164,12 @@ export function TemplatesPage(): JSX.Element {
                     <h1 className="text-2xl font-bold text-gray-900">Templates</h1>
                     <p className="text-gray-600">Create and manage message templates</p>
                 </div>
-                <button onClick={() => setShowForm(true)} className="btn-primary">
+                <button
+                    onClick={() => {
+                        setShowForm(true)
+                    }}
+                    className="btn-primary"
+                >
                     <svg
                         className="-ml-1 mr-2 h-5 w-5"
                         fill="none"
@@ -224,7 +223,9 @@ export function TemplatesPage(): JSX.Element {
                 <div className="mb-6 rounded-lg bg-red-50 p-4 text-red-700">
                     <p className="text-sm">{error}</p>
                     <button
-                        onClick={() => setError("")}
+                        onClick={() => {
+                            setError("")
+                        }}
                         className="mt-2 text-sm font-medium text-red-800 hover:text-red-900"
                     >
                         Dismiss
@@ -251,7 +252,12 @@ export function TemplatesPage(): JSX.Element {
                     <p className="mt-2 text-gray-600">
                         Create your first template to start sending notifications.
                     </p>
-                    <button onClick={() => setShowForm(true)} className="btn-primary mt-4">
+                    <button
+                        onClick={() => {
+                            setShowForm(true)
+                        }}
+                        className="btn-primary mt-4"
+                    >
                         Create Template
                     </button>
                 </div>
@@ -275,19 +281,23 @@ export function TemplatesPage(): JSX.Element {
                     {totalPages > 1 && (
                         <div className="mt-6 flex items-center justify-between">
                             <p className="text-sm text-gray-600">
-                                Showing {(page - 1) * limit + 1} to{" "}
-                                {Math.min(page * limit, total)} of {total} templates
+                                Showing {(page - 1) * limit + 1} to {Math.min(page * limit, total)}{" "}
+                                of {total} templates
                             </p>
                             <div className="flex gap-2">
                                 <button
-                                    onClick={() => setPage((p) => Math.max(1, p - 1))}
+                                    onClick={() => {
+                                        setPage((p) => Math.max(1, p - 1))
+                                    }}
                                     disabled={page === 1}
                                     className="btn-secondary text-sm disabled:opacity-50"
                                 >
                                     Previous
                                 </button>
                                 <button
-                                    onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                                    onClick={() => {
+                                        setPage((p) => Math.min(totalPages, p + 1))
+                                    }}
                                     disabled={page === totalPages}
                                     className="btn-secondary text-sm disabled:opacity-50"
                                 >
@@ -302,7 +312,9 @@ export function TemplatesPage(): JSX.Element {
             {showForm && (
                 <TemplateForm
                     onSubmit={handleCreate}
-                    onCancel={() => setShowForm(false)}
+                    onCancel={() => {
+                        setShowForm(false)
+                    }}
                 />
             )}
 
@@ -310,7 +322,9 @@ export function TemplatesPage(): JSX.Element {
                 <TemplateForm
                     initialData={editingTemplate}
                     onSubmit={handleUpdate}
-                    onCancel={() => setEditingTemplate(null)}
+                    onCancel={() => {
+                        setEditingTemplate(null)
+                    }}
                 />
             )}
         </div>

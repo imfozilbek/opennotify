@@ -491,3 +491,99 @@ export const PROVIDER_CHANNELS: Record<ProviderType, string> = {
     [ProviderType.APNS]: "Push",
     [ProviderType.WHATSAPP_BUSINESS]: "WhatsApp",
 }
+
+// Analytics Types
+export enum AnalyticsPeriod {
+    TODAY = "today",
+    THIS_WEEK = "this_week",
+    THIS_MONTH = "this_month",
+    LAST_7_DAYS = "last_7_days",
+    LAST_30_DAYS = "last_30_days",
+}
+
+export const PERIOD_LABELS: Record<AnalyticsPeriod, string> = {
+    [AnalyticsPeriod.TODAY]: "Today",
+    [AnalyticsPeriod.THIS_WEEK]: "This Week",
+    [AnalyticsPeriod.THIS_MONTH]: "This Month",
+    [AnalyticsPeriod.LAST_7_DAYS]: "Last 7 Days",
+    [AnalyticsPeriod.LAST_30_DAYS]: "Last 30 Days",
+}
+
+export interface AnalyticsSummary {
+    total: number
+    pending: number
+    sent: number
+    delivered: number
+    failed: number
+    processed: number
+    deliveryRate: number
+    failureRate: number
+    successRate: number
+}
+
+export interface ChannelStats {
+    channel: ChannelType
+    total: number
+    pending: number
+    sent: number
+    delivered: number
+    failed: number
+    processed: number
+    deliveryRate: number
+    failureRate: number
+    successRate: number
+}
+
+export interface DateRange {
+    startDate: string
+    endDate: string
+}
+
+export interface AnalyticsSummaryData {
+    stats: AnalyticsSummary
+    dateRange: DateRange
+}
+
+export interface AnalyticsChannelsData {
+    channels: ChannelStats[]
+    dateRange: DateRange
+}
+
+export interface LogEntry {
+    id: string
+    channel: ChannelType
+    provider: string
+    status: NotificationStatus
+    recipient: string
+    createdAt: string
+    sentAt?: string
+    deliveredAt?: string
+    failedAt?: string
+    errorMessage?: string
+}
+
+export interface AnalyticsLogsData {
+    logs: LogEntry[]
+    pagination: {
+        total: number
+        page: number
+        limit: number
+        totalPages: number
+    }
+}
+
+export interface AnalyticsSummaryQuery {
+    period?: AnalyticsPeriod
+    startDate?: string
+    endDate?: string
+}
+
+export interface AnalyticsLogsQuery {
+    status?: NotificationStatus[]
+    channel?: ChannelType[]
+    provider?: ProviderType[]
+    startDate?: string
+    endDate?: string
+    page?: number
+    limit?: number
+}

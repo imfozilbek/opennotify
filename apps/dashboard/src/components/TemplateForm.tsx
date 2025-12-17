@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react"
+import { type FormEvent, useState } from "react"
 import type {
     ChannelType,
     CreateTemplateRequest,
@@ -24,11 +24,7 @@ type TemplateFormProps = TemplateFormCreateProps | TemplateFormUpdateProps
 
 const CHANNELS: ChannelType[] = ["SMS", "TELEGRAM", "EMAIL", "PUSH", "WHATSAPP"]
 
-export function TemplateForm({
-    initialData,
-    onSubmit,
-    onCancel,
-}: TemplateFormProps): JSX.Element {
+export function TemplateForm({ initialData, onSubmit, onCancel }: TemplateFormProps): JSX.Element {
     const [name, setName] = useState(initialData?.name ?? "")
     const [channel, setChannel] = useState<ChannelType>(initialData?.channel ?? "SMS")
     const [body, setBody] = useState(initialData?.body ?? "")
@@ -77,9 +73,7 @@ export function TemplateForm({
     }
 
     function updateVariable(index: number, updates: Partial<TemplateVariable>): void {
-        setVariables((prev) =>
-            prev.map((v, i) => (i === index ? { ...v, ...updates } : v)),
-        )
+        setVariables((prev) => prev.map((v, i) => (i === index ? { ...v, ...updates } : v)))
     }
 
     async function handleSubmit(e: FormEvent): Promise<void> {
@@ -153,7 +147,9 @@ export function TemplateForm({
                                 id="name"
                                 type="text"
                                 value={name}
-                                onChange={(e) => setName(e.target.value)}
+                                onChange={(e) => {
+                                    setName(e.target.value)
+                                }}
                                 className="input"
                                 placeholder="e.g., OTP Verification"
                                 required
@@ -169,7 +165,9 @@ export function TemplateForm({
                                 <select
                                     id="channel"
                                     value={channel}
-                                    onChange={(e) => setChannel(e.target.value as ChannelType)}
+                                    onChange={(e) => {
+                                        setChannel(e.target.value as ChannelType)
+                                    }}
                                     className="input"
                                 >
                                     {CHANNELS.map((ch) => (
@@ -191,7 +189,9 @@ export function TemplateForm({
                                     id="subject"
                                     type="text"
                                     value={subject}
-                                    onChange={(e) => handleSubjectChange(e.target.value)}
+                                    onChange={(e) => {
+                                        handleSubjectChange(e.target.value)
+                                    }}
                                     className="input"
                                     placeholder="e.g., Your verification code"
                                 />
@@ -209,7 +209,9 @@ export function TemplateForm({
                             <textarea
                                 id="body"
                                 value={body}
-                                onChange={(e) => handleBodyChange(e.target.value)}
+                                onChange={(e) => {
+                                    handleBodyChange(e.target.value)
+                                }}
                                 className="input min-h-[120px]"
                                 placeholder="Your verification code is {{code}}. Valid for {{minutes}} minutes."
                                 required
@@ -231,17 +233,19 @@ export function TemplateForm({
                                         >
                                             <div className="flex items-center justify-between">
                                                 <span className="font-mono text-sm text-blue-600">
-                                                    {"{{"}{variable.name}{"}}"}
+                                                    {"{{"}
+                                                    {variable.name}
+                                                    {"}}"}
                                                 </span>
                                                 <label className="flex items-center gap-2 text-sm">
                                                     <input
                                                         type="checkbox"
                                                         checked={variable.required}
-                                                        onChange={(e) =>
+                                                        onChange={(e) => {
                                                             updateVariable(index, {
                                                                 required: e.target.checked,
                                                             })
-                                                        }
+                                                        }}
                                                         className="h-4 w-4 rounded border-gray-300"
                                                     />
                                                     Required
@@ -251,22 +255,24 @@ export function TemplateForm({
                                                 <input
                                                     type="text"
                                                     value={variable.defaultValue ?? ""}
-                                                    onChange={(e) =>
+                                                    onChange={(e) => {
                                                         updateVariable(index, {
-                                                            defaultValue: e.target.value || undefined,
+                                                            defaultValue:
+                                                                e.target.value || undefined,
                                                         })
-                                                    }
+                                                    }}
                                                     className="input text-sm"
                                                     placeholder="Default value"
                                                 />
                                                 <input
                                                     type="text"
                                                     value={variable.description ?? ""}
-                                                    onChange={(e) =>
+                                                    onChange={(e) => {
                                                         updateVariable(index, {
-                                                            description: e.target.value || undefined,
+                                                            description:
+                                                                e.target.value || undefined,
                                                         })
-                                                    }
+                                                    }}
                                                     className="input text-sm"
                                                     placeholder="Description"
                                                 />
@@ -285,7 +291,9 @@ export function TemplateForm({
                             <textarea
                                 id="description"
                                 value={description}
-                                onChange={(e) => setDescription(e.target.value)}
+                                onChange={(e) => {
+                                    setDescription(e.target.value)
+                                }}
                                 className="input"
                                 rows={2}
                                 placeholder="Internal notes about this template"

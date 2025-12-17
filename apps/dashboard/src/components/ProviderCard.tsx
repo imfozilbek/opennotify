@@ -1,6 +1,6 @@
 import { useState } from "react"
 import type { ConnectedProvider } from "@/types/api"
-import { PROVIDER_LABELS, PROVIDER_CHANNELS } from "@/types/api"
+import { PROVIDER_CHANNELS, PROVIDER_LABELS } from "@/types/api"
 
 interface ProviderCardProps {
     provider: ConnectedProvider
@@ -52,10 +52,17 @@ export function ProviderCard({ provider, onDelete }: ProviderCardProps): JSX.Ele
 
                 {!showConfirm ? (
                     <button
-                        onClick={() => setShowConfirm(true)}
+                        onClick={() => {
+                            setShowConfirm(true)
+                        }}
                         className="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-500"
                     >
-                        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg
+                            className="h-5 w-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
                             <path
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
@@ -67,7 +74,9 @@ export function ProviderCard({ provider, onDelete }: ProviderCardProps): JSX.Ele
                 ) : (
                     <div className="flex items-center gap-2">
                         <button
-                            onClick={() => setShowConfirm(false)}
+                            onClick={() => {
+                                setShowConfirm(false)
+                            }}
                             disabled={isDeleting}
                             className="btn-secondary text-xs"
                         >

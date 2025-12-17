@@ -1,10 +1,10 @@
-import { useState, type FormEvent, type ChangeEvent } from "react"
+import { type ChangeEvent, type FormEvent, useState } from "react"
 import {
-    ProviderType,
+    PROVIDER_CHANNELS,
     PROVIDER_FIELDS,
     PROVIDER_LABELS,
-    PROVIDER_CHANNELS,
     type ProviderFieldConfig,
+    ProviderType,
 } from "@/types/api"
 
 interface ProviderFormProps {
@@ -32,15 +32,13 @@ export function ProviderForm({ onSubmit, onCancel }: ProviderFormProps): JSX.Ele
         setError("")
     }
 
-    function handleFieldChange(
-        field: ProviderFieldConfig,
-        e: ChangeEvent<HTMLInputElement>,
-    ): void {
-        const value = field.type === "checkbox"
-            ? e.target.checked
-            : field.type === "number"
-                ? Number(e.target.value)
-                : e.target.value
+    function handleFieldChange(field: ProviderFieldConfig, e: ChangeEvent<HTMLInputElement>): void {
+        const value =
+            field.type === "checkbox"
+                ? e.target.checked
+                : field.type === "number"
+                  ? Number(e.target.value)
+                  : e.target.value
 
         setCredentials((prev) => ({ ...prev, [field.name]: value }))
     }
@@ -52,9 +50,7 @@ export function ProviderForm({ onSubmit, onCancel }: ProviderFormProps): JSX.Ele
         }
 
         const fields = PROVIDER_FIELDS[selectedProvider]
-        const missingRequired = fields
-            .filter((f) => f.required)
-            .find((f) => !credentials[f.name])
+        const missingRequired = fields.filter((f) => f.required).find((f) => !credentials[f.name])
 
         if (missingRequired) {
             setError(`${missingRequired.label} is required`)
@@ -83,7 +79,12 @@ export function ProviderForm({ onSubmit, onCancel }: ProviderFormProps): JSX.Ele
                             onClick={onCancel}
                             className="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-500"
                         >
-                            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg
+                                className="h-5 w-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
                                 <path
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
@@ -97,9 +98,7 @@ export function ProviderForm({ onSubmit, onCancel }: ProviderFormProps): JSX.Ele
 
                 {!selectedProvider ? (
                     <div className="p-6">
-                        <p className="mb-4 text-sm text-gray-600">
-                            Select a provider to connect:
-                        </p>
+                        <p className="mb-4 text-sm text-gray-600">Select a provider to connect:</p>
                         <div className="space-y-4">
                             {Object.entries(CHANNEL_PROVIDERS).map(([channel, providers]) => (
                                 <div key={channel}>
@@ -110,7 +109,9 @@ export function ProviderForm({ onSubmit, onCancel }: ProviderFormProps): JSX.Ele
                                         {providers.map((provider) => (
                                             <button
                                                 key={provider}
-                                                onClick={() => handleProviderSelect(provider)}
+                                                onClick={() => {
+                                                    handleProviderSelect(provider)
+                                                }}
                                                 className="rounded-lg border border-gray-200 p-3 text-left hover:border-primary-300 hover:bg-primary-50"
                                             >
                                                 <p className="font-medium text-gray-900">
@@ -130,10 +131,17 @@ export function ProviderForm({ onSubmit, onCancel }: ProviderFormProps): JSX.Ele
                     <form onSubmit={handleSubmit} className="p-6">
                         <button
                             type="button"
-                            onClick={() => setSelectedProvider(null)}
+                            onClick={() => {
+                                setSelectedProvider(null)
+                            }}
                             className="mb-4 flex items-center text-sm text-gray-600 hover:text-gray-900"
                         >
-                            <svg className="mr-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg
+                                className="mr-1 h-4 w-4"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
                                 <path
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
@@ -161,7 +169,9 @@ export function ProviderForm({ onSubmit, onCancel }: ProviderFormProps): JSX.Ele
                                                 id={field.name}
                                                 type="checkbox"
                                                 checked={Boolean(credentials[field.name])}
-                                                onChange={(e) => handleFieldChange(field, e)}
+                                                onChange={(e) => {
+                                                    handleFieldChange(field, e)
+                                                }}
                                                 className="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
                                             />
                                             <span className="ml-2 text-sm text-gray-600">
@@ -173,7 +183,9 @@ export function ProviderForm({ onSubmit, onCancel }: ProviderFormProps): JSX.Ele
                                             id={field.name}
                                             type={field.type}
                                             value={String(credentials[field.name] ?? "")}
-                                            onChange={(e) => handleFieldChange(field, e)}
+                                            onChange={(e) => {
+                                                handleFieldChange(field, e)
+                                            }}
                                             placeholder={field.placeholder}
                                             className="input"
                                             disabled={isSubmitting}

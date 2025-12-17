@@ -44,7 +44,7 @@ export function TemplateCard({
 
     // Truncate body for preview
     const bodyPreview =
-        template.body.length > 100 ? template.body.substring(0, 100) + "..." : template.body
+        template.body.length > 100 ? `${template.body.substring(0, 100)}...` : template.body
 
     return (
         <div className="card p-6">
@@ -69,7 +69,9 @@ export function TemplateCard({
 
                 {!showConfirm ? (
                     <button
-                        onClick={() => setShowConfirm(true)}
+                        onClick={() => {
+                            setShowConfirm(true)
+                        }}
                         className="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-500"
                     >
                         <svg
@@ -89,7 +91,9 @@ export function TemplateCard({
                 ) : (
                     <div className="flex items-center gap-2">
                         <button
-                            onClick={() => setShowConfirm(false)}
+                            onClick={() => {
+                                setShowConfirm(false)
+                            }}
                             disabled={isLoading}
                             className="btn-secondary text-xs"
                         >
@@ -142,7 +146,7 @@ export function TemplateCard({
                 <div className="flex items-center gap-2">
                     {template.status === "DRAFT" && (
                         <button
-                            onClick={() => handleAction(() => onPublish(template.id))}
+                            onClick={async () => handleAction(async () => onPublish(template.id))}
                             disabled={isLoading}
                             className="btn-primary text-xs"
                         >
@@ -152,14 +156,18 @@ export function TemplateCard({
                     {template.status === "ACTIVE" && (
                         <>
                             <button
-                                onClick={() => handleAction(() => onUnpublish(template.id))}
+                                onClick={async () =>
+                                    handleAction(async () => onUnpublish(template.id))
+                                }
                                 disabled={isLoading}
                                 className="btn-secondary text-xs"
                             >
                                 Unpublish
                             </button>
                             <button
-                                onClick={() => handleAction(() => onArchive(template.id))}
+                                onClick={async () =>
+                                    handleAction(async () => onArchive(template.id))
+                                }
                                 disabled={isLoading}
                                 className="btn-secondary text-xs"
                             >
@@ -169,7 +177,7 @@ export function TemplateCard({
                     )}
                     {template.status === "ARCHIVED" && (
                         <button
-                            onClick={() => handleAction(() => onUnpublish(template.id))}
+                            onClick={async () => handleAction(async () => onUnpublish(template.id))}
                             disabled={isLoading}
                             className="btn-secondary text-xs"
                         >
@@ -177,7 +185,9 @@ export function TemplateCard({
                         </button>
                     )}
                     <button
-                        onClick={() => onEdit(template)}
+                        onClick={() => {
+                            onEdit(template)
+                        }}
                         disabled={isLoading}
                         className="btn-secondary text-xs"
                     >

@@ -1,7 +1,7 @@
 import type { Notification, NotificationStatus } from "@/types/api"
 import { StatusBadge } from "./StatusBadge"
 import { ChannelBadge } from "./ChannelBadge"
-import { PROVIDER_LABELS, type ProviderType, type ChannelType } from "@/types/api"
+import { PROVIDER_LABELS, type ProviderType } from "@/types/api"
 
 interface NotificationDetailModalProps {
     notification: Notification
@@ -192,9 +192,7 @@ export function NotificationDetailModal({
                     {notification.errorMessage && (
                         <div className="rounded-lg bg-red-50 p-4">
                             <h4 className="font-medium text-red-800">Error</h4>
-                            <p className="mt-1 text-sm text-red-700">
-                                {notification.errorMessage}
-                            </p>
+                            <p className="mt-1 text-sm text-red-700">{notification.errorMessage}</p>
                         </div>
                     )}
 
@@ -206,9 +204,7 @@ export function NotificationDetailModal({
                             <div>
                                 <p className="text-sm text-gray-500">Channel</p>
                                 <div className="mt-1">
-                                    <ChannelBadge
-                                        channel={notification.channel as ChannelType}
-                                    />
+                                    <ChannelBadge channel={notification.channel} />
                                 </div>
                             </div>
                             <div>
@@ -222,9 +218,7 @@ export function NotificationDetailModal({
 
                         <div>
                             <p className="text-sm text-gray-500">Recipient</p>
-                            <p className="mt-1 font-mono text-gray-900">
-                                {notification.recipient}
-                            </p>
+                            <p className="mt-1 font-mono text-gray-900">{notification.recipient}</p>
                         </div>
                     </div>
 

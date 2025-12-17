@@ -11,6 +11,44 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.3.0] - 2025-12-18
+
+### Added
+- **Analytics Page**
+  - Summary stats cards: Total, Delivered, Failed, Pending notifications
+  - Delivery rate and failure rate percentages
+  - Period selector: Today, This Week, This Month, Last 7 Days, Last 30 Days
+
+- **Channel Breakdown**
+  - Visual bar chart showing notification distribution by channel
+  - Color-coded segments: green (delivered), blue (sent/pending), red (failed)
+  - Per-channel statistics
+
+- **Delivery Rate by Channel**
+  - Progress bars showing delivery success rate per channel
+  - Percentage display
+
+- **Notification Logs**
+  - Paginated table of recent notifications
+  - Filter by status (Pending, Sent, Delivered, Failed)
+  - Filter by channel (SMS, Telegram, Email, Push, WhatsApp)
+  - Masked recipient information for privacy
+
+- **API Client**
+  - `getAnalyticsSummary()` - fetch aggregated statistics
+  - `getAnalyticsByChannel()` - fetch per-channel breakdown
+  - `getAnalyticsLogs()` - fetch notification logs with filters
+
+- **Navigation**
+  - Added Analytics page to sidebar
+
+- **Types**
+  - `AnalyticsPeriod` enum
+  - `AnalyticsSummary`, `ChannelStats`, `LogEntry` interfaces
+  - Query interfaces for API calls
+
+---
+
 ## [0.2.0] - 2025-12-14
 
 ### Added

@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react"
+import { type FormEvent, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "@/context/AuthContext"
 import { listProviders } from "@/api/providers"
@@ -61,7 +61,9 @@ export function LoginPage(): JSX.Element {
                                 id="apiKey"
                                 type="password"
                                 value={apiKey}
-                                onChange={(e) => setApiKey(e.target.value)}
+                                onChange={(e) => {
+                                    setApiKey(e.target.value)
+                                }}
                                 placeholder="Enter your API key"
                                 className="input"
                                 disabled={isLoading}
@@ -81,7 +83,10 @@ export function LoginPage(): JSX.Element {
 
                     <div className="mt-6 text-center text-sm text-gray-600">
                         Don&apos;t have an account?{" "}
-                        <Link to="/register" className="font-medium text-primary-600 hover:text-primary-500">
+                        <Link
+                            to="/register"
+                            className="font-medium text-primary-600 hover:text-primary-500"
+                        >
                             Register
                         </Link>
                     </div>

@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react"
+import { type FormEvent, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "@/context/AuthContext"
 import { register } from "@/api/auth"
@@ -50,7 +50,9 @@ export function RegisterPage(): JSX.Element {
         try {
             await navigator.clipboard.writeText(generatedKey.apiKey)
             setCopied(true)
-            setTimeout(() => setCopied(false), 2000)
+            setTimeout(() => {
+                setCopied(false)
+            }, 2000)
         } catch {
             // Fallback for older browsers
             const textArea = document.createElement("textarea")
@@ -60,7 +62,9 @@ export function RegisterPage(): JSX.Element {
             document.execCommand("copy")
             document.body.removeChild(textArea)
             setCopied(true)
-            setTimeout(() => setCopied(false), 2000)
+            setTimeout(() => {
+                setCopied(false)
+            }, 2000)
         }
     }
 
@@ -176,7 +180,9 @@ export function RegisterPage(): JSX.Element {
                                 id="name"
                                 type="text"
                                 value={name}
-                                onChange={(e) => setName(e.target.value)}
+                                onChange={(e) => {
+                                    setName(e.target.value)
+                                }}
                                 placeholder="My Company"
                                 className="input"
                                 disabled={isLoading}
@@ -191,7 +197,9 @@ export function RegisterPage(): JSX.Element {
                                 id="email"
                                 type="email"
                                 value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                onChange={(e) => {
+                                    setEmail(e.target.value)
+                                }}
                                 placeholder="you@company.com"
                                 className="input"
                                 disabled={isLoading}
@@ -211,7 +219,10 @@ export function RegisterPage(): JSX.Element {
 
                     <div className="mt-6 text-center text-sm text-gray-600">
                         Already have an API key?{" "}
-                        <Link to="/login" className="font-medium text-primary-600 hover:text-primary-500">
+                        <Link
+                            to="/login"
+                            className="font-medium text-primary-600 hover:text-primary-500"
+                        >
                             Sign in
                         </Link>
                     </div>

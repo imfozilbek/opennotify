@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { listProviders } from "@/api/providers"
 import type { ConnectedProvider } from "@/types/api"
-import { PROVIDER_LABELS, PROVIDER_CHANNELS } from "@/types/api"
+import { PROVIDER_CHANNELS, PROVIDER_LABELS } from "@/types/api"
 
 interface DashboardStats {
     providersCount: number
@@ -149,7 +149,9 @@ export function DashboardPage(): JSX.Element {
                             d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                         />
                     </svg>
-                    <h3 className="mt-4 text-lg font-medium text-gray-900">No providers connected</h3>
+                    <h3 className="mt-4 text-lg font-medium text-gray-900">
+                        No providers connected
+                    </h3>
                     <p className="mt-2 text-gray-600">
                         Connect your first provider to start sending notifications.
                     </p>

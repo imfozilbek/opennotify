@@ -1,14 +1,9 @@
-import { useState, useEffect, type FormEvent } from "react"
+import { type FormEvent, useEffect, useState } from "react"
 import { sendNotification } from "@/api/notifications"
 import { listTemplates, renderTemplate } from "@/api/templates"
 import { listProviders } from "@/api/providers"
-import type {
-    ChannelType,
-    ConnectedProvider,
-    ProviderType,
-    Template,
-} from "@/types/api"
-import { CHANNEL_LABELS, PROVIDER_LABELS, PROVIDER_CHANNELS } from "@/types/api"
+import type { ChannelType, ConnectedProvider, ProviderType, Template } from "@/types/api"
+import { CHANNEL_LABELS, PROVIDER_CHANNELS, PROVIDER_LABELS } from "@/types/api"
 
 interface SendNotificationModalProps {
     onClose: () => void
@@ -216,7 +211,7 @@ export function SendNotificationModal({
                       }
 
             const response = await sendNotification({
-                provider: provider as ProviderType,
+                provider: provider,
                 recipient: recipientData,
                 payload,
             })
@@ -262,7 +257,9 @@ export function SendNotificationModal({
                         <div className="flex rounded-lg border border-gray-200 p-1">
                             <button
                                 type="button"
-                                onClick={() => setMode("direct")}
+                                onClick={() => {
+                                    setMode("direct")
+                                }}
                                 className={`flex-1 rounded-md py-2 text-sm font-medium ${
                                     mode === "direct"
                                         ? "bg-primary-600 text-white"
@@ -273,7 +270,9 @@ export function SendNotificationModal({
                             </button>
                             <button
                                 type="button"
-                                onClick={() => setMode("template")}
+                                onClick={() => {
+                                    setMode("template")
+                                }}
                                 className={`flex-1 rounded-md py-2 text-sm font-medium ${
                                     mode === "template"
                                         ? "bg-primary-600 text-white"
@@ -293,7 +292,9 @@ export function SendNotificationModal({
                                 <select
                                     id="template"
                                     value={selectedTemplateId}
-                                    onChange={(e) => handleTemplateSelect(e.target.value)}
+                                    onChange={(e) => {
+                                        handleTemplateSelect(e.target.value)
+                                    }}
                                     className="input"
                                 >
                                     <option value="">Select a template...</option>
@@ -338,7 +339,9 @@ export function SendNotificationModal({
                             <select
                                 id="provider"
                                 value={provider}
-                                onChange={(e) => setProvider(e.target.value as ProviderType)}
+                                onChange={(e) => {
+                                    setProvider(e.target.value as ProviderType)
+                                }}
                                 className="input"
                             >
                                 <option value="">Select a provider...</option>
@@ -364,7 +367,9 @@ export function SendNotificationModal({
                                 id="recipient"
                                 type="text"
                                 value={recipient}
-                                onChange={(e) => setRecipient(e.target.value)}
+                                onChange={(e) => {
+                                    setRecipient(e.target.value)
+                                }}
                                 className="input"
                                 placeholder={getRecipientPlaceholder()}
                             />
@@ -382,7 +387,9 @@ export function SendNotificationModal({
                                             id="subject"
                                             type="text"
                                             value={subject}
-                                            onChange={(e) => setSubject(e.target.value)}
+                                            onChange={(e) => {
+                                                setSubject(e.target.value)
+                                            }}
                                             className="input"
                                             placeholder="Email subject"
                                         />
@@ -395,7 +402,9 @@ export function SendNotificationModal({
                                     <textarea
                                         id="message"
                                         value={message}
-                                        onChange={(e) => setMessage(e.target.value)}
+                                        onChange={(e) => {
+                                            setMessage(e.target.value)
+                                        }}
                                         className="input min-h-[100px]"
                                         placeholder="Enter your message..."
                                     />
@@ -424,12 +433,12 @@ export function SendNotificationModal({
                                                 id={`var-${variable.name}`}
                                                 type="text"
                                                 value={variableValues[variable.name] ?? ""}
-                                                onChange={(e) =>
+                                                onChange={(e) => {
                                                     setVariableValues((prev) => ({
                                                         ...prev,
                                                         [variable.name]: e.target.value,
                                                     }))
-                                                }
+                                                }}
                                                 className="input mt-1"
                                                 placeholder={
                                                     variable.description ?? variable.defaultValue

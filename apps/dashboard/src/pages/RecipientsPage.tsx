@@ -1,17 +1,12 @@
-import { useState, useEffect, useCallback } from "react"
-import {
-    listRecipients,
-    createRecipient,
-    updateRecipient,
-    deleteRecipient,
-} from "@/api/recipients"
+import { useCallback, useEffect, useState } from "react"
+import { createRecipient, deleteRecipient, listRecipients, updateRecipient } from "@/api/recipients"
 import { RecipientForm } from "@/components/RecipientForm"
 import { ChannelBadge } from "@/components/ChannelBadge"
 import { ConfirmDialog } from "@/components/ConfirmDialog"
 import type {
-    Recipient,
     ChannelType,
     CreateRecipientRequest,
+    Recipient,
     UpdateRecipientRequest,
 } from "@/types/api"
 import { CHANNEL_LABELS } from "@/types/api"
@@ -145,7 +140,12 @@ export function RecipientsPage(): JSX.Element {
                     <h1 className="text-2xl font-bold text-gray-900">Recipients</h1>
                     <p className="text-gray-600">Manage notification recipients</p>
                 </div>
-                <button onClick={() => setShowForm(true)} className="btn-primary">
+                <button
+                    onClick={() => {
+                        setShowForm(true)
+                    }}
+                    className="btn-primary"
+                >
                     <svg
                         className="-ml-1 mr-2 h-5 w-5"
                         fill="none"
@@ -167,7 +167,9 @@ export function RecipientsPage(): JSX.Element {
                 <div className="mb-6 rounded-lg bg-red-50 p-4 text-red-700">
                     <p className="text-sm">{error}</p>
                     <button
-                        onClick={() => setError("")}
+                        onClick={() => {
+                            setError("")
+                        }}
                         className="mt-2 text-sm font-medium text-red-800 hover:text-red-900"
                     >
                         Dismiss
@@ -194,7 +196,12 @@ export function RecipientsPage(): JSX.Element {
                     <p className="mt-2 text-gray-600">
                         Add your first recipient to start sending notifications.
                     </p>
-                    <button onClick={() => setShowForm(true)} className="btn-primary mt-4">
+                    <button
+                        onClick={() => {
+                            setShowForm(true)
+                        }}
+                        className="btn-primary mt-4"
+                    >
                         Add Recipient
                     </button>
                 </div>
@@ -252,7 +259,9 @@ export function RecipientsPage(): JSX.Element {
                                         <td className="px-6 py-4 text-right">
                                             <div className="flex justify-end gap-2">
                                                 <button
-                                                    onClick={() => setEditingRecipient(recipient)}
+                                                    onClick={() => {
+                                                        setEditingRecipient(recipient)
+                                                    }}
                                                     className="text-gray-600 hover:text-gray-900"
                                                 >
                                                     <svg
@@ -270,7 +279,9 @@ export function RecipientsPage(): JSX.Element {
                                                     </svg>
                                                 </button>
                                                 <button
-                                                    onClick={() => setDeletingId(recipient.id)}
+                                                    onClick={() => {
+                                                        setDeletingId(recipient.id)
+                                                    }}
                                                     className="text-gray-600 hover:text-red-600"
                                                 >
                                                     <svg
@@ -299,19 +310,23 @@ export function RecipientsPage(): JSX.Element {
                     {totalPages > 1 && (
                         <div className="mt-6 flex items-center justify-between">
                             <p className="text-sm text-gray-600">
-                                Showing {(page - 1) * limit + 1} to{" "}
-                                {Math.min(page * limit, total)} of {total} recipients
+                                Showing {(page - 1) * limit + 1} to {Math.min(page * limit, total)}{" "}
+                                of {total} recipients
                             </p>
                             <div className="flex gap-2">
                                 <button
-                                    onClick={() => setPage((p) => Math.max(1, p - 1))}
+                                    onClick={() => {
+                                        setPage((p) => Math.max(1, p - 1))
+                                    }}
                                     disabled={page === 1}
                                     className="btn-secondary text-sm disabled:opacity-50"
                                 >
                                     Previous
                                 </button>
                                 <button
-                                    onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                                    onClick={() => {
+                                        setPage((p) => Math.min(totalPages, p + 1))
+                                    }}
                                     disabled={page === totalPages}
                                     className="btn-secondary text-sm disabled:opacity-50"
                                 >
@@ -326,7 +341,9 @@ export function RecipientsPage(): JSX.Element {
             {showForm && (
                 <RecipientForm
                     onSubmit={handleCreate}
-                    onCancel={() => setShowForm(false)}
+                    onCancel={() => {
+                        setShowForm(false)
+                    }}
                 />
             )}
 
@@ -334,7 +351,9 @@ export function RecipientsPage(): JSX.Element {
                 <RecipientForm
                     initialData={editingRecipient}
                     onSubmit={handleUpdate}
-                    onCancel={() => setEditingRecipient(null)}
+                    onCancel={() => {
+                        setEditingRecipient(null)
+                    }}
                 />
             )}
 
@@ -345,7 +364,9 @@ export function RecipientsPage(): JSX.Element {
                     confirmLabel="Delete"
                     isLoading={isDeleting}
                     onConfirm={handleDelete}
-                    onCancel={() => setDeletingId(null)}
+                    onCancel={() => {
+                        setDeletingId(null)
+                    }}
                 />
             )}
         </div>

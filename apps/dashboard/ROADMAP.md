@@ -30,15 +30,14 @@ React-based Merchant Dashboard for OpenNotify.
 
 ---
 
-## v0.3.0 — Routing & Analytics
-> **Goal:** Smart routing configuration
+## v0.3.0 — Analytics ✅
+> **Goal:** Analytics and insights
 
 | Task | Status |
 |------|--------|
-| Routing rules builder | ⏳ |
-| Analytics dashboard | ⏳ |
-| Channel comparison | ⏳ |
-| Cost analysis | ⏳ |
+| Analytics dashboard | ✅ |
+| Channel comparison | ✅ |
+| Notification logs with filters | ✅ |
 
 ---
 
@@ -51,6 +50,8 @@ React-based Merchant Dashboard for OpenNotify.
 | API keys management | ⏳ |
 | Webhook logs | ⏳ |
 | Settings page | ⏳ |
+| Routing rules builder | ⏳ |
+| Cost analysis | ⏳ |
 
 ---
 

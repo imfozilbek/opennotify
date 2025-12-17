@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from "react"
-import { listProviders, connectProvider, deleteProvider } from "@/api/providers"
+import { useCallback, useEffect, useState } from "react"
+import { connectProvider, deleteProvider, listProviders } from "@/api/providers"
 import { ProviderCard } from "@/components/ProviderCard"
 import { ProviderForm } from "@/components/ProviderForm"
 import type { ConnectedProvider, ProviderType } from "@/types/api"
@@ -68,7 +68,12 @@ export function ProvidersPage(): JSX.Element {
                     <h1 className="text-2xl font-bold text-gray-900">Providers</h1>
                     <p className="text-gray-600">Manage your notification providers</p>
                 </div>
-                <button onClick={() => setShowForm(true)} className="btn-primary">
+                <button
+                    onClick={() => {
+                        setShowForm(true)
+                    }}
+                    className="btn-primary"
+                >
                     <svg
                         className="-ml-1 mr-2 h-5 w-5"
                         fill="none"
@@ -90,7 +95,9 @@ export function ProvidersPage(): JSX.Element {
                 <div className="mb-6 rounded-lg bg-red-50 p-4 text-red-700">
                     <p className="text-sm">{error}</p>
                     <button
-                        onClick={() => setError("")}
+                        onClick={() => {
+                            setError("")
+                        }}
                         className="mt-2 text-sm font-medium text-red-800 hover:text-red-900"
                     >
                         Dismiss
@@ -113,11 +120,18 @@ export function ProvidersPage(): JSX.Element {
                             d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"
                         />
                     </svg>
-                    <h3 className="mt-4 text-lg font-medium text-gray-900">No providers connected</h3>
+                    <h3 className="mt-4 text-lg font-medium text-gray-900">
+                        No providers connected
+                    </h3>
                     <p className="mt-2 text-gray-600">
                         Connect your first provider to start sending notifications.
                     </p>
-                    <button onClick={() => setShowForm(true)} className="btn-primary mt-4">
+                    <button
+                        onClick={() => {
+                            setShowForm(true)
+                        }}
+                        className="btn-primary mt-4"
+                    >
                         Connect Provider
                     </button>
                 </div>
@@ -134,7 +148,12 @@ export function ProvidersPage(): JSX.Element {
             )}
 
             {showForm && (
-                <ProviderForm onSubmit={handleConnect} onCancel={() => setShowForm(false)} />
+                <ProviderForm
+                    onSubmit={handleConnect}
+                    onCancel={() => {
+                        setShowForm(false)
+                    }}
+                />
             )}
         </div>
     )

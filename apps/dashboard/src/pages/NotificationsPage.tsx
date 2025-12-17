@@ -1,10 +1,10 @@
-import { useState, useEffect, useCallback } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { listNotifications } from "@/api/notifications"
 import { StatusBadge } from "@/components/StatusBadge"
 import { ChannelBadge } from "@/components/ChannelBadge"
 import { NotificationDetailModal } from "@/components/NotificationDetailModal"
 import { SendNotificationModal } from "@/components/SendNotificationModal"
-import type { Notification, ChannelType } from "@/types/api"
+import type { Notification } from "@/types/api"
 import { PROVIDER_LABELS, type ProviderType } from "@/types/api"
 
 export function NotificationsPage(): JSX.Element {
@@ -61,7 +61,12 @@ export function NotificationsPage(): JSX.Element {
                     <h1 className="text-2xl font-bold text-gray-900">Notifications</h1>
                     <p className="text-gray-600">View your notification history</p>
                 </div>
-                <button onClick={() => setShowSendModal(true)} className="btn-primary">
+                <button
+                    onClick={() => {
+                        setShowSendModal(true)
+                    }}
+                    className="btn-primary"
+                >
                     <svg
                         className="-ml-1 mr-2 h-5 w-5"
                         fill="none"
@@ -113,7 +118,12 @@ export function NotificationsPage(): JSX.Element {
                     <p className="mt-2 text-gray-600">
                         Send your first notification to see it here.
                     </p>
-                    <button onClick={() => setShowSendModal(true)} className="btn-primary mt-4">
+                    <button
+                        onClick={() => {
+                            setShowSendModal(true)
+                        }}
+                        className="btn-primary mt-4"
+                    >
                         Send Notification
                     </button>
                 </div>
@@ -144,13 +154,13 @@ export function NotificationsPage(): JSX.Element {
                                 {notifications.map((notification) => (
                                     <tr
                                         key={notification.id}
-                                        onClick={() => setSelectedNotification(notification)}
+                                        onClick={() => {
+                                            setSelectedNotification(notification)
+                                        }}
                                         className="cursor-pointer hover:bg-gray-50"
                                     >
                                         <td className="whitespace-nowrap px-6 py-4">
-                                            <ChannelBadge
-                                                channel={notification.channel as ChannelType}
-                                            />
+                                            <ChannelBadge channel={notification.channel} />
                                         </td>
                                         <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-700">
                                             {PROVIDER_LABELS[
@@ -178,19 +188,23 @@ export function NotificationsPage(): JSX.Element {
                     {totalPages > 1 && (
                         <div className="mt-4 flex items-center justify-between">
                             <p className="text-sm text-gray-700">
-                                Showing {(page - 1) * limit + 1} to{" "}
-                                {Math.min(page * limit, total)} of {total} results
+                                Showing {(page - 1) * limit + 1} to {Math.min(page * limit, total)}{" "}
+                                of {total} results
                             </p>
                             <div className="flex gap-2">
                                 <button
-                                    onClick={() => setPage((p) => Math.max(1, p - 1))}
+                                    onClick={() => {
+                                        setPage((p) => Math.max(1, p - 1))
+                                    }}
                                     disabled={page === 1}
                                     className="btn-secondary"
                                 >
                                     Previous
                                 </button>
                                 <button
-                                    onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                                    onClick={() => {
+                                        setPage((p) => Math.min(totalPages, p + 1))
+                                    }}
                                     disabled={page === totalPages}
                                     className="btn-secondary"
                                 >
@@ -205,13 +219,17 @@ export function NotificationsPage(): JSX.Element {
             {selectedNotification && (
                 <NotificationDetailModal
                     notification={selectedNotification}
-                    onClose={() => setSelectedNotification(null)}
+                    onClose={() => {
+                        setSelectedNotification(null)
+                    }}
                 />
             )}
 
             {showSendModal && (
                 <SendNotificationModal
-                    onClose={() => setShowSendModal(false)}
+                    onClose={() => {
+                        setShowSendModal(false)
+                    }}
                     onSuccess={handleSendSuccess}
                 />
             )}

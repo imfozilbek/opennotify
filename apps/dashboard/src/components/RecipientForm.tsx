@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react"
+import { type FormEvent, useState } from "react"
 import type {
     ChannelType,
     CreateRecipientRequest,
@@ -37,9 +37,7 @@ export function RecipientForm({
     const [externalId, setExternalId] = useState(initialData?.externalId ?? "")
     const [phone, setPhone] = useState(initialData?.contacts.phone ?? "")
     const [email, setEmail] = useState(initialData?.contacts.email ?? "")
-    const [telegramChatId, setTelegramChatId] = useState(
-        initialData?.contacts.telegramChatId ?? "",
-    )
+    const [telegramChatId, setTelegramChatId] = useState(initialData?.contacts.telegramChatId ?? "")
     const [preferredChannel, setPreferredChannel] = useState<ChannelType | "">(
         initialData?.preferences.preferredChannel ?? "",
     )
@@ -66,9 +64,7 @@ export function RecipientForm({
 
     function toggleOptOut(channel: ChannelType): void {
         setOptedOutChannels((prev) =>
-            prev.includes(channel)
-                ? prev.filter((c) => c !== channel)
-                : [...prev, channel],
+            prev.includes(channel) ? prev.filter((c) => c !== channel) : [...prev, channel],
         )
     }
 
@@ -145,7 +141,9 @@ export function RecipientForm({
                                 id="externalId"
                                 type="text"
                                 value={externalId}
-                                onChange={(e) => setExternalId(e.target.value)}
+                                onChange={(e) => {
+                                    setExternalId(e.target.value)
+                                }}
                                 className="input"
                                 placeholder="Your system's user ID"
                             />
@@ -163,7 +161,9 @@ export function RecipientForm({
                                     id="phone"
                                     type="tel"
                                     value={phone}
-                                    onChange={(e) => setPhone(e.target.value)}
+                                    onChange={(e) => {
+                                        setPhone(e.target.value)
+                                    }}
                                     className="input"
                                     placeholder="+998901234567"
                                 />
@@ -177,7 +177,9 @@ export function RecipientForm({
                                     id="email"
                                     type="email"
                                     value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    onChange={(e) => {
+                                        setEmail(e.target.value)
+                                    }}
                                     className="input"
                                     placeholder="user@example.com"
                                 />
@@ -191,7 +193,9 @@ export function RecipientForm({
                                     id="telegramChatId"
                                     type="text"
                                     value={telegramChatId}
-                                    onChange={(e) => setTelegramChatId(e.target.value)}
+                                    onChange={(e) => {
+                                        setTelegramChatId(e.target.value)
+                                    }}
                                     className="input"
                                     placeholder="123456789"
                                 />
@@ -212,9 +216,9 @@ export function RecipientForm({
                                 <select
                                     id="preferredChannel"
                                     value={preferredChannel}
-                                    onChange={(e) =>
+                                    onChange={(e) => {
                                         setPreferredChannel(e.target.value as ChannelType | "")
-                                    }
+                                    }}
                                     className="input"
                                 >
                                     <option value="">Not set</option>
@@ -241,7 +245,9 @@ export function RecipientForm({
                                             <input
                                                 type="checkbox"
                                                 checked={optedOutChannels.includes(ch)}
-                                                onChange={() => toggleOptOut(ch)}
+                                                onChange={() => {
+                                                    toggleOptOut(ch)
+                                                }}
                                                 className="sr-only"
                                             />
                                             {CHANNEL_LABELS[ch]}
@@ -272,7 +278,9 @@ export function RecipientForm({
                                 <select
                                     id="language"
                                     value={language}
-                                    onChange={(e) => setLanguage(e.target.value)}
+                                    onChange={(e) => {
+                                        setLanguage(e.target.value)
+                                    }}
                                     className="input"
                                 >
                                     {LANGUAGES.map((lang) => (
@@ -290,10 +298,14 @@ export function RecipientForm({
                                 <input
                                     type="checkbox"
                                     checked={quietHoursEnabled}
-                                    onChange={(e) => setQuietHoursEnabled(e.target.checked)}
+                                    onChange={(e) => {
+                                        setQuietHoursEnabled(e.target.checked)
+                                    }}
                                     className="h-4 w-4 rounded border-gray-300"
                                 />
-                                <span className="font-medium text-gray-900">Enable Quiet Hours</span>
+                                <span className="font-medium text-gray-900">
+                                    Enable Quiet Hours
+                                </span>
                             </label>
 
                             {quietHoursEnabled && (
@@ -307,7 +319,9 @@ export function RecipientForm({
                                                 id="quietStart"
                                                 type="time"
                                                 value={quietHoursStart}
-                                                onChange={(e) => setQuietHoursStart(e.target.value)}
+                                                onChange={(e) => {
+                                                    setQuietHoursStart(e.target.value)
+                                                }}
                                                 className="input"
                                             />
                                         </div>
@@ -319,7 +333,9 @@ export function RecipientForm({
                                                 id="quietEnd"
                                                 type="time"
                                                 value={quietHoursEnd}
-                                                onChange={(e) => setQuietHoursEnd(e.target.value)}
+                                                onChange={(e) => {
+                                                    setQuietHoursEnd(e.target.value)
+                                                }}
                                                 className="input"
                                             />
                                         </div>
@@ -331,7 +347,9 @@ export function RecipientForm({
                                         <select
                                             id="timezone"
                                             value={quietHoursTimezone}
-                                            onChange={(e) => setQuietHoursTimezone(e.target.value)}
+                                            onChange={(e) => {
+                                                setQuietHoursTimezone(e.target.value)
+                                            }}
                                             className="input"
                                         >
                                             {TIMEZONES.map((tz) => (

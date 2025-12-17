@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom"
+import { Navigate, Route, Routes } from "react-router-dom"
 import { useAuth } from "@/context/AuthContext"
 import { Layout } from "@/components/Layout"
 import { ProtectedRoute } from "@/components/ProtectedRoute"
@@ -9,6 +9,7 @@ import { ProvidersPage } from "@/pages/ProvidersPage"
 import { TemplatesPage } from "@/pages/TemplatesPage"
 import { RecipientsPage } from "@/pages/RecipientsPage"
 import { NotificationsPage } from "@/pages/NotificationsPage"
+import { AnalyticsPage } from "@/pages/AnalyticsPage"
 
 export default function App(): JSX.Element {
     const { isAuthenticated } = useAuth()
@@ -30,6 +31,7 @@ export default function App(): JSX.Element {
                     <Route path="/templates" element={<TemplatesPage />} />
                     <Route path="/recipients" element={<RecipientsPage />} />
                     <Route path="/notifications" element={<NotificationsPage />} />
+                    <Route path="/analytics" element={<AnalyticsPage />} />
                 </Route>
             </Route>
             <Route path="*" element={<Navigate to="/" replace />} />
