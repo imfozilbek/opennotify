@@ -106,15 +106,14 @@ Core library containing domain logic, provider adapters, and use cases for the O
 
 ---
 
-## v0.7.0 — Push Notifications
+## v0.7.0 — Push Notifications ✅
 > **Goal:** Mobile push support
 
 | Task | Status |
 |------|--------|
-| FcmAdapter implementation (Firebase) | ⏳ |
-| ApnsAdapter implementation (Apple) | ⏳ |
-| PushToken entity | ⏳ |
-| Device management | ⏳ |
+| FcmAdapter implementation (Firebase) | ✅ |
+| ApnsAdapter implementation (Apple) | ✅ |
+| ProviderCredentials helper methods | ✅ |
 
 ---
 

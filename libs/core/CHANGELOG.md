@@ -11,6 +11,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.7.0] - 2025-12-17
+
+### Added
+- **Adapters**
+  - `FcmAdapter` for Firebase Cloud Messaging (HTTP v1 API)
+    - OAuth 2.0 JWT authentication with token caching
+    - Supports notification and data messages
+    - Android-specific options: priority, TTL, notification channel
+    - iOS-specific options via FCM: badge, sound
+  - `ApnsAdapter` for Apple Push Notification Service
+    - Uses `apns2` package for HTTP/2 communication
+    - Token-based authentication (ES256)
+    - Supports: alert, badge, sound, content-available, mutable-content
+    - Priority and expiration control
+    - Collapse ID for notification replacement
+- **ProviderCredentials**
+  - `asFcm()` helper method for FCM credentials
+  - `asApns()` helper method for APNs credentials
+  - `asMailgun()` helper method for Mailgun credentials
+  - `asWhatsApp()` helper method for WhatsApp credentials
+  - Updated `toMasked()` for FCM, APNs, Mailgun, WhatsApp providers
+
+### Dependencies
+- Added `apns2` as optional peer dependency (^11.0.0) for ApnsAdapter
+
+---
+
 ## [0.6.1] - 2025-12-14
 
 ### Added

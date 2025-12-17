@@ -251,6 +251,34 @@ export class ProviderCredentials {
         return null
     }
 
+    asMailgun(): MailgunCredentials | null {
+        if (this._data.provider === Provider.MAILGUN) {
+            return this._data
+        }
+        return null
+    }
+
+    asFcm(): FcmCredentials | null {
+        if (this._data.provider === Provider.FCM) {
+            return this._data
+        }
+        return null
+    }
+
+    asApns(): ApnsCredentials | null {
+        if (this._data.provider === Provider.APNS) {
+            return this._data
+        }
+        return null
+    }
+
+    asWhatsApp(): WhatsAppCredentials | null {
+        if (this._data.provider === Provider.WHATSAPP_BUSINESS) {
+            return this._data
+        }
+        return null
+    }
+
     /**
      * Mask sensitive data for logging.
      */
@@ -274,6 +302,24 @@ export class ProviderCredentials {
             case Provider.SMTP:
                 masked.host = this._data.host
                 masked.from = this._data.from
+                break
+            case Provider.MAILGUN:
+                masked.domain = this._data.domain
+                masked.from = this._data.from
+                break
+            case Provider.FCM:
+                masked.projectId = this._data.projectId
+                masked.clientEmail = this._data.clientEmail
+                break
+            case Provider.APNS:
+                masked.keyId = this._data.keyId
+                masked.teamId = this._data.teamId
+                masked.bundleId = this._data.bundleId
+                masked.production = this._data.production
+                break
+            case Provider.WHATSAPP_BUSINESS:
+                masked.phoneNumberId = this._data.phoneNumberId
+                masked.businessAccountId = this._data.businessAccountId
                 break
         }
 
