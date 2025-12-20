@@ -8,6 +8,21 @@ All notable changes to this package will be documented in this file.
 
 ---
 
+## [0.10.0] - 2025-12-20
+
+### Added
+- **API Keys Module**
+  - `GET /api-keys` - List all API keys for current merchant
+  - `POST /api-keys` - Create new API key with permissions
+  - `DELETE /api-keys/:id` - Revoke (deactivate) API key
+  - Returns raw key only on creation (never shown again)
+  - Supports name, permissions array, and optional expiration date
+- **Infrastructure**
+  - Shared `InMemoryApiKeyRepository` singleton instance
+  - Uses existing `CreateApiKeyUseCase` from core with `listForMerchant()` and `revoke()` methods
+
+---
+
 ## [0.9.0] - 2025-12-18
 
 ### Added

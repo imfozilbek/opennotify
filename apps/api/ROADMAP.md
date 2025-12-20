@@ -125,4 +125,51 @@ NestJS-based Platform API for OpenNotify.
 
 ---
 
+## v0.10.0 — API Keys Management ✅
+> **Goal:** API key CRUD endpoints
+
+| Task | Status |
+|------|--------|
+| GET /api-keys — list API keys | ✅ |
+| POST /api-keys — create API key | ✅ |
+| DELETE /api-keys/:id — revoke API key | ✅ |
+
+---
+
+## v0.10.1 — Settings API
+> **Goal:** Merchant settings endpoints
+
+| Task | Status |
+|------|--------|
+| GET /settings — get merchant settings | ⏳ |
+| PUT /settings — update settings | ⏳ |
+| Extended settings value object in core | ⏳ |
+
+---
+
+## v0.10.2 — Routing Rules API
+> **Goal:** Persistent routing rules
+
+| Task | Status |
+|------|--------|
+| RoutingRuleEntity in core | ⏳ |
+| RoutingRuleRepositoryPort in core | ⏳ |
+| GET /routing-rules — list rules | ⏳ |
+| POST /routing-rules — create rule | ⏳ |
+| PUT /routing-rules/:id — update rule | ⏳ |
+| DELETE /routing-rules/:id — delete rule | ⏳ |
+
+---
+
+## v0.10.3 — Cost Analytics
+> **Goal:** Cost breakdown endpoints
+
+| Task | Status |
+|------|--------|
+| GetCostAnalysisUseCase in core | ⏳ |
+| GET /analytics/costs — cost breakdown | ⏳ |
+| Telegram savings calculation | ⏳ |
+
+---
+
 *Last updated: December 2025*

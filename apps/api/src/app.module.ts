@@ -1,5 +1,6 @@
 import { Module } from "@nestjs/common"
 import { AnalyticsModule } from "./analytics/analytics.module"
+import { ApiKeysModule } from "./api-keys/api-keys.module"
 import { AuthModule } from "./auth/auth.module"
 import { HealthModule } from "./health/health.module"
 import { WebhookLogsModule } from "./webhook-logs/webhook-logs.module"
@@ -14,6 +15,7 @@ import { WebhooksModule } from "./webhooks/webhooks.module"
 @Module({
     imports: [
         AnalyticsModule,
+        ApiKeysModule,
         AuthModule,
         HealthModule,
         WebhookLogsModule,

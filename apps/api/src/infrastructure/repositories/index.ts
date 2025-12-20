@@ -1,5 +1,5 @@
 export { InMemoryMerchantRepository } from "./InMemoryMerchantRepository"
-export { InMemoryApiKeyRepository } from "./InMemoryApiKeyRepository"
+export { InMemoryApiKeyRepository, sharedApiKeyRepository } from "./InMemoryApiKeyRepository"
 export { InMemoryTemplateRepository } from "./InMemoryTemplateRepository"
 export { InMemoryRecipientRepository } from "./InMemoryRecipientRepository"
 export {

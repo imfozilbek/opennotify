@@ -7,6 +7,14 @@ import { ApiKey, ApiKeyProps, ApiKeyRepositoryPort } from "@opennotify/core"
  */
 @Injectable()
 export class InMemoryApiKeyRepository implements ApiKeyRepositoryPort {
+    private static instance: InMemoryApiKeyRepository | null = null
+
+    static getInstance(): InMemoryApiKeyRepository {
+        if (!InMemoryApiKeyRepository.instance) {
+            InMemoryApiKeyRepository.instance = new InMemoryApiKeyRepository()
+        }
+        return InMemoryApiKeyRepository.instance
+    }
     private readonly apiKeys = new Map<string, ApiKeyProps>()
 
     async save(apiKey: ApiKey): Promise<void> {
@@ -46,3 +54,8 @@ export class InMemoryApiKeyRepository implements ApiKeyRepositoryPort {
         return Promise.resolve()
     }
 }
+
+/**
+ * Shared instance of InMemoryApiKeyRepository.
+ */
+export const sharedApiKeyRepository = InMemoryApiKeyRepository.getInstance()
