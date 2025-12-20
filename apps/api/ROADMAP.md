@@ -136,14 +136,14 @@ NestJS-based Platform API for OpenNotify.
 
 ---
 
-## v0.10.1 — Settings API
+## v0.10.1 — Settings API ✅
 > **Goal:** Merchant settings endpoints
 
 | Task | Status |
 |------|--------|
-| GET /settings — get merchant settings | ⏳ |
-| PUT /settings — update settings | ⏳ |
-| Extended settings value object in core | ⏳ |
+| GET /settings — get merchant settings | ✅ |
+| PUT /settings — update settings | ✅ |
+| Extended settings value object in core | ✅ |
 
 ---
 

@@ -8,6 +8,23 @@ All notable changes to this package will be documented in this file.
 
 ---
 
+## [0.10.1] - 2025-12-20
+
+### Added
+- **Settings Module**
+  - `GET /settings` - Get merchant settings (READ permission)
+  - `PUT /settings` - Update merchant settings (ADMIN permission)
+- **Extended MerchantSettings in core**
+  - General settings: companyName, country, timezone, defaultLanguage
+  - Notification settings: rateLimitPerMinute, rateLimitPerDay, retryAttempts, retryDelaySeconds
+  - Security settings: twoFactorEnabled, sessionTimeoutMinutes, ipWhitelist
+  - Branding settings: logoUrl, primaryColor, accentColor
+- **Use Cases**
+  - `GetSettingsUseCase` - Retrieve merchant settings
+  - `UpdateSettingsUseCase` - Update merchant settings with validation
+
+---
+
 ## [0.10.0] - 2025-12-20
 
 ### Added

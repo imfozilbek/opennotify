@@ -16,6 +16,26 @@ export enum MerchantStatus {
  * Merchant settings.
  */
 export interface MerchantSettings {
+    // ─────────────────────────────────────────────────────────────
+    // General Settings
+    // ─────────────────────────────────────────────────────────────
+
+    /** Company display name */
+    companyName?: string
+
+    /** Country code (ISO 3166-1 alpha-2) */
+    country?: string
+
+    /** Timezone for time-based routing (e.g., "Asia/Tashkent") */
+    timezone?: string
+
+    /** Default language for templates (uz, ru, en) */
+    defaultLanguage?: string
+
+    // ─────────────────────────────────────────────────────────────
+    // Notification Settings
+    // ─────────────────────────────────────────────────────────────
+
     /** Default sender name for SMS */
     defaultSmsSender?: string
 
@@ -28,11 +48,43 @@ export interface MerchantSettings {
     /** Webhook secret for signature verification */
     webhookSecret?: string
 
-    /** Timezone for time-based routing */
-    timezone?: string
+    /** Rate limit: max notifications per minute */
+    rateLimitPerMinute?: number
 
-    /** Default language for templates */
-    defaultLanguage?: string
+    /** Rate limit: max notifications per day */
+    rateLimitPerDay?: number
+
+    /** Number of retry attempts on failure (0-5) */
+    retryAttempts?: number
+
+    /** Delay between retries in seconds */
+    retryDelaySeconds?: number
+
+    // ─────────────────────────────────────────────────────────────
+    // Security Settings
+    // ─────────────────────────────────────────────────────────────
+
+    /** Enable two-factor authentication */
+    twoFactorEnabled?: boolean
+
+    /** Session timeout in minutes (5-1440) */
+    sessionTimeoutMinutes?: number
+
+    /** IP whitelist for API access */
+    ipWhitelist?: string[]
+
+    // ─────────────────────────────────────────────────────────────
+    // Branding Settings
+    // ─────────────────────────────────────────────────────────────
+
+    /** Company logo URL */
+    logoUrl?: string
+
+    /** Primary brand color (hex, e.g., "#3B82F6") */
+    primaryColor?: string
+
+    /** Accent brand color (hex, e.g., "#10B981") */
+    accentColor?: string
 }
 
 /**

@@ -24,3 +24,7 @@ export * from "./CreateTeamUseCase"
 export * from "./AddTeamMemberUseCase"
 export * from "./RemoveTeamMemberUseCase"
 export * from "./GetAuditLogsUseCase"
+
+// Settings
+export * from "./GetSettingsUseCase"
+export * from "./UpdateSettingsUseCase"
