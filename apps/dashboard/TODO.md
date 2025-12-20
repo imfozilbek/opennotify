@@ -16,7 +16,7 @@ Technical debt and pending improvements.
 
 ## Medium Priority
 
-- [ ] **Add notification detail modal** — Click on notification row to see full details.
+- [x] **Add notification detail modal** — Click on notification row to see full details. *(Done in v0.2.0)*
 
 - [ ] **Add toast notifications** — Show success/error messages for actions (connect provider, delete, etc.).
 

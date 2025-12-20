@@ -587,3 +587,113 @@ export interface AnalyticsLogsQuery {
     page?: number
     limit?: number
 }
+
+// Team Types
+export type TeamRole = "OWNER" | "ADMIN" | "MEMBER" | "VIEWER"
+
+export const ROLE_LABELS: Record<TeamRole, string> = {
+    OWNER: "Owner",
+    ADMIN: "Admin",
+    MEMBER: "Member",
+    VIEWER: "Viewer",
+}
+
+export const ROLE_COLORS: Record<TeamRole, string> = {
+    OWNER: "purple",
+    ADMIN: "blue",
+    MEMBER: "green",
+    VIEWER: "gray",
+}
+
+export interface TeamMember {
+    userId: string
+    email: string
+    name: string
+    role: TeamRole
+    joinedAt: string
+    invitedBy?: string
+}
+
+export interface Team {
+    id: string
+    merchantId: string
+    name: string
+    members: TeamMember[]
+    memberCount: number
+    createdAt: string
+    updatedAt: string
+}
+
+export interface CreateTeamRequest {
+    name: string
+}
+
+export interface AddMemberRequest {
+    email: string
+    name: string
+    role: TeamRole
+}
+
+export interface UpdateMemberRoleRequest {
+    role: TeamRole
+}
+
+// Audit Log Types
+export type AuditAction =
+    | "TEAM_CREATED"
+    | "TEAM_UPDATED"
+    | "TEAM_DELETED"
+    | "MEMBER_ADDED"
+    | "MEMBER_REMOVED"
+    | "MEMBER_ROLE_CHANGED"
+    | "OWNERSHIP_TRANSFERRED"
+    | "PROVIDER_CONNECTED"
+    | "PROVIDER_DISCONNECTED"
+    | "API_KEY_CREATED"
+    | "API_KEY_REVOKED"
+    | "SETTINGS_UPDATED"
+
+export const AUDIT_ACTION_LABELS: Record<AuditAction, string> = {
+    TEAM_CREATED: "Team Created",
+    TEAM_UPDATED: "Team Updated",
+    TEAM_DELETED: "Team Deleted",
+    MEMBER_ADDED: "Member Added",
+    MEMBER_REMOVED: "Member Removed",
+    MEMBER_ROLE_CHANGED: "Role Changed",
+    OWNERSHIP_TRANSFERRED: "Ownership Transferred",
+    PROVIDER_CONNECTED: "Provider Connected",
+    PROVIDER_DISCONNECTED: "Provider Disconnected",
+    API_KEY_CREATED: "API Key Created",
+    API_KEY_REVOKED: "API Key Revoked",
+    SETTINGS_UPDATED: "Settings Updated",
+}
+
+export interface AuditLog {
+    id: string
+    action: AuditAction
+    actorId: string
+    actorEmail: string
+    targetId?: string
+    targetType?: string
+    details: Record<string, unknown>
+    description: string
+    createdAt: string
+}
+
+export interface AuditLogsQuery {
+    action?: AuditAction
+    actorId?: string
+    targetId?: string
+    startDate?: string
+    endDate?: string
+    page?: number
+    limit?: number
+}
+
+export interface PaginatedAuditLogs {
+    logs: AuditLog[]
+    total: number
+    page: number
+    limit: number
+    totalPages: number
+}

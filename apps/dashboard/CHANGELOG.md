@@ -11,6 +11,47 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.4.0] - 2025-12-20
+
+### Added
+- **Team Management Page**
+  - View team members with roles (Owner, Admin, Member, Viewer)
+  - Add new team members with role selection
+  - Change member roles (based on current user's permissions)
+  - Remove team members with confirmation
+  - Role-based action visibility
+
+- **Audit Logs**
+  - View audit log history in dedicated tab
+  - Paginated table with action, actor, description, and timestamp
+  - Color-coded action badges
+  - Time-ago formatting for timestamps
+
+- **Team Components**
+  - `TeamMemberCard` - member display with role badge and actions
+  - `AddMemberForm` - modal form to invite new members
+  - `UpdateRoleForm` - modal form to change member role
+  - `AuditLogTable` - paginated audit log display
+  - `RoleBadge` - color-coded role indicator
+
+- **API Client**
+  - `getTeam()` - fetch team data
+  - `addMember()` - add new team member
+  - `updateMemberRole()` - change member role
+  - `removeMember()` - remove team member
+  - `getAuditLogs()` - fetch audit logs with pagination
+
+- **Types**
+  - `TeamRole` type with OWNER, ADMIN, MEMBER, VIEWER
+  - `Team`, `TeamMember` interfaces
+  - `AuditAction`, `AuditLog` types
+  - Role and action label/color mappings
+
+- **Navigation**
+  - Added Team page to sidebar
+
+---
+
 ## [0.3.0] - 2025-12-18
 
 ### Added

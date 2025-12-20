@@ -41,12 +41,23 @@ React-based Merchant Dashboard for OpenNotify.
 
 ---
 
-## v0.4.0 — Advanced Features
+## v0.4.0 — Team Management ✅
+> **Goal:** Team and audit features
+
+| Task | Status |
+|------|--------|
+| Team management page | ✅ |
+| Add/remove team members | ✅ |
+| Role management (Owner, Admin, Member, Viewer) | ✅ |
+| Audit logs viewer | ✅ |
+
+---
+
+## v0.5.0 — Advanced Features
 > **Goal:** Enterprise features
 
 | Task | Status |
 |------|--------|
-| Team management | ⏳ |
 | API keys management | ⏳ |
 | Webhook logs | ⏳ |
 | Settings page | ⏳ |

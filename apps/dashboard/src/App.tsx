@@ -10,6 +10,7 @@ import { TemplatesPage } from "@/pages/TemplatesPage"
 import { RecipientsPage } from "@/pages/RecipientsPage"
 import { NotificationsPage } from "@/pages/NotificationsPage"
 import { AnalyticsPage } from "@/pages/AnalyticsPage"
+import { TeamPage } from "@/pages/TeamPage"
 
 export default function App(): JSX.Element {
     const { isAuthenticated } = useAuth()
@@ -32,6 +33,7 @@ export default function App(): JSX.Element {
                     <Route path="/recipients" element={<RecipientsPage />} />
                     <Route path="/notifications" element={<NotificationsPage />} />
                     <Route path="/analytics" element={<AnalyticsPage />} />
+                    <Route path="/team" element={<TeamPage />} />
                 </Route>
             </Route>
             <Route path="*" element={<Navigate to="/" replace />} />
