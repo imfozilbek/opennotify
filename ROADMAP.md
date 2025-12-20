@@ -192,17 +192,17 @@ OpenNotify (70% Telegram, 30% SMS fallback):
 | libs/core | v0.4.0 | ✅ Done | Priority routing, cost routing, fallback chains |
 | libs/core | v0.5.0 | ✅ Done | Templates, PlayMobile, GetSMS adapters |
 | apps/api | v0.3.0 | ✅ Done | Template API (CRUD, publish, render) |
-| apps/dashboard | v0.2.0 | ⏳ | Routing rules UI, template editor |
+| apps/dashboard | v0.2.0 | ✅ Done | Routing rules UI, template editor |
 
 ### Phase 3: Email & Push (v0.6.0 - v0.7.0)
 > Goal: Full multi-channel coverage
 
-| Component | Version | Key Features |
-|-----------|---------|--------------|
-| libs/core | v0.6.0 | Email adapters (SMTP, SendGrid, Mailgun) |
-| libs/core | v0.7.0 | Push adapters (FCM, APNs) |
-| apps/api | v0.4.0 | Analytics API |
-| apps/dashboard | v0.3.0 | Analytics UI, channel comparison |
+| Component | Version | Status | Key Features |
+|-----------|---------|--------|--------------|
+| libs/core | v0.6.0 | ✅ Done | Email adapters (SMTP, SendGrid, Mailgun) |
+| libs/core | v0.7.0 | ✅ Done | Push adapters (FCM, APNs) |
+| apps/api | v0.5.0 | ✅ Done | Analytics API |
+| apps/dashboard | v0.3.0 | ✅ Done | Analytics UI, channel comparison |
 
 ### Phase 4: Enterprise Features (v0.8.0 - v0.9.0)
 > Goal: Enterprise-ready platform
@@ -210,8 +210,8 @@ OpenNotify (70% Telegram, 30% SMS fallback):
 | Component | Version | Status | Key Features |
 |-----------|---------|--------|--------------|
 | libs/core | v0.8.0 | ✅ Done | WhatsApp adapter |
-| apps/api | v0.5.0 | ⏳ | Team management, audit logs |
-| apps/dashboard | v0.4.0 | ⏳ | Team UI, advanced security |
+| apps/api | v0.9.0 | ✅ Done | Team management, audit logs |
+| apps/dashboard | v0.4.0 | ✅ Done | Team UI, advanced security |
 | SDKs | v0.1.0 | ⏳ | Node.js, Python, PHP, Go SDKs |
 
 ### Phase 5: Ecosystem (v1.0.0+)
