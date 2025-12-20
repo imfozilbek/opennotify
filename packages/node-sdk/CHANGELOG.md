@@ -11,6 +11,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.2.0] - 2025-12-20
+
+### Added
+- **OTP Support**
+  - `client.otp.send(options)` - Send OTP to phone number
+    - Configurable code length (4-8 digits)
+    - Configurable expiration (60-600 seconds)
+    - Custom message template support
+  - `client.otp.verify(options)` - Verify OTP code
+  - `OtpClient` class exported for advanced usage
+
+- **Templates Support**
+  - `client.templates.create(options)` - Create new template
+  - `client.templates.list(options)` - List templates with filters
+  - `client.templates.get(id)` - Get template by ID
+  - `client.templates.update(id, options)` - Update template
+  - `client.templates.delete(id)` - Delete template
+  - `client.templates.publish(id)` - Publish template (DRAFT → ACTIVE)
+  - `client.templates.unpublish(id)` - Unpublish template (ACTIVE → DRAFT)
+  - `client.templates.archive(id)` - Archive template
+  - `client.templates.render(options)` - Render template with variables
+  - `TemplatesClient` class exported for advanced usage
+
+- **New Types**
+  - OTP: `SendOtpOptions`, `SendOtpResult`, `VerifyOtpOptions`, `VerifyOtpResult`
+  - Templates: `Template`, `TemplateVariable`, `CreateTemplateOptions`, `UpdateTemplateOptions`, `ListTemplatesOptions`, `TemplateList`, `RenderTemplateOptions`, `RenderResult`
+
+---
+
 ## [0.1.0] - 2025-12-14
 
 ### Added

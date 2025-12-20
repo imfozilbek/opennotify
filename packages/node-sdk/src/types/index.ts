@@ -9,3 +9,16 @@ export type {
     SendNotificationOptions,
     SendNotificationResult,
 } from "./notifications.js"
+
+export type { SendOtpOptions, SendOtpResult, VerifyOtpOptions, VerifyOtpResult } from "./otp.js"
+
+export type {
+    CreateTemplateOptions,
+    ListTemplatesOptions,
+    RenderResult,
+    RenderTemplateOptions,
+    Template,
+    TemplateList,
+    TemplateVariable,
+    UpdateTemplateOptions,
+} from "./templates.js"

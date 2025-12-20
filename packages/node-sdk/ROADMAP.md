@@ -22,17 +22,22 @@ Node.js/TypeScript SDK for OpenNotify Platform API.
 
 ---
 
-## v0.2.0 — OTP & Templates
+## v0.2.0 — OTP & Templates ✅
 > **Goal:** OTP and templates support
 
 | Task | Status |
 |------|--------|
-| otp.send(options) method | ⏳ |
-| otp.verify(options) method | ⏳ |
-| templates.create(options) | ⏳ |
-| templates.list() | ⏳ |
-| templates.get(id) | ⏳ |
-| templates.delete(id) | ⏳ |
+| otp.send(options) method | ✅ |
+| otp.verify(options) method | ✅ |
+| templates.create(options) | ✅ |
+| templates.list() | ✅ |
+| templates.get(id) | ✅ |
+| templates.update(id) | ✅ |
+| templates.delete(id) | ✅ |
+| templates.publish(id) | ✅ |
+| templates.unpublish(id) | ✅ |
+| templates.archive(id) | ✅ |
+| templates.render(options) | ✅ |
 
 ---
 

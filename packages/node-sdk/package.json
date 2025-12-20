@@ -1,6 +1,6 @@
 {
     "name": "@opennotify/node-sdk",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "OpenNotify Node.js SDK - Unified notification API for SMS, Telegram, Email, Push",
     "author": "Fozilbek Samiyev <fozilbek.samiyev@gmail.com>",
     "license": "MIT",

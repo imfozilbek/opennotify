@@ -1,4 +1,6 @@
 import { HttpClient } from "./http.js"
+import { OtpClient } from "./otp.js"
+import { TemplatesClient } from "./templates.js"
 import type {
     Notification,
     NotificationList,
@@ -38,6 +40,16 @@ export class OpenNotify {
     private readonly http: HttpClient
 
     /**
+     * OTP client for sending and verifying one-time passwords.
+     */
+    public readonly otp: OtpClient
+
+    /**
+     * Templates client for managing message templates.
+     */
+    public readonly templates: TemplatesClient
+
+    /**
      * Create a new OpenNotify client.
      *
      * @param options - Client configuration options
@@ -53,6 +65,9 @@ export class OpenNotify {
             options.apiKey,
             options.timeout ?? DEFAULT_TIMEOUT,
         )
+
+        this.otp = new OtpClient(this.http)
+        this.templates = new TemplatesClient(this.http)
     }
 
     /**
