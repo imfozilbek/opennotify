@@ -697,3 +697,281 @@ export interface PaginatedAuditLogs {
     limit: number
     totalPages: number
 }
+
+// ============ API Keys Types ============
+export type ApiKeyPermission = "read" | "write" | "admin"
+
+export interface ApiKey {
+    id: string
+    name: string
+    keyPrefix: string
+    permissions: ApiKeyPermission[]
+    isActive: boolean
+    expiresAt?: string
+    lastUsedAt?: string
+    createdAt: string
+}
+
+export interface CreateApiKeyRequest {
+    name: string
+    permissions: ApiKeyPermission[]
+    expiresAt?: string
+}
+
+export interface ApiKeyListData {
+    apiKeys: ApiKey[]
+    total: number
+}
+
+export interface CreateApiKeyData {
+    apiKey: ApiKey
+    rawKey: string
+}
+
+// ============ Webhook Logs Types ============
+export type WebhookStatus = "SUCCESS" | "FAILED" | "PENDING" | "INVALID_SIGNATURE"
+
+export const WEBHOOK_STATUS_COLORS: Record<WebhookStatus, string> = {
+    SUCCESS: "green",
+    FAILED: "red",
+    PENDING: "yellow",
+    INVALID_SIGNATURE: "orange",
+}
+
+export const WEBHOOK_STATUS_LABELS: Record<WebhookStatus, string> = {
+    SUCCESS: "Success",
+    FAILED: "Failed",
+    PENDING: "Pending",
+    INVALID_SIGNATURE: "Invalid Signature",
+}
+
+export interface WebhookLog {
+    id: string
+    provider: string
+    status: string
+    notificationId?: string
+    externalId?: string
+    notificationStatus?: string
+    errorMessage?: string
+    processingTimeMs: number
+    ipAddress?: string
+    createdAt: string
+}
+
+export interface WebhookLogsQuery {
+    provider?: ProviderType[]
+    status?: WebhookStatus[]
+    startDate?: string
+    endDate?: string
+    page?: number
+    limit?: number
+}
+
+export interface WebhookLogsData {
+    logs: WebhookLog[]
+    pagination: {
+        total: number
+        page: number
+        limit: number
+        totalPages: number
+    }
+}
+
+// ============ Settings Types ============
+export interface GeneralSettings {
+    companyName: string
+    timezone: string
+    language: string
+    contactEmail?: string
+}
+
+export interface NotificationSettings {
+    defaultChannel: ChannelType
+    rateLimits: {
+        perMinute: number
+        perHour: number
+        perDay: number
+    }
+    retryPolicy: {
+        maxRetries: number
+        retryDelaySeconds: number
+        exponentialBackoff: boolean
+    }
+    quietHoursEnabled: boolean
+    quietHoursStart?: string
+    quietHoursEnd?: string
+}
+
+export interface SecuritySettings {
+    twoFactorEnabled: boolean
+    twoFactorMethod?: "app" | "sms" | "email"
+    sessionTimeoutMinutes: number
+    ipWhitelist?: string[]
+}
+
+export interface BrandingSettings {
+    logoUrl?: string
+    primaryColor?: string
+    accentColor?: string
+}
+
+export interface MerchantSettings {
+    general: GeneralSettings
+    notifications: NotificationSettings
+    security: SecuritySettings
+    branding: BrandingSettings
+    updatedAt: string
+}
+
+export interface UpdateSettingsRequest {
+    general?: Partial<GeneralSettings>
+    notifications?: Partial<NotificationSettings>
+    security?: Partial<SecuritySettings>
+    branding?: Partial<BrandingSettings>
+}
+
+// ============ Routing Rules Types ============
+export type MessageType = "OTP" | "MARKETING" | "TRANSACTIONAL" | "ALERT"
+
+export const MESSAGE_TYPE_LABELS: Record<MessageType, string> = {
+    OTP: "OTP",
+    MARKETING: "Marketing",
+    TRANSACTIONAL: "Transactional",
+    ALERT: "Alert",
+}
+
+export type RoutingStrategyType =
+    | "cost_optimized"
+    | "reliability_first"
+    | "recipient_preference"
+    | "channel_preference"
+
+export const ROUTING_STRATEGY_LABELS: Record<RoutingStrategyType, string> = {
+    cost_optimized: "Cost Optimized",
+    reliability_first: "Reliability First",
+    recipient_preference: "Recipient Preference",
+    channel_preference: "Channel Preference",
+}
+
+export interface TimeWindow {
+    startHour: number
+    endHour: number
+    timezone: string
+}
+
+export interface RoutingConditions {
+    messageTypes?: MessageType[]
+    allowedChannels?: ChannelType[]
+    excludedChannels?: ChannelType[]
+    activeTimeWindow?: TimeWindow
+    quietHours?: TimeWindow
+}
+
+export interface RoutingStrategy {
+    type: RoutingStrategyType
+    channels?: ChannelType[]
+}
+
+export interface RetryPolicy {
+    maxRetries: number
+    retryDelaySeconds: number
+    exponentialBackoff: boolean
+}
+
+export interface RoutingRule {
+    id: string
+    name: string
+    description?: string
+    priority: number
+    enabled: boolean
+    conditions: RoutingConditions
+    strategy: RoutingStrategy
+    maxAttempts: number
+    retryPolicy?: RetryPolicy
+    createdAt: string
+    updatedAt: string
+}
+
+export interface CreateRoutingRuleRequest {
+    name: string
+    description?: string
+    priority: number
+    conditions: RoutingConditions
+    strategy: RoutingStrategy
+    maxAttempts: number
+    retryPolicy?: RetryPolicy
+}
+
+export interface UpdateRoutingRuleRequest {
+    name?: string
+    description?: string
+    priority?: number
+    enabled?: boolean
+    conditions?: RoutingConditions
+    strategy?: RoutingStrategy
+    maxAttempts?: number
+    retryPolicy?: RetryPolicy
+}
+
+export interface RoutingRulesData {
+    rules: RoutingRule[]
+    total: number
+}
+
+// ============ Cost Analysis Types ============
+export interface ChannelCost {
+    channel: ChannelType
+    messageCount: number
+    totalCost: number
+    averageCostPerMessage: number
+    percentageOfTotal: number
+}
+
+export interface ProviderCost {
+    provider: ProviderType
+    channel: ChannelType
+    messageCount: number
+    totalCost: number
+    averageCostPerMessage: number
+}
+
+export interface CostSummary {
+    totalCost: number
+    totalMessages: number
+    averageCostPerMessage: number
+    currency: string
+}
+
+export interface TelegramSavings {
+    telegramMessages: number
+    estimatedSmsCost: number
+    actualTelegramCost: number
+    totalSavings: number
+    savingsPercentage: number
+}
+
+export interface PeriodComparison {
+    currentPeriod: {
+        startDate: string
+        endDate: string
+        totalCost: number
+        messageCount: number
+    }
+    previousPeriod: {
+        startDate: string
+        endDate: string
+        totalCost: number
+        messageCount: number
+    }
+    costChange: number
+    messageCountChange: number
+}
+
+export interface CostAnalyticsData {
+    summary: CostSummary
+    byChannel: ChannelCost[]
+    byProvider: ProviderCost[]
+    telegramSavings: TelegramSavings
+    comparison: PeriodComparison
+    dateRange: DateRange
+}

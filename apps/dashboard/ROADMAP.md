@@ -53,16 +53,66 @@ React-based Merchant Dashboard for OpenNotify.
 
 ---
 
-## v0.5.0 — Advanced Features
-> **Goal:** Enterprise features
+## v0.5.0 — API Keys Management ✅
+> **Goal:** API keys UI
 
 | Task | Status |
 |------|--------|
-| API keys management | ⏳ |
-| Webhook logs | ⏳ |
-| Settings page | ⏳ |
-| Routing rules builder | ⏳ |
-| Cost analysis | ⏳ |
+| API keys page | ✅ |
+| Create API key modal | ✅ |
+| API key created modal (copy key) | ✅ |
+| Revoke API key | ✅ |
+
+---
+
+## v0.5.1 — Webhook Logs ✅
+> **Goal:** Webhook logs viewer
+
+| Task | Status |
+|------|--------|
+| Webhook logs page | ✅ |
+| Webhook log table | ✅ |
+| Webhook log filters (provider, status, date) | ✅ |
+| Webhook log detail modal | ✅ |
+
+---
+
+## v0.5.2 — Settings Page
+> **Goal:** Merchant settings UI
+
+| Task | Status |
+|------|--------|
+| Settings page with tabs | ⏳ |
+| General settings (company, timezone, language) | ⏳ |
+| Notification settings (rate limits, retry) | ⏳ |
+| Security settings (2FA, session timeout) | ⏳ |
+| Branding settings (logo, colors) | ⏳ |
+
+---
+
+## v0.5.3 — Routing Rules Builder
+> **Goal:** Smart routing configuration UI
+
+| Task | Status |
+|------|--------|
+| Routing rules page | ⏳ |
+| Routing rule card | ⏳ |
+| Create/edit rule form | ⏳ |
+| Condition builder | ⏳ |
+| Channel priority list | ⏳ |
+
+---
+
+## v0.5.4 — Cost Analysis
+> **Goal:** Cost breakdown and savings
+
+| Task | Status |
+|------|--------|
+| Cost analysis page | ⏳ |
+| Cost breakdown chart | ⏳ |
+| Provider cost table | ⏳ |
+| Period comparison | ⏳ |
+| Telegram savings card | ⏳ |
 
 ---
 

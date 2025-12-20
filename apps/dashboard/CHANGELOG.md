@@ -11,6 +11,72 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.5.1] - 2025-12-20
+
+### Added
+- **Webhook Logs Page**
+  - View incoming webhook events from providers
+  - Paginated table with provider, status, notification ID, processing time, timestamp
+  - Color-coded status badges (Success, Failed, Invalid Signature, etc.)
+  - Filter by provider (Eskiz, PlayMobile, Telegram, etc.)
+  - Filter by status (Success, Failed, Pending, Invalid Signature)
+  - Filter by date range
+  - Clear all filters button
+
+- **Webhook Log Detail Modal**
+  - View full webhook details
+  - Shows notification ID, external ID, notification status
+  - Processing time, IP address
+  - Error message for failed webhooks
+
+- **Webhook Components**
+  - `WebhookLogTable` - paginated webhook log display
+  - `WebhookLogFilters` - multi-select filters with chip buttons
+  - `WebhookLogModal` - detailed webhook information view
+
+- **API Client**
+  - `getWebhookLogs()` - fetch webhook logs with filtering
+
+- **Navigation**
+  - Added Webhook Logs page to sidebar
+
+---
+
+## [0.5.0] - 2025-12-20
+
+### Added
+- **API Keys Page**
+  - List all API keys with masked key prefix
+  - Create new API key with name, permissions, and expiration
+  - Copy key prefix to clipboard
+  - Revoke API key with confirmation
+  - View last used date and expiration
+
+- **API Key Created Modal**
+  - Shows full raw key only once after creation
+  - Copy to clipboard button
+  - Warning about saving key securely
+
+- **API Key Components**
+  - `ApiKeyCard` - key display with masked value and actions
+  - `CreateApiKeyForm` - modal form with permissions checkboxes
+  - `ApiKeyCreatedModal` - one-time key display with copy
+
+- **API Client**
+  - `listApiKeys()` - fetch all API keys
+  - `createApiKey()` - create new API key
+  - `revokeApiKey()` - revoke API key
+
+- **Types**
+  - `ApiKey`, `ApiKeyPermission` types
+  - `CreateApiKeyRequest`, `ApiKeyListData`, `CreateApiKeyData` interfaces
+
+- **Navigation**
+  - Added API Keys, Webhook Logs, Routing, Cost Analysis, Settings pages to sidebar
+  - New routes: `/api-keys`, `/webhook-logs`, `/routing`, `/cost-analysis`, `/settings`
+
+---
+
 ## [0.4.0] - 2025-12-20
 
 ### Added

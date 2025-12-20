@@ -11,6 +11,11 @@ import { RecipientsPage } from "@/pages/RecipientsPage"
 import { NotificationsPage } from "@/pages/NotificationsPage"
 import { AnalyticsPage } from "@/pages/AnalyticsPage"
 import { TeamPage } from "@/pages/TeamPage"
+import { ApiKeysPage } from "@/pages/ApiKeysPage"
+import { WebhookLogsPage } from "@/pages/WebhookLogsPage"
+import { SettingsPage } from "@/pages/SettingsPage"
+import { RoutingPage } from "@/pages/RoutingPage"
+import { CostAnalysisPage } from "@/pages/CostAnalysisPage"
 
 export default function App(): JSX.Element {
     const { isAuthenticated } = useAuth()
@@ -34,6 +39,11 @@ export default function App(): JSX.Element {
                     <Route path="/notifications" element={<NotificationsPage />} />
                     <Route path="/analytics" element={<AnalyticsPage />} />
                     <Route path="/team" element={<TeamPage />} />
+                    <Route path="/api-keys" element={<ApiKeysPage />} />
+                    <Route path="/webhook-logs" element={<WebhookLogsPage />} />
+                    <Route path="/settings" element={<SettingsPage />} />
+                    <Route path="/routing" element={<RoutingPage />} />
+                    <Route path="/cost-analysis" element={<CostAnalysisPage />} />
                 </Route>
             </Route>
             <Route path="*" element={<Navigate to="/" replace />} />
