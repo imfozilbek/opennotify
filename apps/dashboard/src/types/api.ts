@@ -870,6 +870,13 @@ export const MESSAGE_TYPE_LABELS: Record<MessageType, string> = {
     ALERT: "Alert",
 }
 
+export const MESSAGE_TYPE_COLORS: Record<MessageType, string> = {
+    OTP: "purple",
+    MARKETING: "pink",
+    TRANSACTIONAL: "blue",
+    ALERT: "red",
+}
+
 export type RoutingStrategyType =
     | "cost_optimized"
     | "reliability_first"
@@ -883,9 +890,32 @@ export const ROUTING_STRATEGY_LABELS: Record<RoutingStrategyType, string> = {
     channel_preference: "Channel Preference",
 }
 
+export const ROUTING_STRATEGY_COLORS: Record<RoutingStrategyType, string> = {
+    cost_optimized: "green",
+    reliability_first: "blue",
+    recipient_preference: "purple",
+    channel_preference: "orange",
+}
+
+export const ROUTING_STRATEGY_ICONS: Record<RoutingStrategyType, string> = {
+    cost_optimized: "$",
+    reliability_first: "shield",
+    recipient_preference: "user",
+    channel_preference: "list",
+}
+
+export type RetryableErrorType = "timeout" | "rate_limit" | "server_error" | "connection_error"
+
+export const RETRYABLE_ERROR_LABELS: Record<RetryableErrorType, string> = {
+    timeout: "Timeout",
+    rate_limit: "Rate Limit",
+    server_error: "Server Error",
+    connection_error: "Connection Error",
+}
+
 export interface TimeWindow {
-    startHour: number
-    endHour: number
+    start: string // HH:mm format
+    end: string // HH:mm format
     timezone: string
 }
 
@@ -899,42 +929,43 @@ export interface RoutingConditions {
 
 export interface RoutingStrategy {
     type: RoutingStrategyType
-    channels?: ChannelType[]
+    channels?: ChannelType[] // only for channel_preference
 }
 
 export interface RetryPolicy {
     maxRetries: number
-    retryDelaySeconds: number
-    exponentialBackoff: boolean
+    baseDelayMs: number
+    maxDelayMs: number
+    retryableErrors?: RetryableErrorType[]
 }
 
 export interface RoutingRule {
     id: string
+    merchantId: string | null
     name: string
-    description?: string
     priority: number
-    enabled: boolean
     conditions: RoutingConditions
     strategy: RoutingStrategy
     maxAttempts: number
+    enabled: boolean
     retryPolicy?: RetryPolicy
+    isSystemDefault: boolean
     createdAt: string
     updatedAt: string
 }
 
 export interface CreateRoutingRuleRequest {
     name: string
-    description?: string
     priority: number
     conditions: RoutingConditions
     strategy: RoutingStrategy
     maxAttempts: number
+    enabled: boolean
     retryPolicy?: RetryPolicy
 }
 
 export interface UpdateRoutingRuleRequest {
     name?: string
-    description?: string
     priority?: number
     enabled?: boolean
     conditions?: RoutingConditions
@@ -943,9 +974,14 @@ export interface UpdateRoutingRuleRequest {
     retryPolicy?: RetryPolicy
 }
 
-export interface RoutingRulesData {
+export interface RoutingRulesListData {
     rules: RoutingRule[]
-    total: number
+    merchantRulesCount: number
+    systemDefaultsCount: number
+}
+
+export interface RoutingRuleData {
+    rule: RoutingRule
 }
 
 // ============ Cost Analysis Types ============

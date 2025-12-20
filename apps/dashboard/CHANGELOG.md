@@ -11,6 +11,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.6.0] - 2025-12-20
+
+### Added
+- **Routing Rules Page**
+  - View merchant rules and system defaults
+  - Create new routing rules
+  - Edit existing rules
+  - Delete rules with confirmation
+  - Enable/disable toggle for rules
+
+- **Routing Rule Components**
+  - `RoutingRuleCard` - display rule with conditions, strategy, and actions
+  - `RoutingRuleForm` - modal form for create/edit
+  - `StrategyBadge` - color-coded strategy indicator
+  - `ChannelSelector` - multi-select for channels
+  - `TimeWindowInput` - time range picker with timezone
+
+- **Form Features**
+  - Basic info: name, priority, enabled toggle
+  - Conditions: message types, allowed/excluded channels, time windows
+  - Strategy: cost optimized, reliability first, recipient preference, channel preference
+  - Channel order for channel_preference strategy
+  - Retry policy: max retries, delays, retryable errors
+
+- **API Client**
+  - `listRoutingRules()` - list rules with system defaults
+  - `createRoutingRule()` - create new rule
+  - `updateRoutingRule()` - update existing rule
+  - `deleteRoutingRule()` - delete rule
+  - `toggleRoutingRule()` - enable/disable rule
+
+- **Types**
+  - `RoutingRule`, `RoutingConditions`, `RoutingStrategy`
+  - `TimeWindow`, `RetryPolicy`
+  - `MessageType`, `RoutingStrategyType`, `RetryableErrorType`
+  - Label and color mappings for UI
+
+---
+
 ## [0.5.2] - 2025-12-20
 
 ### Added
