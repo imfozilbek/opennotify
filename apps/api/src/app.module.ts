@@ -8,6 +8,7 @@ import { NotificationsModule } from "./notifications/notifications.module"
 import { OtpModule } from "./otp/otp.module"
 import { ProvidersModule } from "./providers/providers.module"
 import { RecipientsModule } from "./recipients/recipients.module"
+import { RoutingRulesModule } from "./routing-rules/routing-rules.module"
 import { SettingsModule } from "./settings/settings.module"
 import { TemplatesModule } from "./templates/templates.module"
 import { TeamsModule } from "./teams/teams.module"
@@ -24,6 +25,7 @@ import { WebhooksModule } from "./webhooks/webhooks.module"
         OtpModule,
         ProvidersModule,
         RecipientsModule,
+        RoutingRulesModule,
         SettingsModule,
         TemplatesModule,
         TeamsModule,

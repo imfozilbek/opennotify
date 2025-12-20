@@ -147,17 +147,17 @@ NestJS-based Platform API for OpenNotify.
 
 ---
 
-## v0.10.2 — Routing Rules API
+## v0.10.2 — Routing Rules API ✅
 > **Goal:** Persistent routing rules
 
 | Task | Status |
 |------|--------|
-| RoutingRuleEntity in core | ⏳ |
-| RoutingRuleRepositoryPort in core | ⏳ |
-| GET /routing-rules — list rules | ⏳ |
-| POST /routing-rules — create rule | ⏳ |
-| PUT /routing-rules/:id — update rule | ⏳ |
-| DELETE /routing-rules/:id — delete rule | ⏳ |
+| RoutingRuleEntity in core | ✅ |
+| RoutingRuleRepositoryPort in core | ✅ |
+| GET /routing-rules — list rules | ✅ |
+| POST /routing-rules — create rule | ✅ |
+| PUT /routing-rules/:id — update rule | ✅ |
+| DELETE /routing-rules/:id — delete rule | ✅ |
 
 ---
 

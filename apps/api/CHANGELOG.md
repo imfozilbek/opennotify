@@ -8,6 +8,31 @@ All notable changes to this package will be documented in this file.
 
 ---
 
+## [0.10.2] - 2025-12-20
+
+### Added
+- **Routing Rules Module**
+  - `GET /routing-rules` - List merchant rules and system defaults
+  - `GET /routing-rules/:id` - Get single routing rule
+  - `POST /routing-rules` - Create new routing rule (ADMIN permission)
+  - `PUT /routing-rules/:id` - Update routing rule (ADMIN permission)
+  - `DELETE /routing-rules/:id` - Delete routing rule (ADMIN permission)
+- **Core Domain**
+  - Converted `RoutingRule` from Value Object to Entity with persistence support
+  - Added `merchantId`, `createdAt`, `updatedAt` fields to RoutingRule
+  - Added `RoutingRuleRepositoryPort` interface
+  - System default rules have `merchantId: null` and cannot be modified
+- **Use Cases**
+  - `CreateRoutingRuleUseCase` - Create merchant routing rules
+  - `UpdateRoutingRuleUseCase` - Update routing rules with validation
+  - `DeleteRoutingRuleUseCase` - Delete merchant rules only
+  - `ListRoutingRulesUseCase` - List rules with optional system defaults
+  - `GetRoutingRuleUseCase` - Get single rule with ownership check
+- **Infrastructure**
+  - `InMemoryRoutingRuleRepository` implementation
+
+---
+
 ## [0.10.1] - 2025-12-20
 
 ### Added

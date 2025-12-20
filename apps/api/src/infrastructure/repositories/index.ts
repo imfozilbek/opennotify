@@ -12,3 +12,7 @@ export {
 } from "./InMemoryWebhookLogRepository"
 export { InMemoryTeamRepository, sharedTeamRepository } from "./InMemoryTeamRepository"
 export { InMemoryAuditLogRepository, sharedAuditLogRepository } from "./InMemoryAuditLogRepository"
+export {
+    InMemoryRoutingRuleRepository,
+    sharedRoutingRuleRepository,
+} from "./InMemoryRoutingRuleRepository"
