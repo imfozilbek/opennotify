@@ -778,57 +778,87 @@ export interface WebhookLogsData {
 }
 
 // ============ Settings Types ============
-export interface GeneralSettings {
-    companyName: string
-    timezone: string
-    language: string
-    contactEmail?: string
-}
+// Matches the API response from GET /settings
+export interface MerchantSettings {
+    // General
+    companyName: string | null
+    country: string | null
+    timezone: string | null
+    defaultLanguage: string | null
 
-export interface NotificationSettings {
-    defaultChannel: ChannelType
-    rateLimits: {
-        perMinute: number
-        perHour: number
-        perDay: number
-    }
-    retryPolicy: {
-        maxRetries: number
-        retryDelaySeconds: number
-        exponentialBackoff: boolean
-    }
-    quietHoursEnabled: boolean
-    quietHoursStart?: string
-    quietHoursEnd?: string
-}
+    // Notification
+    defaultSmsSender: string | null
+    defaultEmailFrom: string | null
+    webhookUrl: string | null
+    webhookSecret: string | null
+    rateLimitPerMinute: number | null
+    rateLimitPerDay: number | null
+    retryAttempts: number | null
+    retryDelaySeconds: number | null
 
-export interface SecuritySettings {
+    // Security
     twoFactorEnabled: boolean
-    twoFactorMethod?: "app" | "sms" | "email"
-    sessionTimeoutMinutes: number
-    ipWhitelist?: string[]
+    sessionTimeoutMinutes: number | null
+    ipWhitelist: string[]
+
+    // Branding
+    logoUrl: string | null
+    primaryColor: string | null
+    accentColor: string | null
 }
 
-export interface BrandingSettings {
+// Matches the DTO for PUT /settings
+export interface UpdateSettingsRequest {
+    // General
+    companyName?: string
+    country?: string
+    timezone?: string
+    defaultLanguage?: string
+
+    // Notification
+    defaultSmsSender?: string
+    defaultEmailFrom?: string
+    webhookUrl?: string
+    webhookSecret?: string
+    rateLimitPerMinute?: number
+    rateLimitPerDay?: number
+    retryAttempts?: number
+    retryDelaySeconds?: number
+
+    // Security
+    twoFactorEnabled?: boolean
+    sessionTimeoutMinutes?: number
+    ipWhitelist?: string[]
+
+    // Branding
     logoUrl?: string
     primaryColor?: string
     accentColor?: string
 }
 
-export interface MerchantSettings {
-    general: GeneralSettings
-    notifications: NotificationSettings
-    security: SecuritySettings
-    branding: BrandingSettings
-    updatedAt: string
-}
+export const TIMEZONE_OPTIONS = [
+    { value: "Asia/Tashkent", label: "Tashkent (UTC+5)" },
+    { value: "Asia/Almaty", label: "Almaty (UTC+6)" },
+    { value: "Asia/Bishkek", label: "Bishkek (UTC+6)" },
+    { value: "Asia/Dushanbe", label: "Dushanbe (UTC+5)" },
+    { value: "Asia/Ashgabat", label: "Ashgabat (UTC+5)" },
+    { value: "Europe/Moscow", label: "Moscow (UTC+3)" },
+    { value: "UTC", label: "UTC" },
+]
 
-export interface UpdateSettingsRequest {
-    general?: Partial<GeneralSettings>
-    notifications?: Partial<NotificationSettings>
-    security?: Partial<SecuritySettings>
-    branding?: Partial<BrandingSettings>
-}
+export const LANGUAGE_OPTIONS = [
+    { value: "uz", label: "O'zbek" },
+    { value: "ru", label: "Русский" },
+    { value: "en", label: "English" },
+]
+
+export const COUNTRY_OPTIONS = [
+    { value: "UZ", label: "Uzbekistan" },
+    { value: "KZ", label: "Kazakhstan" },
+    { value: "KG", label: "Kyrgyzstan" },
+    { value: "TJ", label: "Tajikistan" },
+    { value: "TM", label: "Turkmenistan" },
+]
 
 // ============ Routing Rules Types ============
 export type MessageType = "OTP" | "MARKETING" | "TRANSACTIONAL" | "ALERT"

@@ -77,16 +77,16 @@ React-based Merchant Dashboard for OpenNotify.
 
 ---
 
-## v0.5.2 — Settings Page
+## v0.5.2 — Settings Page ✅
 > **Goal:** Merchant settings UI
 
 | Task | Status |
 |------|--------|
-| Settings page with tabs | ⏳ |
-| General settings (company, timezone, language) | ⏳ |
-| Notification settings (rate limits, retry) | ⏳ |
-| Security settings (2FA, session timeout) | ⏳ |
-| Branding settings (logo, colors) | ⏳ |
+| Settings page with tabs | ✅ |
+| General settings (company, timezone, language) | ✅ |
+| Notification settings (rate limits, retry) | ✅ |
+| Security settings (2FA, session timeout) | ✅ |
+| Branding settings (logo, colors) | ✅ |
 
 ---
 

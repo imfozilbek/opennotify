@@ -11,6 +11,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.5.2] - 2025-12-20
+
+### Added
+- **Settings Page**
+  - Tab-based navigation: General, Notifications, Security, Branding
+  - Save changes button with loading state
+  - Success/error notifications
+
+- **General Settings Tab**
+  - Company name input
+  - Country selector (Central Asian countries)
+  - Timezone selector (Central Asian timezones)
+  - Default language selector (Uzbek, Russian, English)
+
+- **Notification Settings Tab**
+  - Default SMS sender name
+  - Default email from address
+  - Webhook URL and secret configuration
+  - Rate limits (per minute, per day)
+  - Retry settings (attempts, delay)
+
+- **Security Settings Tab**
+  - Two-factor authentication toggle
+  - Session timeout configuration
+  - IP whitelist management (add/remove)
+
+- **Branding Settings Tab**
+  - Logo URL with live preview
+  - Primary color picker with hex input
+  - Accent color picker with hex input
+  - Color preview squares
+
+- **API Client**
+  - `getSettings()` - fetch merchant settings
+  - `updateSettings()` - update merchant settings
+
+- **Types**
+  - Updated `MerchantSettings` to match API response
+  - Added `UpdateSettingsRequest` for PUT requests
+  - Added `TIMEZONE_OPTIONS`, `LANGUAGE_OPTIONS`, `COUNTRY_OPTIONS` constants
+
+---
+
 ## [0.5.1] - 2025-12-20
 
 ### Added
