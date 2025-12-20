@@ -11,6 +11,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.9.1] - 2025-12-20
+
+### Changed
+- **RoutingRule** converted from Value Object to Entity
+  - Added `merchantId` field (null for system defaults)
+  - Added `createdAt` and `updatedAt` timestamps
+  - Added `create()` and `fromPersistence()` factory methods
+  - Added `update()`, `enable()`, `disable()` mutation methods
+  - Added `isSystemDefault` getter
+  - Moved from `domain/value-objects/` to `domain/entities/`
+
+### Added
+- **Ports**
+  - `RoutingRuleRepositoryPort` for routing rule persistence
+    - `save()`, `findById()`, `findByMerchantId()`, `findByName()`, `delete()`
+    - `getSystemDefaults()` for retrieving platform defaults
+- **Use Cases**
+  - `CreateRoutingRuleUseCase` - Create merchant routing rules with unique name validation
+  - `UpdateRoutingRuleUseCase` - Update rules with ownership verification
+  - `DeleteRoutingRuleUseCase` - Delete merchant rules (system defaults protected)
+  - `ListRoutingRulesUseCase` - List merchant rules with optional system defaults
+  - `GetRoutingRuleUseCase` - Get single rule with ownership check
+
+---
+
 ## [0.9.0] - 2025-12-18
 
 ### Added

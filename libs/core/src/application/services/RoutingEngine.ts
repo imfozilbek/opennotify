@@ -11,7 +11,7 @@ import {
     DEFAULT_ROUTING_RULES,
     RoutingRule,
     RoutingStrategy,
-} from "../../domain/value-objects/RoutingRule"
+} from "../../domain/entities/RoutingRule"
 
 /**
  * Configuration for the RoutingEngine.

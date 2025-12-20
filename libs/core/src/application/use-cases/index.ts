@@ -28,3 +28,10 @@ export * from "./GetAuditLogsUseCase"
 // Settings
 export * from "./GetSettingsUseCase"
 export * from "./UpdateSettingsUseCase"
+
+// Routing Rules
+export * from "./CreateRoutingRuleUseCase"
+export * from "./UpdateRoutingRuleUseCase"
+export * from "./DeleteRoutingRuleUseCase"
+export * from "./ListRoutingRulesUseCase"
+export * from "./GetRoutingRuleUseCase"

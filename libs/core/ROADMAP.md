@@ -128,6 +128,38 @@ Core library containing domain logic, provider adapters, and use cases for the O
 
 ---
 
+## v0.9.0 — Team Management ✅
+> **Goal:** Team and audit log entities
+
+| Task | Status |
+|------|--------|
+| Team entity | ✅ |
+| AuditLog entity | ✅ |
+| TeamRole value object | ✅ |
+| TeamRepositoryPort | ✅ |
+| AuditLogRepositoryPort | ✅ |
+| CreateTeamUseCase | ✅ |
+| AddTeamMemberUseCase | ✅ |
+| RemoveTeamMemberUseCase | ✅ |
+| GetAuditLogsUseCase | ✅ |
+
+---
+
+## v0.9.1 — Routing Rules Entity ✅
+> **Goal:** Persistent routing rules per merchant
+
+| Task | Status |
+|------|--------|
+| RoutingRule entity (from value object) | ✅ |
+| RoutingRuleRepositoryPort | ✅ |
+| CreateRoutingRuleUseCase | ✅ |
+| UpdateRoutingRuleUseCase | ✅ |
+| DeleteRoutingRuleUseCase | ✅ |
+| ListRoutingRulesUseCase | ✅ |
+| GetRoutingRuleUseCase | ✅ |
+
+---
+
 ## v1.0.0 — Production Ready
 > **Goal:** Stable, well-tested core
 
