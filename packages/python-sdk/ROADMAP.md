@@ -11,14 +11,15 @@ Python SDK for OpenNotify Platform API.
 
 | Task | Status |
 |------|--------|
-| OpenNotify client class | ⏳ |
-| send() method | ⏳ |
-| get_notification() method | ⏳ |
-| get_status() method | ⏳ |
-| Type hints (Python 3.9+) | ⏳ |
-| OpenNotifyError exception | ⏳ |
-| Async support (aiohttp) | ⏳ |
-| PyPI package setup | ⏳ |
+| OpenNotify client class | ✅ Done |
+| send() method | ✅ Done |
+| get_notification() method | ✅ Done |
+| get_status() method | ✅ Done |
+| list_notifications() method | ✅ Done |
+| Type hints (Python 3.9+) | ✅ Done |
+| OpenNotifyError exception | ✅ Done |
+| Async support (httpx) | ✅ Done |
+| PyPI package setup | ✅ Done |
 
 ---
 
