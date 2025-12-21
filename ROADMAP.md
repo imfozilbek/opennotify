@@ -204,28 +204,54 @@ OpenNotify (70% Telegram, 30% SMS fallback):
 | apps/api | v0.5.0 | ✅ Done | Analytics API |
 | apps/dashboard | v0.3.0 | ✅ Done | Analytics UI, channel comparison |
 
-### Phase 4: Enterprise Features (v0.8.0 - v0.9.0)
+### Phase 4: Enterprise Features (v0.8.0 - v0.10.0)
 > Goal: Enterprise-ready platform
 
 | Component | Version | Status | Key Features |
 |-----------|---------|--------|--------------|
 | libs/core | v0.8.0 | ✅ Done | WhatsApp adapter |
+| libs/core | v0.9.2 | ✅ Done | Cost analysis, routing rules entity |
 | apps/api | v0.9.0 | ✅ Done | Team management, audit logs |
+| apps/api | v0.10.3 | ✅ Done | Cost Analytics, routing rules API |
 | apps/dashboard | v0.4.0 | ✅ Done | Team UI, advanced security |
+| apps/dashboard | v0.6.1 | ✅ Done | Cost analysis, routing rules, settings |
 | Node.js SDK | v0.2.0 | ✅ Done | Notifications, OTP, Templates |
 | Python SDK | v0.1.0 | ✅ Done | Notifications (sync + async) |
 | PHP SDK | v0.1.0 | ✅ Done | Notifications (Guzzle) |
-| apps/api | v0.10.3 | ✅ Done | Cost Analytics, savings calculation |
 | Go SDK | v0.1.0 | ✅ Done | Notifications, Context support |
 
-### Phase 5: Ecosystem (v1.0.0+)
+### Phase 5: Landing & Docs
+> Goal: Marketing website and documentation
+
+| Component | Version | Status | Key Features |
+|-----------|---------|--------|--------------|
+| apps/landing | v0.1.0 | ⏳ | Landing page (Next.js, shadcn/ui) |
+| apps/landing | v0.2.0 | ⏳ | Marketing pages (pricing, features) |
+| apps/landing | v0.3.0 | ⏳ | Documentation site |
+| apps/landing | v0.4.0 | ⏳ | Localization (RU, UZ, EN) |
+
+### Phase 6: SDK Expansion
+> Goal: Full SDK coverage
+
+| Component | Version | Status | Key Features |
+|-----------|---------|--------|--------------|
+| Node.js SDK | v0.3.0 | ⏳ | Webhooks, retries, logging |
+| Python SDK | v0.2.0 | ⏳ | OTP, templates, Django/FastAPI |
+| PHP SDK | v0.2.0 | ⏳ | OTP, templates, Laravel |
+| Go SDK | v0.2.0 | ⏳ | OTP, templates, Gin/Echo |
+| Java SDK | v0.1.0 | ⏳ | Foundation (Spring Boot) |
+| .NET SDK | v0.1.0 | ⏳ | Foundation (ASP.NET Core) |
+| Ruby SDK | v0.1.0 | ⏳ | Foundation (Rails) |
+| Rust SDK | v0.1.0 | ⏳ | Foundation (Tokio) |
+
+### Phase 7: Ecosystem (v1.0.0+)
 > Goal: Platform ecosystem
 
-| Component | Version | Key Features |
-|-----------|---------|--------------|
-| libs/core | v1.0.0 | Viber, advanced fraud detection |
-| apps/api | v1.0.0 | Workflow automation |
-| Plugins | v0.1.0 | WooCommerce, n8n, 1C |
+| Component | Version | Status | Key Features |
+|-----------|---------|--------|--------------|
+| libs/core | v1.0.0 | ⏳ | Viber, fraud detection, full test coverage |
+| apps/api | v1.0.0 | ⏳ | Workflow automation |
+| Plugins | v0.1.0 | ⏳ | WooCommerce, n8n, 1C |
 
 ---
 
