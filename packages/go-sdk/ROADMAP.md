@@ -11,13 +11,15 @@ Go SDK for OpenNotify Platform API.
 
 | Task | Status |
 |------|--------|
-| Client struct | ⏳ |
-| Send() method | ⏳ |
-| GetNotification() method | ⏳ |
-| GetStatus() method | ⏳ |
-| Typed structs for all entities | ⏳ |
-| Error handling | ⏳ |
-| Go module setup | ⏳ |
+| Client struct | ✅ Done |
+| Send() method | ✅ Done |
+| GetNotification() method | ✅ Done |
+| GetStatus() method | ✅ Done |
+| ListNotifications() method | ✅ Done |
+| Typed structs for all entities | ✅ Done |
+| Error handling | ✅ Done |
+| Go module setup | ✅ Done |
+| Context support for cancellation | ✅ Done |
 
 ---
 
@@ -26,12 +28,11 @@ Go SDK for OpenNotify Platform API.
 
 | Task | Status |
 |------|--------|
-| OTP methods | ⏳ |
-| Templates methods | ⏳ |
-| Recipients methods | ⏳ |
-| Webhook verification | ⏳ |
-| Context support for cancellation | ⏳ |
-| Gin/Echo examples | ⏳ |
+| OTP methods (Send, Verify) | ⏳ |
+| Templates methods (CRUD, Render) | ⏳ |
+| Recipients methods (CRUD) | ⏳ |
+| Webhook verification helpers | ⏳ |
+| Gin/Echo integration examples | ⏳ |
 
 ---
 
