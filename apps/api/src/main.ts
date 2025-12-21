@@ -20,7 +20,7 @@ async function bootstrap(): Promise<void> {
     // CORS
     app.enableCors()
 
-    const port = process.env.PORT ?? 3000
+    const port = process.env.PORT ?? 4401
     await app.listen(port)
 
     console.warn(`OpenNotify API running on http://localhost:${String(port)}/api/v1`)

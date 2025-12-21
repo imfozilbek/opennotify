@@ -8,6 +8,13 @@ All notable changes to this package will be documented in this file.
 
 ---
 
+## [0.10.4] - 2025-12-21
+
+### Changed
+- Default port changed from 3000 to 4401
+
+---
+
 ## [0.10.3] - 2025-12-21
 
 ### Added

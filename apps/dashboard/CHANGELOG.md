@@ -11,6 +11,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.6.2] - 2025-12-21
+
+### Changed
+- Default dev server port changed from 5173 to 4402
+- API proxy target updated from localhost:3000 to localhost:4401
+
+---
+
 ## [0.6.1] - 2025-12-21
 
 ### Added

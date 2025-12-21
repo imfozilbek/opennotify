@@ -8,6 +8,13 @@ All notable changes to this package will be documented in this file.
 
 ---
 
+## [0.1.1] - 2025-12-21
+
+### Changed
+- Default dev server port changed from 3001 to 4403
+
+---
+
 ## [0.1.0] - 2025-12-21
 
 ### Added

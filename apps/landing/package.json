@@ -1,13 +1,13 @@
 {
     "name": "@opennotify/landing",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "OpenNotify Marketing Website",
     "author": "Fozilbek Samiyev <fozilbek.samiyev@gmail.com>",
     "private": true,
     "license": "MIT",
     "type": "module",
     "scripts": {
-        "dev": "next dev --port 3001",
+        "dev": "next dev --port 4403",
         "build": "next build",
         "start": "next start",
         "clean": "rm -rf .next out",
