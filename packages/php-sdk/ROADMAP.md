@@ -11,14 +11,16 @@ PHP SDK for OpenNotify Platform API.
 
 | Task | Status |
 |------|--------|
-| OpenNotify client class | ⏳ |
-| send() method | ⏳ |
-| getNotification() method | ⏳ |
-| getStatus() method | ⏳ |
-| PHP 8.0+ with strict types | ⏳ |
-| OpenNotifyException | ⏳ |
-| Guzzle HTTP client | ⏳ |
-| Composer/Packagist setup | ⏳ |
+| OpenNotify client class | ✅ Done |
+| send() method | ✅ Done |
+| getNotification() method | ✅ Done |
+| getStatus() method | ✅ Done |
+| listNotifications() method | ✅ Done |
+| PHP 8.0+ with strict types | ✅ Done |
+| OpenNotifyException | ✅ Done |
+| Guzzle HTTP client | ✅ Done |
+| PHP 8.1+ Enums (Channel, Provider) | ✅ Done |
+| Composer/Packagist setup | ✅ Done |
 
 ---
 

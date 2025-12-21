@@ -214,7 +214,7 @@ OpenNotify (70% Telegram, 30% SMS fallback):
 | apps/dashboard | v0.4.0 | ✅ Done | Team UI, advanced security |
 | Node.js SDK | v0.2.0 | ✅ Done | Notifications, OTP, Templates |
 | Python SDK | v0.1.0 | ✅ Done | Notifications (sync + async) |
-| PHP SDK | v0.1.0 | ⏳ | Coming soon |
+| PHP SDK | v0.1.0 | ✅ Done | Notifications (Guzzle) |
 | Go SDK | v0.1.0 | ⏳ | Coming soon |
 
 ### Phase 5: Ecosystem (v1.0.0+)
