@@ -225,7 +225,7 @@ OpenNotify (70% Telegram, 30% SMS fallback):
 
 | Component | Version | Status | Key Features |
 |-----------|---------|--------|--------------|
-| apps/landing | v0.1.0 | ⏳ | Landing page (Next.js, shadcn/ui) |
+| apps/landing | v0.1.0 | ✅ Done | Landing page (Next.js 15, shadcn/ui, dark mode) |
 | apps/landing | v0.2.0 | ⏳ | Marketing pages (pricing, features) |
 | apps/landing | v0.3.0 | ⏳ | Documentation site |
 | apps/landing | v0.4.0 | ⏳ | Localization (RU, UZ, EN) |

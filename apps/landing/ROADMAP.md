@@ -8,30 +8,30 @@ Marketing website for OpenNotify — unified notification platform for Central A
 
 ---
 
-## v0.1.0 — Foundation
+## v0.1.0 — Foundation ✅
 
 > **Goal:** High-converting single-page landing with dark mode
 
 | Task | Status |
 |------|--------|
-| Next.js 15 + TypeScript setup | ⏳ |
-| Tailwind CSS 4.0 + shadcn/ui | ⏳ |
-| Dark mode (next-themes) | ⏳ |
-| Fonts: Inter + JetBrains Mono | ⏳ |
-| Header (sticky, mobile menu) | ⏳ |
-| Hero section (headline, CTA, code snippet) | ⏳ |
-| Social proof bar (client logos) | ⏳ |
-| Problem → Solution section | ⏳ |
-| Channels section (5 cards) | ⏳ |
-| Features section (3 key features) | ⏳ |
-| Code examples (Node, Python, PHP, Go tabs) | ⏳ |
-| Savings calculator (interactive) | ⏳ |
-| Testimonials (3 cards) | ⏳ |
-| Pricing preview (3 tiers) | ⏳ |
-| FAQ section (accordion) | ⏳ |
-| Final CTA section | ⏳ |
-| Footer (4-column) | ⏳ |
-| SEO meta tags + OG images | ⏳ |
+| Next.js 15 + TypeScript setup | ✅ |
+| Tailwind CSS 4.0 + shadcn/ui | ✅ |
+| Dark mode (next-themes) | ✅ |
+| Fonts: Inter + JetBrains Mono | ✅ |
+| Header (sticky, mobile menu) | ✅ |
+| Hero section (headline, CTA, code snippet) | ✅ |
+| Social proof bar (client logos) | ✅ |
+| Problem → Solution section | ✅ |
+| Channels section (5 cards) | ✅ |
+| Features section (3 key features) | ✅ |
+| Code examples (Node, Python, PHP, Go tabs) | ✅ |
+| Savings calculator (interactive) | ✅ |
+| Testimonials (3 cards) | ✅ |
+| Pricing preview (4 tiers) | ✅ |
+| FAQ section (accordion) | ✅ |
+| Final CTA section | ✅ |
+| Footer (4-column) | ✅ |
+| SEO meta tags + OG images | ✅ |
 | Lighthouse score > 90 | ⏳ |
 
 ---
