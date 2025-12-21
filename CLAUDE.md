@@ -332,6 +332,76 @@ git push origin main --tags
 
 **⛔ MUST read `./ROADMAP.md` first** to understand current status.
 
+## Package Documentation (MANDATORY)
+
+**⛔ Every package/app MUST have these files:**
+
+| File | Purpose |
+|------|---------|
+| `ROADMAP.md` | Milestones, tasks with checkboxes |
+| `CHANGELOG.md` | Version history, what changed |
+| `TODO.md` | Technical debt, known issues |
+
+**Root level:**
+
+| File | Purpose |
+|------|---------|
+| `/ROADMAP.md` | Master: phases, architecture, status table |
+| `/CHANGELOG.md` | Optional: root-level changes only |
+
+## ROADMAP.md Rules
+
+| Rule | Requirement |
+|------|-------------|
+| Structure | Phases → Milestones → Tasks with `[x]`/`[ ]` |
+| Versioning | Independent semver per package (v0.1.0) |
+| Dependencies | Show "Depends on: package vX.X.X" |
+| Status | ✅ Completed, 🔄 In Progress, ⏳ Planned |
+
+## CHANGELOG.md Rules
+
+**Format:** [Keep a Changelog](https://keepachangelog.com/)
+
+```markdown
+## [0.2.0] - 2025-01-15
+### Added
+- New feature X
+### Fixed
+- Bug in Y
+### Changed
+- Refactored Z
+```
+
+**⛔ RULES:**
+- Update BEFORE release (not after)
+- Group by: Added, Changed, Fixed, Removed
+- Link to issues/PRs when relevant
+
+## TODO.md Rules (Technical Debt)
+
+**Format:**
+```markdown
+## High Priority
+- [ ] Fix memory leak in X (#123)
+- [x] ~~Refactor auth module~~ (done in v0.2.0)
+
+## Low Priority
+- [ ] Add caching to Y
+```
+
+**⛔ RULES:**
+- Add items when you notice shortcuts/hacks
+- Mark `[x]` when resolved
+- Reference in commits: `fix(api): resolve issue (TODO #3)`
+- Review before each release
+
+**Dependency order (always):**
+```
+1. @opennotify/core    (domain, adapters)
+2. @opennotify/api     (uses core)
+3. @opennotify/node-sdk (HTTP client)
+```
+
 ## Shared Code Policy
 
 **⛔ Code duplication is PROHIBITED.**
