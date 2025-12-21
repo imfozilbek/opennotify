@@ -5,6 +5,8 @@ import type {
     AnalyticsSummaryData,
     AnalyticsSummaryQuery,
     ApiResponse,
+    CostAnalyticsData,
+    CostAnalyticsQuery,
 } from "@/types/api"
 import { apiGet } from "./client"
 
@@ -60,4 +62,14 @@ export async function getAnalyticsLogs(
 ): Promise<ApiResponse<AnalyticsLogsData>> {
     const queryString = query ? buildQueryString(query) : ""
     return apiGet<AnalyticsLogsData>(`/api/v1/analytics/logs${queryString}`)
+}
+
+/**
+ * Get cost analytics with savings breakdown.
+ */
+export async function getCostAnalytics(
+    query?: CostAnalyticsQuery,
+): Promise<ApiResponse<CostAnalyticsData>> {
+    const queryString = query ? buildQueryString(query) : ""
+    return apiGet<CostAnalyticsData>(`/api/v1/analytics/costs${queryString}`)
 }

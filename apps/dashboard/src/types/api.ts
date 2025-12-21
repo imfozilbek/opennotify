@@ -985,59 +985,42 @@ export interface RoutingRuleData {
 }
 
 // ============ Cost Analysis Types ============
-export interface ChannelCost {
-    channel: ChannelType
-    messageCount: number
-    totalCost: number
-    averageCostPerMessage: number
-    percentageOfTotal: number
+
+export interface ProviderCostBreakdown {
+    provider: string
+    count: number
+    cost: number
+    pricePerMessage: number
 }
 
-export interface ProviderCost {
-    provider: ProviderType
-    channel: ChannelType
-    messageCount: number
-    totalCost: number
-    averageCostPerMessage: number
+export interface ChannelCostBreakdown {
+    channel: string
+    count: number
+    actualCost: number
+    potentialSmsCost: number
+    savings: number
+    savingsPercent: number
+    providers: ProviderCostBreakdown[]
 }
 
-export interface CostSummary {
+export interface CostAnalysis {
+    totalNotifications: number
     totalCost: number
-    totalMessages: number
-    averageCostPerMessage: number
+    potentialSmsCost: number
+    totalSavings: number
+    savingsPercent: number
+    averageCostPerNotification: number
+    byChannel: ChannelCostBreakdown[]
     currency: string
 }
 
-export interface TelegramSavings {
-    telegramMessages: number
-    estimatedSmsCost: number
-    actualTelegramCost: number
-    totalSavings: number
-    savingsPercentage: number
-}
-
-export interface PeriodComparison {
-    currentPeriod: {
-        startDate: string
-        endDate: string
-        totalCost: number
-        messageCount: number
-    }
-    previousPeriod: {
-        startDate: string
-        endDate: string
-        totalCost: number
-        messageCount: number
-    }
-    costChange: number
-    messageCountChange: number
-}
-
 export interface CostAnalyticsData {
-    summary: CostSummary
-    byChannel: ChannelCost[]
-    byProvider: ProviderCost[]
-    telegramSavings: TelegramSavings
-    comparison: PeriodComparison
+    costs: CostAnalysis
     dateRange: DateRange
+}
+
+export interface CostAnalyticsQuery {
+    period?: AnalyticsPeriod
+    startDate?: string
+    endDate?: string
 }

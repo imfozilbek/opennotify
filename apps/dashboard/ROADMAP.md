@@ -90,29 +90,29 @@ React-based Merchant Dashboard for OpenNotify.
 
 ---
 
-## v0.5.3 — Routing Rules Builder
+## v0.5.3 — Routing Rules Builder ✅
 > **Goal:** Smart routing configuration UI
 
 | Task | Status |
 |------|--------|
-| Routing rules page | ⏳ |
-| Routing rule card | ⏳ |
-| Create/edit rule form | ⏳ |
-| Condition builder | ⏳ |
-| Channel priority list | ⏳ |
+| Routing rules page | ✅ |
+| Routing rule card | ✅ |
+| Create/edit rule form | ✅ |
+| Condition builder | ✅ |
+| Channel priority list | ✅ |
 
 ---
 
-## v0.5.4 — Cost Analysis
+## v0.5.4 — Cost Analysis ✅
 > **Goal:** Cost breakdown and savings
 
 | Task | Status |
 |------|--------|
-| Cost analysis page | ⏳ |
-| Cost breakdown chart | ⏳ |
-| Provider cost table | ⏳ |
-| Period comparison | ⏳ |
-| Telegram savings card | ⏳ |
+| Cost analysis page | ✅ |
+| Cost breakdown chart | ✅ |
+| Provider cost table | ✅ |
+| Period selector | ✅ |
+| Telegram savings card | ✅ |
 
 ---
 

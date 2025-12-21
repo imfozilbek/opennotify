@@ -11,6 +11,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.6.1] - 2025-12-21
+
+### Added
+- **Cost Analysis Page**
+  - View cost breakdown by notification channel
+  - Period selector (today, this week, this month, last 7/30 days)
+  - Summary stat cards (total cost, messages, average cost)
+  - Telegram savings card showing cost savings vs SMS-only
+  - Channel cost breakdown with visual progress bars
+  - Provider cost details table with per-message pricing
+
+- **Cost Components**
+  - `StatCard` - metric display with icon and subtext
+  - `SavingsCard` - savings summary with gradient header
+  - `ChannelCostBar` - visual cost comparison per channel
+  - `ProviderTable` - detailed provider cost breakdown
+
+- **API Client**
+  - `getCostAnalytics()` - fetch cost analysis data
+
+- **Types**
+  - `CostAnalysis`, `ChannelCostBreakdown`, `ProviderCostBreakdown`
+  - Currency formatting utilities
+
+---
+
 ## [0.6.0] - 2025-12-20
 
 ### Added
