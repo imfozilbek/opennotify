@@ -36,20 +36,20 @@ Marketing website for OpenNotify — unified notification platform for Central A
 
 ---
 
-## v0.2.0 — Marketing Pages
+## v0.2.0 — Marketing Pages ✅
 
 > **Goal:** Full marketing site with dedicated pages
 
 | Task | Status |
 |------|--------|
-| Pricing page (full comparison table) | ⏳ |
-| Annual/Monthly toggle | ⏳ |
-| Enterprise tier (Contact Sales) | ⏳ |
-| Features page (detailed) | ⏳ |
-| Channels page (per-channel details) | ⏳ |
-| Use cases page (6 use cases) | ⏳ |
-| About page | ⏳ |
-| Blog setup (MDX) | ⏳ |
+| Pricing page (full comparison table) | ✅ |
+| Annual/Monthly toggle | ✅ |
+| Enterprise tier (Contact Sales) | ✅ |
+| Features page (detailed) | ✅ |
+| Channels page (per-channel details) | ✅ |
+| Use cases page (6 use cases) | ✅ |
+| About page | ✅ |
+| Blog setup (MDX) | ✅ |
 
 ---
 

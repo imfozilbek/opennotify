@@ -17,21 +17,21 @@ function GitHubIcon({ className }: { className?: string }): React.ReactElement {
 
 const footerLinks = {
     product: [
-        { label: "Возможности", href: "#features" },
-        { label: "Каналы", href: "#channels" },
-        { label: "Цены", href: "#pricing" },
-        { label: "Roadmap", href: "#" },
+        { label: "Возможности", href: "/features" },
+        { label: "Каналы", href: "/channels" },
+        { label: "Цены", href: "/pricing" },
+        { label: "Кейсы", href: "/use-cases" },
     ],
     resources: [
         { label: "Документация", href: "#" },
         { label: "API Reference", href: "#" },
-        { label: "SDK", href: "#" },
+        { label: "Блог", href: "/blog" },
         { label: "Статус", href: "#" },
     ],
     company: [
-        { label: "О нас", href: "#" },
-        { label: "Блог", href: "#" },
-        { label: "Контакты", href: "#" },
+        { label: "О нас", href: "/about" },
+        { label: "Контакты", href: "/about#contacts" },
+        { label: "GitHub", href: "https://github.com/opennotify" },
     ],
     legal: [
         { label: "Политика конфиденциальности", href: "#" },

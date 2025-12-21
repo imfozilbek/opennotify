@@ -1,0 +1,153 @@
+---
+title: "Отправка OTP через Telegram: пошаговая интеграция"
+description: "Как настроить отправку OTP-кодов через Telegram бота вместо SMS и сэкономить на каждом сообщении."
+date: "2025-12-19"
+author: "OpenNotify Team"
+authorRole: "Команда разработки"
+category: "Руководства"
+tags: ["telegram", "otp", "интеграция", "бот"]
+---
+
+## Почему Telegram для OTP?
+
+SMS-сообщения в Узбекистане стоят от 50 до 100 сум за сообщение. При отправке тысяч OTP в день это существенные расходы.
+
+**Telegram-уведомления бесплатны** — вы платите только за использование платформы OpenNotify.
+
+При этом Telegram обеспечивает:
+
+- Мгновенную доставку (< 1 секунды)
+- Delivery rate 99.9%
+- Rich-форматирование (жирный текст, ссылки)
+
+## Шаг 1: Создание Telegram бота
+
+Если у вас ещё нет бота, создайте его через @BotFather:
+
+1. Откройте @BotFather в Telegram
+2. Отправьте `/newbot`
+3. Следуйте инструкциям
+4. Скопируйте токен бота
+
+## Шаг 2: Подключение бота к OpenNotify
+
+```typescript
+import { OpenNotify } from "@opennotify/node-sdk"
+
+const client = new OpenNotify({ apiKey: "sk_live_..." })
+
+// Подключаем бота
+await client.providers.connect({
+    channel: "telegram",
+    provider: "telegram_bot",
+    credentials: {
+        botToken: "123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11"
+    }
+})
+```
+
+## Шаг 3: Подписка пользователей
+
+Пользователи должны подписаться на вашего бота, чтобы получать сообщения.
+
+Создайте ссылку для подписки:
+
+```typescript
+const subscriptionLink = await client.telegram.createSubscriptionLink({
+    userId: "user_123",  // ID пользователя в вашей системе
+    metadata: {
+        phone: "+998901234567"
+    }
+})
+
+// Отправьте эту ссылку пользователю
+// Когда он перейдет и нажмёт /start, подписка активируется
+```
+
+## Шаг 4: Отправка OTP
+
+Теперь можно отправлять OTP через Telegram:
+
+```typescript
+// Отправка с автоматическим fallback на SMS
+const result = await client.otp.send({
+    recipient: "+998901234567",
+    channel: "auto",  // Telegram если подписан, иначе SMS
+    template: "otp_code",
+    variables: {
+        code: "123456"
+    }
+})
+
+console.log(result.channel)  // "telegram" или "sms"
+console.log(result.messageId)
+```
+
+## Обработка fallback
+
+Если пользователь не подписан на бота, OpenNotify автоматически отправит SMS:
+
+```typescript
+const result = await client.otp.send({
+    recipient: "+998901234567",
+    channel: "auto",
+    fallback: {
+        channel: "sms",
+        delay: 0  // Мгновенный fallback
+    }
+})
+
+if (result.channel === "sms") {
+    // Можно показать пользователю предложение подписаться на бота
+    // для получения бесплатных уведомлений
+}
+```
+
+## Аналитика и мониторинг
+
+Отслеживайте эффективность через Dashboard:
+
+- Процент пользователей, подписанных на бота
+- Сколько OTP отправлено через Telegram vs SMS
+- Экономия в реальном времени
+
+## Лучшие практики
+
+### 1. Мотивируйте подписаться на бота
+
+Объясните пользователям преимущества:
+
+- Мгновенная доставка
+- История всех кодов в одном месте
+- Можно отключить в любой момент
+
+### 2. Используйте красивое форматирование
+
+```typescript
+await client.send({
+    channel: "telegram",
+    recipient: telegramChatId,
+    message: "🔐 *Ваш код подтверждения*\n\n`123456`\n\nКод действителен 5 минут.",
+    parseMode: "Markdown"
+})
+```
+
+### 3. Добавьте кнопки
+
+```typescript
+await client.send({
+    channel: "telegram",
+    recipient: telegramChatId,
+    message: "Подтвердите вход в систему",
+    replyMarkup: {
+        inlineKeyboard: [
+            [{ text: "✅ Это я", callbackData: "confirm_123" }],
+            [{ text: "❌ Это не я", callbackData: "deny_123" }]
+        ]
+    }
+})
+```
+
+---
+
+*Готовы начать? [Создайте бесплатный аккаунт](/pricing)*

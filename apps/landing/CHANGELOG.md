@@ -8,6 +8,39 @@ All notable changes to this package will be documented in this file.
 
 ---
 
+## [0.2.0] - 2025-12-21
+
+### Added
+- **Marketing Pages**
+  - Pricing page with full feature comparison table
+  - Annual/Monthly billing toggle with 17% discount display
+  - Enterprise tier with "Contact Sales" CTA
+  - Features page with detailed feature descriptions and visuals
+  - Channels page with per-channel details (SMS, Telegram, Email, Push, WhatsApp)
+  - Use Cases page with 6 industry-specific use cases
+  - About page with company info, mission, values, and timeline
+
+- **Blog System**
+  - MDX-based blog with frontmatter support
+  - Blog listing page with featured post
+  - Individual blog post pages with reading time
+  - Category and tag support
+  - Sample blog posts included
+
+- **Navigation Updates**
+  - Updated header navigation to new pages
+  - Updated footer links
+
+- **New Data Structures**
+  - `PRICING_TIERS_FULL` with monthly/annual pricing
+  - `PRICING_FEATURES_MATRIX` for comparison table
+  - `PRICING_FAQ` for pricing-specific questions
+  - `FEATURES_DETAILED` with comprehensive feature info
+  - `CHANNELS_DETAILED` with provider information
+  - `USE_CASES` with industry examples and stats
+
+---
+
 ## [0.1.1] - 2025-12-21
 
 ### Changed
