@@ -1,6 +1,7 @@
 import {
     AggregatedStats,
     Channel,
+    ChannelProviderStats,
     ChannelStats,
     DateRange,
     Notification,
@@ -203,6 +204,32 @@ export class InMemoryNotificationRepository implements NotificationRepositoryPor
         }
 
         return Promise.resolve(notifications.length)
+    }
+
+    async getStatsByChannelAndProvider(
+        merchantId: string,
+        dateRange?: DateRange,
+    ): Promise<ChannelProviderStats[]> {
+        const notifications = this.filterByMerchantAndDate(merchantId, dateRange)
+
+        const statsMap = new Map<string, ChannelProviderStats>()
+
+        for (const notification of notifications) {
+            const key = `${notification.channel}:${notification.provider}`
+            const existing = statsMap.get(key)
+
+            if (existing) {
+                existing.count++
+            } else {
+                statsMap.set(key, {
+                    channel: notification.channel,
+                    provider: notification.provider,
+                    count: 1,
+                })
+            }
+        }
+
+        return Promise.resolve(Array.from(statsMap.values()))
     }
 
     /**

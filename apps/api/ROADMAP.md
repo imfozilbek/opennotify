@@ -161,14 +161,14 @@ NestJS-based Platform API for OpenNotify.
 
 ---
 
-## v0.10.3 — Cost Analytics
+## v0.10.3 — Cost Analytics ✅
 > **Goal:** Cost breakdown endpoints
 
 | Task | Status |
 |------|--------|
-| GetCostAnalysisUseCase in core | ⏳ |
-| GET /analytics/costs — cost breakdown | ⏳ |
-| Telegram savings calculation | ⏳ |
+| GetCostAnalysisUseCase in core | ✅ |
+| GET /analytics/costs — cost breakdown | ✅ |
+| Telegram savings calculation | ✅ |
 
 ---
 

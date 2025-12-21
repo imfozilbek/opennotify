@@ -5,6 +5,7 @@ import { ApiKeyGuard } from "../common/guards"
 import {
     AnalyticsService,
     ChannelStatsResponse,
+    CostAnalysisResponse,
     DateRangeResponse,
     LogEntryResponse,
     PaginationResponse,
@@ -13,6 +14,7 @@ import {
 import {
     GetAnalyticsByChannelQueryDto,
     GetAnalyticsSummaryQueryDto,
+    GetCostAnalyticsQueryDto,
     GetNotificationLogsQueryDto,
 } from "./dto/analytics.dto"
 
@@ -46,6 +48,17 @@ interface LogsApiResponse {
     data: {
         logs: LogEntryResponse[]
         pagination: PaginationResponse
+    }
+}
+
+/**
+ * Costs response shape.
+ */
+interface CostsApiResponse {
+    success: boolean
+    data: {
+        costs: CostAnalysisResponse
+        dateRange: DateRangeResponse
     }
 }
 
@@ -131,6 +144,35 @@ export class AnalyticsController {
         @Query() query: GetNotificationLogsQueryDto,
     ): Promise<LogsApiResponse> {
         const result = await this.analyticsService.getLogs(merchant.id, query)
+
+        return {
+            success: true,
+            data: result,
+        }
+    }
+
+    /**
+     * GET /analytics/costs
+     *
+     * Get cost analysis with savings breakdown.
+     *
+     * Query params:
+     * - period: Preset period (today, this_week, this_month, last_7_days, last_30_days)
+     * - startDate: Custom start date (ISO 8601)
+     * - endDate: Custom end date (ISO 8601)
+     *
+     * Returns:
+     * - Total costs and potential SMS costs
+     * - Savings from using cheaper channels (Telegram, Email, Push)
+     * - Breakdown by channel and provider
+     */
+    @Get("costs")
+    @RequirePermissions(ApiKeyPermission.READ)
+    async getCosts(
+        @CurrentMerchant() merchant: Merchant,
+        @Query() query: GetCostAnalyticsQueryDto,
+    ): Promise<CostsApiResponse> {
+        const result = await this.analyticsService.getCosts(merchant.id, query)
 
         return {
             success: true,

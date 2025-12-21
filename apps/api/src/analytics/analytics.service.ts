@@ -4,6 +4,7 @@ import {
     Channel,
     GetAnalyticsByChannelUseCase,
     GetAnalyticsSummaryUseCase,
+    GetCostAnalysisUseCase,
     GetNotificationLogsUseCase,
     NotificationRepositoryPort,
     NotificationStatus,
@@ -15,6 +16,7 @@ import {
     ChannelFilterDto,
     GetAnalyticsByChannelQueryDto,
     GetAnalyticsSummaryQueryDto,
+    GetCostAnalyticsQueryDto,
     GetNotificationLogsQueryDto,
     ProviderFilterDto,
     StatusFilterDto,
@@ -85,18 +87,57 @@ export interface PaginationResponse {
     totalPages: number
 }
 
+/**
+ * Provider cost breakdown response.
+ */
+export interface ProviderCostBreakdownResponse {
+    provider: string
+    count: number
+    cost: number
+    pricePerMessage: number
+}
+
+/**
+ * Channel cost breakdown response.
+ */
+export interface ChannelCostBreakdownResponse {
+    channel: string
+    count: number
+    actualCost: number
+    potentialSmsCost: number
+    savings: number
+    savingsPercent: number
+    providers: ProviderCostBreakdownResponse[]
+}
+
+/**
+ * Cost analysis response.
+ */
+export interface CostAnalysisResponse {
+    totalNotifications: number
+    totalCost: number
+    potentialSmsCost: number
+    totalSavings: number
+    savingsPercent: number
+    averageCostPerNotification: number
+    byChannel: ChannelCostBreakdownResponse[]
+    currency: string
+}
+
 @Injectable()
 export class AnalyticsService {
     private readonly repository: NotificationRepositoryPort
     private readonly getSummaryUseCase: GetAnalyticsSummaryUseCase
     private readonly getByChannelUseCase: GetAnalyticsByChannelUseCase
     private readonly getLogsUseCase: GetNotificationLogsUseCase
+    private readonly getCostAnalysisUseCase: GetCostAnalysisUseCase
 
     constructor() {
         this.repository = sharedNotificationRepository
         this.getSummaryUseCase = new GetAnalyticsSummaryUseCase(this.repository)
         this.getByChannelUseCase = new GetAnalyticsByChannelUseCase(this.repository)
         this.getLogsUseCase = new GetNotificationLogsUseCase(this.repository)
+        this.getCostAnalysisUseCase = new GetCostAnalysisUseCase(this.repository)
     }
 
     /**
@@ -161,6 +202,25 @@ export class AnalyticsService {
         return {
             logs: result.logs,
             pagination: result.pagination,
+        }
+    }
+
+    /**
+     * Get cost analysis for a merchant.
+     */
+    async getCosts(
+        merchantId: string,
+        query: GetCostAnalyticsQueryDto,
+    ): Promise<{ costs: CostAnalysisResponse; dateRange: DateRangeResponse }> {
+        const result = await this.getCostAnalysisUseCase.execute({
+            merchantId,
+            period: this.mapPeriod(query.period),
+            dateRange: this.buildDateRange(query.startDate, query.endDate),
+        })
+
+        return {
+            costs: result.costs,
+            dateRange: result.dateRange,
         }
     }
 

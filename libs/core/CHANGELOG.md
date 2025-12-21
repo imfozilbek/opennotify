@@ -11,6 +11,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.9.2] - 2025-12-21
+
+### Added
+- **Value Objects**
+  - `ChannelPricing` for provider/channel pricing configuration
+    - `DefaultProviderPricing` - prices per provider in UZS
+    - `DefaultChannelPricing` - prices per channel (cheapest provider)
+    - `ReferenceSmsPrice` - baseline SMS price (150 UZS) for savings calculation
+    - Helper functions: `getProviderPrice()`, `getChannelPrice()`, `isFreeChannel()`, `isFreeProvider()`
+  - `CostAnalysis` for cost analysis results
+    - Total cost, potential SMS cost, savings, savings percent
+    - Per-channel breakdown with provider details
+    - `empty()` factory for zero-notification case
+- **Ports**
+  - Extended `NotificationRepositoryPort` with:
+    - `ChannelProviderStats` interface for channel/provider grouping
+    - `getStatsByChannelAndProvider()` method for cost analysis queries
+- **Use Cases**
+  - `GetCostAnalysisUseCase` for calculating notification costs and savings
+    - Supports period presets and custom date ranges
+    - Calculates actual cost based on provider prices
+    - Calculates potential SMS cost (if all were SMS)
+    - Returns savings amount and percentage
+    - Per-channel breakdown sorted by savings
+
+---
+
 ## [0.9.1] - 2025-12-20
 
 ### Changed

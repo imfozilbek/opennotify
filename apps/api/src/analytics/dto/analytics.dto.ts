@@ -131,3 +131,20 @@ export class GetNotificationLogsQueryDto {
     @Min(1)
     limit?: number
 }
+
+/**
+ * Query params for cost analytics.
+ */
+export class GetCostAnalyticsQueryDto {
+    @IsOptional()
+    @IsEnum(AnalyticsPeriodDto)
+    period?: AnalyticsPeriodDto
+
+    @IsOptional()
+    @IsDateString()
+    startDate?: string
+
+    @IsOptional()
+    @IsDateString()
+    endDate?: string
+}

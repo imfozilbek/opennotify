@@ -14,6 +14,7 @@ export * from "./RenderTemplateUseCase"
 export * from "./GetAnalyticsSummaryUseCase"
 export * from "./GetAnalyticsByChannelUseCase"
 export * from "./GetNotificationLogsUseCase"
+export * from "./GetCostAnalysisUseCase"
 
 // Webhooks
 export * from "./ProcessWebhookUseCase"

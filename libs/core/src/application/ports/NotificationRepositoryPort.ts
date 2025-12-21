@@ -43,6 +43,21 @@ export interface AggregatedStats {
 }
 
 /**
+ * Statistics grouped by channel and provider.
+ * Used for cost analysis where provider-specific pricing applies.
+ */
+export interface ChannelProviderStats {
+    /** Channel type */
+    channel: Channel
+
+    /** Provider used */
+    provider: Provider
+
+    /** Total notification count */
+    count: number
+}
+
+/**
  * Port interface for notification persistence.
  * Implemented by infrastructure layer (database adapters).
  */
@@ -92,4 +107,13 @@ export interface NotificationRepositoryPort {
      * Used for pagination total count.
      */
     countWithFilters(merchantId: string, filters: NotificationFilters): Promise<number>
+
+    /**
+     * Get statistics grouped by channel and provider.
+     * Used for cost analysis where provider-specific pricing applies.
+     */
+    getStatsByChannelAndProvider(
+        merchantId: string,
+        dateRange?: DateRange,
+    ): Promise<ChannelProviderStats[]>
 }

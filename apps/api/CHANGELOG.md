@@ -8,6 +8,35 @@ All notable changes to this package will be documented in this file.
 
 ---
 
+## [0.10.3] - 2025-12-21
+
+### Added
+- **Cost Analytics Endpoint**
+  - `GET /analytics/costs` - Get cost analysis with savings breakdown
+    - Query params: period, startDate, endDate (same as other analytics endpoints)
+    - Returns total costs, potential SMS costs, and savings
+    - Savings percentage calculation (vs SMS-only scenario)
+    - Per-channel breakdown with provider details
+    - Currency: UZS (Uzbek Sum)
+- **Response includes:**
+  - `totalNotifications` - Total count for period
+  - `totalCost` - Actual cost based on providers used
+  - `potentialSmsCost` - What it would cost if all were SMS
+  - `totalSavings` - Money saved by using cheaper channels
+  - `savingsPercent` - Percentage saved (0-100)
+  - `averageCostPerNotification` - Cost efficiency metric
+  - `byChannel[]` - Breakdown per channel with provider details
+
+### Pricing Model (UZS)
+- SMS (Eskiz, PlayMobile, GetSMS): 150
+- Telegram: 0 (free)
+- Email (SMTP): 0 (free)
+- Email (SendGrid, Mailgun): 30
+- Push (FCM, APNs): 0 (free)
+- WhatsApp Business: 300
+
+---
+
 ## [0.10.2] - 2025-12-20
 
 ### Added
