@@ -6,6 +6,8 @@ Marketing website for OpenNotify — unified notification platform for Central A
 
 **Tech Stack:** Next.js 15, shadcn/ui, Tailwind CSS 4.0, Framer Motion
 
+> **Note:** Documentation moved to separate package: [apps/docs/ROADMAP.md](../docs/ROADMAP.md)
+
 ---
 
 ## v0.1.0 — Foundation ✅
@@ -53,27 +55,7 @@ Marketing website for OpenNotify — unified notification platform for Central A
 
 ---
 
-## v0.3.0 — Documentation
-
-> **Goal:** Developer documentation site
-
-| Task | Status |
-|------|--------|
-| Docs layout (sidebar + content) | ⏳ |
-| Search (Algolia/local) | ⏳ |
-| Getting Started guide | ⏳ |
-| API Reference (all endpoints) | ⏳ |
-| Node.js SDK docs | ⏳ |
-| Python SDK docs | ⏳ |
-| PHP SDK docs | ⏳ |
-| Go SDK docs | ⏳ |
-| Smart Routing guide | ⏳ |
-| Webhook Integration guide | ⏳ |
-| Provider Setup guides | ⏳ |
-
----
-
-## v0.4.0 — Localization
+## v0.3.0 — Localization
 
 > **Goal:** Multi-language support (RU, UZ, EN)
 
@@ -88,7 +70,7 @@ Marketing website for OpenNotify — unified notification platform for Central A
 
 ---
 
-## v0.5.0 — Advanced Features
+## v0.4.0 — Advanced Features
 
 > **Goal:** Conversion optimization and analytics
 

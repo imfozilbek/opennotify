@@ -226,9 +226,13 @@ OpenNotify (70% Telegram, 30% SMS fallback):
 | Component | Version | Status | Key Features |
 |-----------|---------|--------|--------------|
 | apps/landing | v0.1.0 | ✅ Done | Landing page (Next.js 15, shadcn/ui, dark mode) |
-| apps/landing | v0.2.0 | ⏳ | Marketing pages (pricing, features) |
-| apps/landing | v0.3.0 | ⏳ | Documentation site |
-| apps/landing | v0.4.0 | ⏳ | Localization (RU, UZ, EN) |
+| apps/landing | v0.2.0 | ✅ Done | Marketing pages (pricing, features, blog) |
+| apps/landing | v0.3.0 | ⏳ | Localization (RU, UZ, EN) |
+| apps/docs | v0.1.0 | ⏳ | Fumadocs setup, Getting Started |
+| apps/docs | v0.2.0 | ⏳ | SDK docs, Channel docs, Features docs |
+| apps/docs | v0.3.0 | ⏳ | API Reference (OpenAPI) |
+| apps/docs | v0.4.0 | ⏳ | Provider setup guides |
+| apps/docs | v0.5.0 | ⏳ | Search, SEO, polish |
 
 ### Phase 6: SDK Expansion
 > Goal: Full SDK coverage
@@ -265,6 +269,7 @@ Detailed roadmaps for each component:
 | Platform API | [apps/api/ROADMAP.md](apps/api/ROADMAP.md) | REST API, business logic |
 | Dashboard | [apps/dashboard/ROADMAP.md](apps/dashboard/ROADMAP.md) | Merchant portal |
 | Landing | [apps/landing/ROADMAP.md](apps/landing/ROADMAP.md) | Marketing site |
+| Docs | [apps/docs/ROADMAP.md](apps/docs/ROADMAP.md) | Developer documentation |
 | Node.js SDK | [packages/node-sdk/ROADMAP.md](packages/node-sdk/ROADMAP.md) | JS/TS SDK |
 | Python SDK | [packages/python-sdk/ROADMAP.md](packages/python-sdk/ROADMAP.md) | Python SDK |
 | PHP SDK | [packages/php-sdk/ROADMAP.md](packages/php-sdk/ROADMAP.md) | PHP SDK |
