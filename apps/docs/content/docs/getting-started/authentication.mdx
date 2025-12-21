@@ -1,0 +1,92 @@
+---
+title: Authentication
+description: Learn how to authenticate your API requests to OpenNotify using API keys.
+---
+
+# Authentication
+
+All API requests to OpenNotify require authentication using an API key.
+
+## Getting Your API Key
+
+1. Log in to the [OpenNotify Dashboard](https://dashboard.opennotify.uz)
+2. Navigate to **Settings** → **API Keys**
+3. Click **Create API Key**
+4. Copy and securely store your key
+
+<Callout type="error">
+API keys are shown only once. If you lose your key, you'll need to create a new one.
+</Callout>
+
+## Using Your API Key
+
+### With the SDK
+
+```typescript
+import { OpenNotify } from "@opennotify/sdk"
+
+const client = new OpenNotify({
+    apiKey: "sk_live_xxxxxxxxxxxxxxxx",
+})
+```
+
+### With HTTP Requests
+
+Include your API key in the `Authorization` header:
+
+```bash
+curl -X POST https://api.opennotify.uz/send \
+  -H "Authorization: Bearer sk_live_xxxxxxxxxxxxxxxx" \
+  -H "Content-Type: application/json" \
+  -d '{"to": "+998901234567", "channel": "sms", "message": "Hello!"}'
+```
+
+## API Key Types
+
+| Type | Prefix | Usage |
+|------|--------|-------|
+| **Live** | `sk_live_` | Production environment |
+| **Test** | `sk_test_` | Development and testing |
+
+<Callout type="info">
+Test keys don't actually send notifications. They simulate the API response for development purposes.
+</Callout>
+
+## Security Best Practices
+
+1. **Never expose keys in client-side code** — API keys should only be used server-side
+2. **Use environment variables** — Store keys in `.env` files, not in code
+3. **Rotate keys regularly** — Create new keys and revoke old ones periodically
+4. **Use separate keys for environments** — Different keys for dev, staging, production
+
+### Environment Variables
+
+```bash
+# .env
+OPENNOTIFY_API_KEY=sk_live_xxxxxxxxxxxxxxxx
+```
+
+```typescript
+// app.ts
+const client = new OpenNotify({
+    apiKey: process.env.OPENNOTIFY_API_KEY,
+})
+```
+
+## Rate Limits
+
+| Plan | Requests/minute | Requests/day |
+|------|-----------------|--------------|
+| Free | 60 | 1,000 |
+| Pro | 300 | 50,000 |
+| Enterprise | Unlimited | Unlimited |
+
+When you exceed rate limits, the API returns `429 Too Many Requests`.
+
+## Next Steps
+
+<Cards>
+  <Card title="Send Your First Notification" href="/docs/getting-started/first-notification">
+    Put your API key to use
+  </Card>
+</Cards>

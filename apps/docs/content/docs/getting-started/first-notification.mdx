@@ -1,0 +1,171 @@
+---
+title: Send Your First Notification
+description: Learn how to send SMS and Telegram notifications with OpenNotify.
+---
+
+# Send Your First Notification
+
+This guide walks you through sending your first notification via SMS and Telegram.
+
+## Prerequisites
+
+- OpenNotify SDK installed
+- API key configured
+- At least one provider connected in the Dashboard
+
+## Sending an SMS
+
+```typescript
+import { OpenNotify } from "@opennotify/sdk"
+
+const client = new OpenNotify({
+    apiKey: process.env.OPENNOTIFY_API_KEY,
+})
+
+const result = await client.send({
+    to: "+998901234567",
+    channel: "sms",
+    message: "Hello from OpenNotify! Your code is 123456",
+})
+
+console.log("SMS sent:", result.id)
+console.log("Status:", result.status)
+```
+
+### Response
+
+```json
+{
+    "id": "ntf_abc123xyz",
+    "status": "pending",
+    "channel": "sms",
+    "provider": "eskiz",
+    "createdAt": "2024-12-21T10:30:00Z"
+}
+```
+
+## Sending a Telegram Message
+
+First, the recipient needs to link their Telegram account:
+
+1. They send `/start` to your Telegram bot
+2. They send their phone number to link the account
+3. Now you can send them notifications
+
+```typescript
+const result = await client.send({
+    to: "+998901234567",
+    channel: "telegram",
+    message: "Hello from OpenNotify via Telegram!",
+})
+```
+
+<Callout type="info">
+Telegram messages are free and delivered instantly. Use Telegram as your primary channel when possible.
+</Callout>
+
+## Using Templates
+
+For consistent messaging, use templates:
+
+```typescript
+// Create a template first (via Dashboard or API)
+const result = await client.send({
+    to: "+998901234567",
+    channel: "sms",
+    templateId: "tpl_otp_verification",
+    variables: {
+        code: "123456",
+        expiry: "5 minutes",
+    },
+})
+```
+
+Template example:
+```
+Your verification code is {{code}}. It expires in {{expiry}}.
+```
+
+## Smart Routing
+
+Let OpenNotify choose the best channel automatically:
+
+```typescript
+const result = await client.send({
+    to: "+998901234567",
+    message: "Your order #12345 has been shipped!",
+    routing: "cost-optimized", // or "reliability-first"
+})
+```
+
+### Routing Strategies
+
+| Strategy | Behavior |
+|----------|----------|
+| `cost-optimized` | Telegram → Email → SMS (cheapest first) |
+| `reliability-first` | SMS → Telegram → Email (most reliable first) |
+| `user-preference` | Respects recipient's channel preference |
+
+## Checking Delivery Status
+
+```typescript
+const status = await client.getStatus("ntf_abc123xyz")
+
+console.log(status)
+// {
+//   id: "ntf_abc123xyz",
+//   status: "delivered",
+//   deliveredAt: "2024-12-21T10:30:05Z",
+//   channel: "sms",
+//   provider: "eskiz"
+// }
+```
+
+### Status Values
+
+| Status | Description |
+|--------|-------------|
+| `pending` | Notification queued for delivery |
+| `sent` | Sent to provider |
+| `delivered` | Confirmed delivered to recipient |
+| `failed` | Delivery failed |
+| `expired` | Message expired before delivery |
+
+## Handling Errors
+
+```typescript
+try {
+    const result = await client.send({
+        to: "+998901234567",
+        channel: "sms",
+        message: "Hello!",
+    })
+} catch (error) {
+    if (error.code === "INSUFFICIENT_BALANCE") {
+        console.error("Please top up your account")
+    } else if (error.code === "INVALID_PHONE") {
+        console.error("Invalid phone number format")
+    } else {
+        console.error("Failed to send:", error.message)
+    }
+}
+```
+
+## Next Steps
+
+You've sent your first notification! Explore more features:
+
+<Cards>
+  <Card title="SMS Channel" href="/docs/channels/sms">
+    Deep dive into SMS providers
+  </Card>
+  <Card title="Telegram Channel" href="/docs/channels/telegram">
+    Set up Telegram bot integration
+  </Card>
+  <Card title="Templates" href="/docs/features/templates">
+    Create reusable message templates
+  </Card>
+  <Card title="Smart Routing" href="/docs/features/smart-routing">
+    Configure intelligent channel routing
+  </Card>
+</Cards>

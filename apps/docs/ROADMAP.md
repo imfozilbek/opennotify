@@ -4,7 +4,7 @@
 
 Documentation site for OpenNotify — built with Fumadocs.
 
-**Tech Stack:** Next.js 15, Fumadocs, Tailwind CSS 4.0, Shiki, Mermaid
+**Tech Stack:** Next.js 16, Fumadocs, Tailwind CSS 4.0, Shiki
 
 ---
 
@@ -14,12 +14,12 @@ Documentation site for OpenNotify — built with Fumadocs.
 
 | Task | Status |
 |------|--------|
-| Next.js 15 + Fumadocs setup | ⏳ |
-| DocsLayout with sidebar | ⏳ |
-| Homepage | ⏳ |
-| Dynamic [[...slug]] routing | ⏳ |
-| Dark/light theme | ⏳ |
-| Getting Started section (3 pages) | ⏳ |
+| Next.js 16 + Fumadocs setup | ✅ |
+| DocsLayout with sidebar | ✅ |
+| Homepage | ✅ |
+| Dynamic [[...slug]] routing | ✅ |
+| Dark/light theme | ✅ |
+| Getting Started section (3 pages) | ✅ |
 
 ---
 

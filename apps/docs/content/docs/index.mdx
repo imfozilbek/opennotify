@@ -1,0 +1,82 @@
+---
+title: Introduction
+description: Welcome to OpenNotify - the unified notification API for Uzbekistan and Central Asia.
+---
+
+# Welcome to OpenNotify
+
+OpenNotify is the unified notification API for Uzbekistan and Central Asia. Send SMS, Telegram, Email, Push, and WhatsApp notifications with a single integration.
+
+## Why OpenNotify?
+
+- **One API, All Channels** — SMS (Eskiz, PlayMobile, GetSMS), Telegram, Email (SMTP, SendGrid, Mailgun), Push (FCM, APNs), WhatsApp
+- **Smart Routing** — Automatic channel selection based on cost, reliability, or user preferences
+- **Local First** — Built for Uzbekistan with native support for local SMS providers
+- **70% Cost Savings** — Use Telegram as the primary channel, SMS as fallback
+
+## Quick Example
+
+<Tabs items={["Node.js", "Python", "cURL"]}>
+<Tab value="Node.js">
+```typescript
+import { OpenNotify } from "@opennotify/sdk"
+
+const client = new OpenNotify({ apiKey: "your-api-key" })
+
+await client.send({
+    to: "+998901234567",
+    channel: "telegram",
+    message: "Hello from OpenNotify!",
+})
+```
+</Tab>
+<Tab value="Python">
+```python
+from opennotify import OpenNotify
+
+client = OpenNotify(api_key="your-api-key")
+
+client.send(
+    to="+998901234567",
+    channel="telegram",
+    message="Hello from OpenNotify!"
+)
+```
+</Tab>
+<Tab value="cURL">
+```bash
+curl -X POST https://api.opennotify.uz/send \
+  -H "Authorization: Bearer your-api-key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "to": "+998901234567",
+    "channel": "telegram",
+    "message": "Hello from OpenNotify!"
+  }'
+```
+</Tab>
+</Tabs>
+
+## Supported Channels
+
+| Channel | Providers | Status |
+|---------|-----------|--------|
+| **SMS** | Eskiz, PlayMobile, GetSMS | Available |
+| **Telegram** | Telegram Bot API | Available |
+| **Email** | SMTP, SendGrid, Mailgun | Available |
+| **Push** | Firebase FCM, Apple APNs | Available |
+| **WhatsApp** | WhatsApp Business API | Available |
+
+## Next Steps
+
+<Cards>
+  <Card title="Quickstart" href="/docs/getting-started/quickstart">
+    Get up and running in 5 minutes
+  </Card>
+  <Card title="Authentication" href="/docs/getting-started/authentication">
+    Learn how to authenticate API requests
+  </Card>
+  <Card title="Send Your First Notification" href="/docs/getting-started/first-notification">
+    Send an SMS or Telegram message
+  </Card>
+</Cards>

@@ -1,0 +1,79 @@
+---
+title: Quickstart
+description: Get started with OpenNotify in 5 minutes. Install the SDK and send your first notification.
+---
+
+# Quickstart
+
+Get up and running with OpenNotify in just a few minutes.
+
+## Prerequisites
+
+- An OpenNotify account ([Sign up](https://opennotify.uz))
+- An API key from the Dashboard
+- Node.js 18+ (for Node.js SDK)
+
+## Step 1: Install the SDK
+
+<Tabs items={["npm", "pnpm", "yarn"]}>
+<Tab value="npm">
+```bash
+npm install @opennotify/sdk
+```
+</Tab>
+<Tab value="pnpm">
+```bash
+pnpm add @opennotify/sdk
+```
+</Tab>
+<Tab value="yarn">
+```bash
+yarn add @opennotify/sdk
+```
+</Tab>
+</Tabs>
+
+## Step 2: Initialize the Client
+
+```typescript
+import { OpenNotify } from "@opennotify/sdk"
+
+const client = new OpenNotify({
+    apiKey: process.env.OPENNOTIFY_API_KEY,
+})
+```
+
+<Callout type="warn">
+Never hardcode your API key in source code. Use environment variables instead.
+</Callout>
+
+## Step 3: Send a Notification
+
+```typescript
+const result = await client.send({
+    to: "+998901234567",
+    channel: "sms",
+    message: "Your verification code is 123456",
+})
+
+console.log("Notification sent:", result.id)
+```
+
+## Step 4: Check Delivery Status
+
+```typescript
+const status = await client.getStatus(result.id)
+
+console.log("Status:", status.status) // "delivered" | "pending" | "failed"
+```
+
+## What's Next?
+
+<Cards>
+  <Card title="Authentication" href="/docs/getting-started/authentication">
+    Learn about API keys and authentication
+  </Card>
+  <Card title="First Notification" href="/docs/getting-started/first-notification">
+    Detailed guide on sending notifications
+  </Card>
+</Cards>
