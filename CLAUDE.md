@@ -38,6 +38,22 @@ When modifying CLAUDE.md, you MUST follow these rules:
 | **Purpose** | Plan implementation steps before writing code |
 | **Exit** | Use `ExitPlanMode` only after plan is approved |
 
+## Self-Correction (MANDATORY)
+
+**When Claude makes an error caused by CLAUDE.md rules:**
+
+| Step | Action |
+|------|--------|
+| 1 | Identify which rule in CLAUDE.md caused the error |
+| 2 | Explain why the rule is incorrect |
+| 3 | Propose fix to CLAUDE.md immediately |
+| 4 | Ask user to approve the change |
+
+**⛔ RULES:**
+- If error repeats twice — rule MUST be updated
+- Never ignore systematic errors
+- Fix the root cause, not symptoms
+
 ## Session Commands (MANDATORY)
 
 ### "start-work"
