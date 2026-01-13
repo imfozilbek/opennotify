@@ -537,6 +537,37 @@ git push origin main --tags
 5. Update SDK types
 6. Write tests
 
+## SLC Rules (MANDATORY)
+
+| Rule | Requirement |
+|------|-------------|
+| **v1.0 Feature** | SMS + Telegram channels ONLY |
+| **Quality** | Must be PERFECT, not "good enough" |
+| **No scope creep** | Email, Push, WhatsApp — NOT in v1.0 |
+| **UX** | Send notification in 1 API call |
+| **Speed** | API response < 200ms |
+
+## Testing Checklist
+
+- [ ] Send SMS via Eskiz
+- [ ] Send SMS via PlayMobile
+- [ ] Send Telegram message
+- [ ] Webhook delivery confirmation
+- [ ] Rate limiting enforcement
+- [ ] API key authentication
+- [ ] Error handling (provider down)
+- [ ] Delivery status tracking
+
+## Release Checklist
+
+- [ ] All `console.log` removed
+- [ ] `pnpm lint` passes (0 errors, 0 warnings)
+- [ ] `pnpm typecheck` passes
+- [ ] All tests pass
+- [ ] CHANGELOG.md updated
+- [ ] ROADMAP.md updated
+- [ ] Version bumped in package.json
+
 ---
 
 ## Quick Reference
