@@ -208,7 +208,7 @@ document.innerHTML = x    // XSS
 pnpm test:coverage    # Must pass thresholds
 ```
 
-## Database (MongoDB + Redis ONLY)
+## Database (MongoDB + Redis, self-hosted)
 
 **⛔ No other databases allowed.**
 
@@ -335,7 +335,7 @@ stages: install → lint → typecheck → test → build → security → deplo
 
 ## Deployment
 
-**Stack:** PM2 + Nginx. **⛔ Docker is PROHIBITED.**
+**Stack:** Hostinger VPS, PM2 + Nginx, CI/CD Gitea (self-hosted). **⛔ Docker is PROHIBITED.**
 
 ```
 Nginx → /api/* → PM2: api (port 4001)
