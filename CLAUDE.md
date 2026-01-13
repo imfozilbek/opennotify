@@ -23,6 +23,34 @@ When modifying CLAUDE.md, you MUST follow these rules:
 - Non-English text
 - Sections longer than 30 lines
 
+## Task Workflow (MANDATORY)
+
+**⛔ MUST enter planning mode before starting ANY new task.**
+
+| Rule | Requirement |
+|------|-------------|
+| **New tasks** | Always use `EnterPlanMode` tool first |
+| **Purpose** | Plan implementation steps before writing code |
+| **Exit** | Use `ExitPlanMode` only after plan is approved |
+
+## Session Commands (MANDATORY)
+
+### "start-work"
+| Step | Action |
+|------|--------|
+| 1 | Analyze entire project (structure, TODOs, open tasks, component status) |
+| 2 | Show brief status for each project part |
+| 3 | Sort by progress (completed first, least ready last) |
+| 4 | Bottom: show blocking/lagging task |
+
+### "end-work"
+| Step | Action |
+|------|--------|
+| 1 | Check uncommitted changes (git status, git diff) |
+| 2 | Commit and release changes |
+| 3 | Review git log for last 12 hours |
+| 4 | Show summary: what done, progress achieved |
+
 ## Project Overview
 
 OpenNotify — Unified notification API for Uzbekistan/Central Asia. TypeScript monorepo (pnpm workspaces). Node.js >= 22.0.0.
