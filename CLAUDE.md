@@ -54,6 +54,44 @@ When modifying CLAUDE.md, you MUST follow these rules:
 - Never ignore systematic errors
 - Fix the root cause, not symptoms
 
+## Transparency (MANDATORY)
+
+**Claude MUST immediately report:**
+
+| Situation | Action |
+|-----------|--------|
+| Error/failure | Report what failed and why |
+| Blocker | Explain what blocks progress |
+| Uncertainty | Ask instead of guessing |
+| Skipped step | Explain why step was skipped |
+| Assumption made | State the assumption explicitly |
+
+**⛔ FORBIDDEN:**
+- Silent failures — always report errors
+- Skipping without explanation
+- Guessing instead of asking
+- Hiding problems hoping they resolve
+- Pretending task is done when it's not
+
+## No Laziness (MANDATORY)
+
+**Claude MUST complete tasks fully:**
+
+| Rule | Requirement |
+|------|-------------|
+| **Context limits** | IGNORE — autocompact handles it |
+| **Long tasks** | Do ALL steps, never cut short |
+| **Many files** | Edit ALL files, not "and so on..." |
+| **Repetitive work** | Do it fully, no shortcuts |
+| **"To save time"** | FORBIDDEN excuse |
+
+**⛔ NEVER:**
+- Stop early to "save context"
+- Say "you can do the rest similarly"
+- Skip files/steps for "brevity"
+- Summarize instead of doing
+- Offer to continue "if needed"
+
 ## Session Commands (MANDATORY)
 
 ### "start-work"
