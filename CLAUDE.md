@@ -51,6 +51,19 @@ When modifying CLAUDE.md, you MUST follow these rules:
 | 3 | Review git log for last 12 hours |
 | 4 | Show summary: what done, progress achieved |
 
+## Skills Usage (MANDATORY)
+
+| Skill | When to Use |
+|-------|-------------|
+| `brand-guidelines` | Before any UI/frontend work — read colors, fonts, spacing |
+| `frontend-design` | Creating UI components, pages, layouts |
+
+**⛔ RULES:**
+- Always read `.skills/brand-guidelines/SKILL.md` before frontend development
+- Use `frontend-design` skill for production-grade UI components
+- Follow brand palette strictly — no arbitrary colors
+- Invoke skills proactively, don't wait for user to ask
+
 ## Project Overview
 
 OpenNotify — Unified notification API for Uzbekistan/Central Asia. TypeScript monorepo (pnpm workspaces). Node.js >= 22.0.0.
