@@ -75,6 +75,38 @@ When modifying CLAUDE.md, you MUST follow these rules:
 /plugin install tdd@NeoLabHQ/context-engineering-kit
 ```
 
+## UI Development (MANDATORY)
+
+**Principle: SLC (Simple, Lovable, Complete)** — Every UI must be simple to use, lovable in design, complete in functionality.
+
+**⛔ WORKFLOW for any UI task:**
+1. Read `.skills/brand-guidelines/SKILL.md` first
+2. Invoke `frontend-design` skill
+3. Plan with animations and micro-interactions
+4. Result must NOT look "AI-generated" — must feel human-crafted
+
+**UI Libraries (by task type):**
+| Task | Libraries |
+|------|-----------|
+| Landing pages | Aceternity UI, Magic UI |
+| Dashboards | Origin UI, Tremor |
+| Animations | Framer Motion, Motion Primitives |
+| Base components | shadcn/ui + custom tokens |
+
+**⛔ FORBIDDEN (generic AI look):**
+- Default shadcn/ui without customization
+- System fonts only (use brand fonts)
+- No hover/focus states
+- Symmetric/centered everything
+- No micro-interactions
+
+**REQUIRED for unique design:**
+- Custom animations (not default transitions)
+- Brand typography from guidelines
+- Asymmetric layouts where appropriate
+- Personality (illustrations, custom icons)
+- Micro-interactions on all interactive elements
+
 ## Project Overview
 
 OpenNotify — Unified notification API for Uzbekistan/Central Asia. TypeScript monorepo (pnpm workspaces). Node.js >= 22.0.0.
